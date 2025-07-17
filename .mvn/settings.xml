@@ -1,13 +1,13 @@
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
-          https://maven.apache.org/xsd/settings-1.0.0.xsd">
+                              https://maven.apache.org/xsd/settings-1.0.0.xsd">
 
   <mirrors>
     <mirror>
-      <id>uk.maven.org</id>
-      <name>UK Maven Mirror</name>
-      <url>https://uk.maven.org/maven2</url>
+      <id>aliyun</id>
+      <name>Aliyun Maven</name>
+      <url>https://maven.aliyun.com/nexus/content/groups/public</url>
       <mirrorOf>central</mirrorOf>
     </mirror>
   </mirrors>
@@ -18,7 +18,7 @@
       <repositories>
         <repository>
           <id>central</id>
-          <url>https://uk.maven.org/maven2</url>
+          <url>https://maven.aliyun.com/nexus/content/groups/public</url>
           <releases><enabled>true</enabled></releases>
           <snapshots><enabled>true</enabled></snapshots>
         </repository>
@@ -30,4 +30,3 @@
     <activeProfile>default</activeProfile>
   </activeProfiles>
 </settings>
-
