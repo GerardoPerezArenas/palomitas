@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<project name="GenerarClientesBusquedaVia" default="generarClientePadron" basedir=".\..">
+
+
+    <property name="sge.sources" value="${basedir}\..\..\..\..\.."/>
+    <property name="axis.lib" value="C:\LIBRERIAS\axis 1.4\axis-1_4\lib\"/>
+    <property name="sw.padron.url" value="http://localhost:82/WSBusquedaViaPadron/services/WSBusquedaViaEndPoint?wsdl"/>
+
+    <path id="axis.classpath">
+        <fileset dir="${axis.lib}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+
+    <!-- ========================== "axis" target =========================== -->
+    <taskdef resource="axis-tasks.properties" classpathref="axis.classpath"/>
+
+    <target name="generarClientePadron">
+        <axis-wsdl2java  all="false" debug="false" helperGen="false"
+                   noimports="false"
+                   output="${sge.sources}"
+                   serverside="false" testcase="false"
+                   typeMappingVersion="1.1"
+                   url="${sw.padron.url}"
+                   verbose="true" noWrapped="true">
+            <mapping namespace="http://via.ws.altia.es"
+                     package="es.altia.agora.webservice.via.servicios.padron.cliente"/>
+        </axis-wsdl2java>
+    </target>
+
+
+
+
+
+</project>

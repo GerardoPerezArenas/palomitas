@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/C:/Users/Saul/Documents/flexia_semifinal/Flexia18_01_PTOValencia/src/conf/flexiaInterno_SIR.wsdl" uri="conf/xml-resources/web-service-references/flexiaInterno_SIR/wsdl/flexiaInterno_SIR.wsdl"/>
+    <system systemId="file:/C:/Users/Saul/Documents/flexia_semifinal/Flexia18_01_PTOValencia/src/conf/facturasRCF_FACe.wsdl" uri="conf/xml-resources/web-service-references/facturasRCF_FACe/wsdl/facturasRCF_FACe.wsdl"/>
+</catalog>

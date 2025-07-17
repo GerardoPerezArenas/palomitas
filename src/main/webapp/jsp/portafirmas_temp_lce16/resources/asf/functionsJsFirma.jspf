@@ -1,0 +1,368 @@
+<%@page import="es.altia.common.service.config.Config"%>
+<%@page import="es.altia.common.service.config.ConfigServiceHelper"%>
+<%@ page import="java.util.UUID"%>
+
+
+<%
+    Config m_Docus2 = ConfigServiceHelper.getConfig("Portafirmas");
+    String urlWS = m_Docus2.getString("PluginPortafirmas/ASF/urlJS");
+    UUID uuid = UUID.randomUUID();
+    String nombreFichero = uuid.toString();
+%>
+
+    
+    <script type="text/javascript">
+        function fjsFirmaMostrarError(htmlMsg){
+            var theDiv = document.getElementById('mensajeError');
+            if (theDiv) {
+                if (htmlMsg){
+                    theDiv.innerHTML = htmlMsg;
+                    theDiv.style.display = "block";
+                }else{
+                    theDiv.style.display = "none";
+                }//if (htmlMsg)
+            }// if (theDiv) 
+        }//fjsFirmaMostrarError(htmlMsg)
+    </script>
+    
+  
+    
+    <script type="text/javascript"
+	src="<%=urlWS%>">
+    </script>
+    <script type="text/javascript">
+		<%-- #35172 Variable modoCofirma --%>
+		<%-- 1 -> subir fichero y subir firma | 2 -> subir Fichero | 3 -> sin necesidad de fichero ni de firma --%>
+		var modoCofirma = 3;
+		
+		var firmaTexto;
+		var firmaFichero;
+		var lista;
+
+		var listaCertificados = new Array();
+		var bFilterCA = true;
+		var restricionesCA = new Array();
+		var sOnlyWithPrivateKey = ST_PRI_KEY;
+		var bOnlyNotExpired = true;
+		var sCertificateField = CERTIFICATE_SUBJECT;
+		var sCertificateFieldPart = CERTIFICATE_CN;		
+		
+        var bDetached = true;
+        var sFormat = MT_CMS;
+        var sHash = HASH_SHA1;
+        var bIdentifyBySubjectKI = 1;  
+        var emptyArray = new Array(); 
+
+        //Controlar la CA's con las que se puede firmar
+        var arrCAs = new Array(9);
+		var arrRestrictions = new Array(9);
+
+		arrCAs[0] = "CN=AC RAIZ DNIE, OU=DNIE, O=DIRECCION GENERAL DE LA POLICIA, C=ES";
+		arrRestrictions[0] = new Array("","");
+		arrCAs[1] = "CN=AC DNIE 002, OU=DNIE, O=DIRECCION GENERAL DE LA POLICIA, C=ES";
+		arrRestrictions[1] = new Array("","");
+		arrCAs[2] = "CN=AC DNIE 003, OU=DNIE, O=DIRECCION GENERAL DE LA POLICIA, C=ES";
+		arrRestrictions[2] = new Array("","");
+		arrCAs[3] = "OU=FNMT Clase 2 CA, O=FNMT, C=ES";
+		arrRestrictions[3] = new Array("","");
+		arrCAs[4] = "CN=AC DNIE 001, OU=DNIE, O=DIRECCION GENERAL DE LA POLICIA, C=ES";
+		arrRestrictions[4] = new Array("","");
+		arrCAs[5] = "CN=AC Camerfirma Express Corporate Server v3, O=AC Camerfirma SA, OU=http://www.camerfirma.com, SERIALNUMBER=A82743287, L=Madrid (see current address at www.camerfirma.com/address), EMAILADDRESS=info@camerfirma.com, C=ES";
+		arrRestrictions[5] = new Array("","");
+		arrCAs[6] = "CN=AC Camerfirma Certificados Camerales, O=AC Camerfirma SA, SERIALNUMBER=A82743287, L=Madrid (see current address at www.camerfirma.com/address), EMAILADDRESS=ac_camerfirma_cc@camerfirma.com, C=ES";
+		arrRestrictions[6] = new Array("","");
+		arrCAs[7] = "CN=AC Firmaprofesional - CA1, O=Firmaprofesional S.A. NIF A-62634068, OU=Jerarquia de Certificacion Firmaprofesional, OU=Consulte http://www.firmaprofesional.com, L=C/ Muntaner 244 Barcelona, EMAILADDRESS=ca1@firmaprofesional.com, C=ES";
+		arrRestrictions[7] = new Array("","");
+		arrCAs[8] = "EMAILADDRESS=pki@red.es, CN=CA E.P.E. RED.ES, OU=CA, O=E.P.E. RED.ES, C=ES";
+	    arrRestrictions[8] = new Array("","");
+       
+	   
+	   
+        function inicializarClienteFirma()
+        {      
+			wait4init();
+
+        }
+
+		function wait4init(){
+ 	 		if(window.init){
+ 	 	 		var result = init();
+ 	 	 	} else {
+ 	 	 	 	window.setTimeout('wait4init()',2000);
+ 	 	 	 }
+		}
+
+
+		function init(){
+
+			if (document.getElementById("firmar") != null) {
+				document.getElementById("firmar").disabled = true;
+				document.getElementById("firmar").className = "botonDeshabilitado";
+			}
+			
+			// Caso en que los botones de firmar tengan un índice (se pueda escoger entre varias cosas para firmar)
+			var i=0;
+			while (document.getElementById("firmar" + i) != null) {
+				document.getElementById("firmar" + i).disabled = true;
+				document.getElementById("firmar" + i).className = "botonDeshabilitado";
+				i++;
+			}
+
+            // Comprueba si se ha cargado correctamente el javascript WS.js
+            try {
+                var temp = ST_PRI_KEY;
+            } catch (err) {
+                alert ("No se ha podido acceder al componente de firma (Err. #001).");
+                return;
+            }
+            
+			if(window.isJSLoaded && isJSLoaded()){
+				// Si no hay proxy, se queda aquí flipado. Tarda un buen rato, pero no dice que no se ha cargado
+				// TODO Preguntar a TB
+				if (!initWebSigner(ST_ALL_KEY)){
+		          	alert ("Funcion init: Error al iniciar el cliente de firma");
+		          	return;
+				}
+
+				try {
+					init_rec();
+				} catch (err) {
+					// TODO Ponerlo en el div de error (quitar el err.description)
+					alert("Funcion init: No se ha podido cargar el complemento de firma: " + err.description);
+				}
+			}else{
+				window.setTimeout(init, 500);
+			}
+		}
+		
+ 		function init_rec(){
+			if(isWSLoaded()){
+				listaCertificados = getCertificates
+								(bFilterCA,arrCAs,arrRestrictions, sOnlyWithPrivateKey,
+								bOnlyNotExpired, sCertificateField,sCertificateFieldPart);
+				cargarListaCertificados();
+
+				if (document.getElementById("firmar") != null) {
+					document.getElementById("firmar").disabled = false;
+					document.getElementById("firmar").className = "boton";
+				}
+
+				// Caso en que los botones de firmar tengan un índice (se pueda escoger entre varias cosas para firmar)
+				var i=0;
+				while (document.getElementById("firmar" + i) != null) {
+					document.getElementById("firmar" + i).disabled = false;
+					document.getElementById("firmar" + i).className = "boton";
+					i++;
+				}
+				
+				try {
+					if (websignerInitCallback){
+						websignerInitCallback();
+					}
+				} catch (_err) {
+					// No hacemos nada. Lo debe controlar la función de callback
+				}
+			} else {
+				window.setTimeout(init_rec,2000);
+			}
+		}
+		
+
+        
+        function firmarTextoClienteAsf(cadenaTexto)
+        {   
+            if (cadenaTexto!= "")
+            {
+                
+            	var retorno = document.getElementById("comboCertificados").value;
+
+            	if (retorno!='false')
+                {
+                	if (retorno != -1)
+                	{
+                		firmaTexto = signByIndex
+                    	(retorno, cadenaTexto, 
+                     	bDetached, sFormat, sHash, null, null, null,
+                     	false,bIdentifyBySubjectKI,null);
+                    
+                     	if (firmaTexto !=null && firmaTexto != "")
+                     	{
+                        	 return true;
+                     	}
+                     	else
+                     	{
+                        	 return false;
+                     	}
+                	}
+                	else
+                	{
+	                    alert ("No se ha seleccionado ningun certificado");
+    	                return false;
+                	
+                	}
+                }
+                else
+                {
+                    alert ("No se ha seleccionado ningun certificado");
+                    return false;
+                }
+            	
+            }
+            else
+            {
+                alert ("No se ha incluido ningun texto para firmar");
+                return false;
+            }
+          
+        }
+        
+		function firmarFicheroClienteAsf (rutaFichero)
+		{
+                    try{
+                        netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+                    }catch (e){
+                        alert('Imposible el acceso a ficheros locales debido a la configuracion de seguridad del navegador. Para solucionarlo, siga los siguentes pasos: (1) Introduzca "about:config" en el campo URL del navegador; (2) Click con boton derecho y seleccione New->Boolean; (3) Introduzca "signed.applets.codebase_principal_support" (sin las comillas) como nuevo nombre; (4) Click OK y intente cargar el fichero de nuevo.');
+                        return;
+                    }//try-catch
+                
+                    if (rutaFichero!=null && rutaFichero!=""){
+                        var retorno = document.getElementById("comboCertificados").value;
+                        if (retorno!='false'){
+                            if (retorno != -1){
+                                firmaFichero = null;
+                                try {
+                                    var bSignDate = false; 
+                                    var bIdentifyBySubjectKI = "1"; 
+                                    var sFormat = MT_PKCS7;
+                                    var firma = signFileByIndexOneStep(retorno, bDetached, sFormat, sHash, null, null, null, bSignDate, bIdentifyBySubjectKI, rutaFichero);
+
+                                    document.getElementById("firma").value=firma;
+                                    return firma;
+                                }catch(err){}
+                            }else{
+                            alert ("No se ha indicado ningun certificado");
+                            return null;     
+                            }//if (retorno != -1)
+                        }else{
+                            alert ("No se ha indicado ningun certificado");
+                            return null; 
+                        }//if (retorno!='false')
+
+                    } else
+                    {
+                        alert ("No se ha incluido ningun archivo para firmar");
+                        return null;
+                    }
+			
+			
+                }
+
+		function firmarFicheroMancomunadaClienteAsf (rutaFichero)
+		{
+			alert ("Funcion no implementada/Funcion non implementada/Function not implemented yet");
+			return false;
+		}		
+
+		function cofirmarFicheroAsf(rutaFichero,firmaAntigua)
+		{
+			if (bDetached || (rutaFichero!=null && rutaFichero!=""))
+			{
+				var retorno;
+        		retorno = document.getElementById("comboCertificados").value;
+        		
+        		if (retorno!='false'){
+            		if (retorno != -1)
+            		{
+ 						if (bDetached)
+ 						{
+ 	 						firmaFichero = addNestedSignByIndex(retorno,firmaAntigua,
+ 	 	 	 						bDetached, sFormat, sHash, null, null, null,
+ 	 	 	 						false, bIdentifyBySubjectKI, null);
+ 						}
+ 						else   
+            			{
+ 	            			firmaFichero = cosignByIndex(retorno, firmaAntigua,
+							bDetached, getFileByPath(rutaFichero), sFormat, sHash, null, null, null,
+								false, bIdentifyBySubjectKI, null);
+            			}
+ 
+					 if (firmaFichero !=null && firmaFichero != "")
+                     {
+                         return true;
+                     }
+                     else
+                     {
+                         return false;
+                     }
+            		}else
+		                {
+		                    alert ("No se ha indicado ningun certificado");
+		                    return false;
+		                }
+		    	}
+		    	else
+		    	{
+		            alert ("No se ha indicado ningun certificado");
+		            return false;		    	
+		    	}
+			}
+			else {
+		    	alert ("No se ha incluido ningun archivo para firmar");
+		        return false;
+		    }
+		}				
+
+		function mensajeErrorCliente()
+		{
+			return "";
+		}
+
+		function obtenerCertificadoFirma()
+		{
+			return "";		
+		}	
+
+		function cargarListaCertificados()
+		{
+		    
+		    var lista = document.getElementById("comboCertificados");
+
+		    if (lista.length > 1) {
+			    // Para no duplicar los certificados
+			    return;
+		    }
+		    
+			for (var i =0; i < listaCertificados.length; i++)
+			{
+				if (listaCertificados[i] != null)
+			    {
+			    	if (listaCertificados[i] != "")
+			        {
+			        	var option = document.createElement ('option');			      
+			        	option.value = listaCertificados[i][0];
+			        	option.text = listaCertificados[i][1];
+			        	try {			            
+			        		lista.add(option);
+			        	}
+			        	catch(error)
+			        	{
+				        	//En Firefox se genera al usar el metodo add
+				        	//debe emplearse appendChild
+				        	lista.appendChild(option);
+			        	}
+			       	}
+			    }             
+			} 
+
+			if (lista.length < 1) {
+				document.getElementById("divErrorCertificados").style.display = "block";
+				document.getElementById("loadCertificados").style.display="none";
+			} else {
+				document.getElementById("divCertificados").style.display = "block";
+				document.getElementById("loadCertificados").style.display="none";				
+			}
+			 
+		}	
+    
+    </script>
+    

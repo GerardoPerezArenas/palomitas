@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project name="servicioWebTramite" default="init" basedir=".">
+
+    <!-- Para ejecutar desde proyecto\sge\sge\src\java\es\altia\agora\webservice\tramitacion\servicios\tvg -->
+
+    <!-- ======================   Propiedades comunes   ========================== -->
+    <!-- Tomcat -->
+    <property name="tomcat.home" value="C:\Program Files\Apache Software Foundation\apache-tomcat-5.5.28"/>
+    <property name="tomcat.webapps" value="${tomcat.home}/webapps"/>
+    <property name="tomcat.work" value="${tomcat.home}/work/Catalina/localhost"/>
+    <property name="tomcat.libs" value="${tomcat.home}/common/lib"/>
+
+    <!-- Opciones del entorno de desarrollo  -->
+    <property name="build.compiler" value="modern"/>
+
+    <property name="javac.debug" value="on"/>
+    <property name="javac.optimize" value="off"/>
+    <property name="javac.deprecation" value="on"/>
+    <property name="javac.nowarn" value="on"/>
+    <patternset id="ignored.files">
+        <exclude name="**/SVN/**"/>
+        <exclude name="**/*.bak"/>
+    </patternset>
+
+    <!-- ============================  Properties ============================== -->
+
+    <property name="deploy" value="${tomcat.home}\webapps\LCE_13.01_B"/>
+    <property name="ext.libs" value="C:\Users\marcos.rama\PROYECTOS\Netbeans Projects\2012\LCE_13.01_B\build\web\WEB-INF\lib"/>
+    <property name="clases" value="C:\Users\marcos.rama\PROYECTOS\Netbeans Projects\2012\LCE_13.01_B\build\web\WEB-INF\classes"/>
+
+    <property name="fuentes" value="C:\Users\marcos.rama\PROYECTOS\Netbeans Projects\2012\LCE_13.01_B\src\java\es\altia\flexiaWS\tramitacion"/>
+
+
+
+    <property name="wsdl" value="C:\Users\marcos.rama\PROYECTOS\Netbeans Projects\2012\LCE_13.01_B\src\java\es\altia\flexiaWS\tramitacion\WSTramitacionFlexiaImpl.wsdl"/>
+    <property name="wsdd" value="C:\Users\marcos.rama\PROYECTOS\Netbeans Projects\2012\LCE_13.01_B\src\java\es\altia\flexiaWS\tramitacion\deploy.wsdd"/>
+
+    <!-- == Classpath ==================================================== -->
+    <path id="classpath">
+        <fileset dir="${ext.libs}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${tomcat.libs}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <!-- ========================== "axis" target =========================== -->
+    <taskdef name="java2wsdl" classname="org.apache.axis.tools.ant.wsdl.Java2WsdlAntTask" classpathref="classpath"/>
+    <taskdef name="wsdl2java" classname="org.apache.axis.tools.ant.wsdl.Wsdl2javaAntTask" classpathref="classpath"/>
+    <taskdef name="wsadmin"   classname="org.apache.axis.tools.ant.axis.AdminClientTask" classpathref="classpath"/>
+
+    <!-- == objetivo "init" ==================================================== -->
+    <target name="init">
+        <echo>
+            --------------------------------------------------------------------------------
+            "Servicio Web Tramitacion" build ...
+            --------------------------------------------------------------------------------
+        </echo>
+    </target>
+
+    <!-- == generar los fuentes del cliente de tercero ========== -->
+ 
+ 
+  
+    <!-- ========= generar el descriptor del servicio web =============== -->
+    <target name="java2wsdl" >
+        <java2wsdl
+            bindingname="WSTramitacionFlexiaImplSoapBinding"
+            classname="es.altia.flexiaWS.tramitacion.WSTramitacionFlexiaImpl"
+            location="http://localhost:8085/LCE_13.01_B/services/WSTramitacionFlexiaImpl"
+            namespace="http://servicios.flexia"
+            output="${wsdl}"
+            stopclasses="java.*,javax.*,org.apache.axis.AxisFault"
+            style="rpc" typemappingversion="1.1" use="encoded"
+            useinheritedmethods="false" soapaction="DEFAULT">
+            <mapping namespace="http://datos.bd.tramitacion.flexiaWS.altia.es"
+                     package="es.altia.flexiaWS.tramitacion.bd.datos" />
+            <classpath>
+                <pathelement path="C:\Users\marcos.rama\PROYECTOS\Netbeans Projects\2012\LCE_13.01_B\build\web\WEB-INF\classes"/>
+            </classpath>
+        </java2wsdl>
+    </target>
+
+
+    <!-- ==  ========== -->
+    <target name="deployws">
+        <wsadmin  url="http://localhost:8085/LCE_13.01_B/services/AdminService"
+                  xmlfile="${wsdd}"/>
+    </target>
+
+    <!-- ==  ========== -->
+    <target name="cleanCliente" depends="init">
+        <delete dir="${baseCliente}"/>
+    </target>
+
+    <!-- regenerar interfaces -->
+    <target name="wsdl2java">
+        <wsdl2java all="true" debug="false" helperGen="false"
+                   noimports="false"
+                   output="C:\Users\marcos.rama\PROYECTOS\Netbeans Projects\2012\LCE_13.01_B\src\java"
+                   serverside="true" testcase="false"
+                   typeMappingVersion="1.1"
+                   url="${wsdl}"
+                   verbose="true" noWrapped="true">
+            <mapping namespace="http://datos.bd.tramitacion.flexiaWS.altia.es"
+                     package="es.altia.flexiaWS.tramitacion.bd.datos" />
+            <mapping namespace="http://datos.bd.tramitacion.flexiaWS.altia.es-impl"
+                     package="es.altia.flexiaWS.tramitacion.bd.datos" />
+            <mapping namespace="http://datos.bd.tramitacion.flexiaWS.altia.es-intf"
+                     package="es.altia.flexiaWS.tramitacion.bd.datos" />
+            <mapping namespace="http://servicios.flexia"
+                     package="es.altia.flexiaWS.tramitacion" />
+        </wsdl2java>
+    </target>
+
+    <!-- == generar los fuentes del cliente para comunicarse con el servicio web ========== -->
+    <target name="wsdl2javaCliente">
+        <mkdir dir="${fuentesCliente}"/>
+        <wsdl2java all="true" debug="false" helperGen="false"
+                   noimports="false"
+                   output="${fuentesCliente}"
+                   serverside="true" testcase="false"
+                   typeMappingVersion="1.1"
+                   url="${wsdl}"
+                   verbose="true" noWrapped="true">
+            <mapping namespace="http://datos.bd.tramitacion.flexiaWS.altia.es"
+                     package="org.sw.tramitacionFlexia.datos" />
+            <mapping namespace="http://datos.bd.tramitacion.flexiaWS.altia.es-impl"
+                     package="org.sw.tramitacionFlexia.datos" />
+            <mapping namespace="http://datos.bd.tramitacion.flexiaWS.altia.es-intf"
+                     package="org.sw.tramitacionFlexia.datos" />
+            <mapping namespace="http://servicios.flexia"
+                     package="org.sw.tramitacionFlexia.datos" />
+        </wsdl2java>
+    </target>
+
+    <!-- == objetivo "compileCliente" ============================================ -->
+    <target name="compileCliente" depends="init">
+        <mkdir dir="${clasesCliente}"/>
+        <javac srcdir="${fuentesCliente}"
+               destdir="${clasesCliente}"
+               classpathref="classpath"
+               debug="${javac.debug}"
+               target="1.5"
+               optimize="${javac.optimize}"
+               deprecation="${javac.deprecation}"
+               nowarn="${javac.nowarn}"/>
+    </target>
+
+
+    <!-- == objetivo "jarCliente"============================================ -->
+    <target name="jarCliente" depends="init, wsdl2javaCliente, compileCliente">
+        <jar destfile="${jarCliente}"
+             basedir="${clasesCliente}"/>
+    </target>
+
+</project>

@@ -1,0 +1,13 @@
+<!-- Fragmento con el combo y la estética de firma del cliente ASF-->
+<div id="loadCertificados" class="divCertificados" style="width: 100%">
+    <p><s:text name="text.cargaCerts" /></p>
+</div>
+<div id="divCertificados" style="display:none; width: 100%" class="divCertificados">
+    <p><s:text name="text.listaCert" /></p>
+    <select name="comboCertificados" id="comboCertificados"></select>
+</div>
+<div class="divErrorCertificados" id="divErrorCertificados" style="display:none; width: 100%" >
+    <p><s:text name="text.errorCerts" /></p>
+</div>
+<div id="mensajeError" style="word-wrap:break-word;margin-left: 10px;text-align:left;display:none; width: 100%" class="warningbox">                                                                   
+</div>

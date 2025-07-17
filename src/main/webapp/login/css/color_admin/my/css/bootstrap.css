@@ -1,0 +1,127 @@
+/* MODIFICACIONES */
+.page-header,
+h1 {
+    font-size: 3.0rem;
+}
+
+h2 {
+    font-size: 2.6rem;
+}
+
+h3 {
+    font-size: 2.2rem;
+}
+
+h4 {
+    font-size: 1.8rem;
+}
+
+.nav-tabs > li > a h2 {
+    font-size: 1.3rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+a,
+a:focus,
+a:hover {
+    color: #707478;
+}
+
+h1, h2, h3, h4, h5, h6, p, .table, .panel, ol, ul {
+    margin-bottom: 15px;
+}
+
+.panel-heading-btn > * {
+    margin-left: 8px;
+}
+
+#form_buscar .form-group {
+    min-height: 34px;
+    line-height: 100%;
+}
+
+.input-group.datetimepicker .input-group-addon {
+    cursor: pointer;
+}
+
+.fc .form-control {
+    height: 24px;
+}
+
+.form-control[readonly], fieldset[readonly] .form-control,
+.form-control[readonly] + .input-group-addon,
+fieldset[readonly] .form-control + .input-group-addon {
+    cursor: not-allowed;
+}
+/* /MODIFICACIONES */
+
+/* HELPERS */
+.hidden-s,
+.hidden-m {
+    display: inherit;
+}
+
+.visible-s,
+.visible-m {
+    display: none;
+}
+
+.max-height-full {
+    max-height: 100% !important;
+}
+
+.max-width-full {
+    max-width: 100% !important;
+}
+
+.p-l-45 {
+    padding-left: 45px !important;
+}
+
+.p-r-45 {
+    padding-right: 45px !important;
+}
+/* /HELPERS */
+
+@media (min-width: 769px) and (max-width:992px) {
+    .hidden-m {
+        display: none;
+    }
+
+    .visible-m {
+        display: inline-block;
+    }
+}
+
+@media (max-width: 768px) {
+    .hidden-s {
+        display: none;
+    }
+
+    .col-s-12 {
+        width: 100%;
+    }
+
+    .visible-s {
+        display: inline-block;
+    }
+
+    .navbar-collapse .nav > li {
+        float: none;
+    }
+
+    .navbar-collapse .open .dropdown-menu {
+        background: #f4f6f7 none repeat scroll 0 0;
+        border-bottom: 1px solid #eee;
+        border-radius: 0;
+        box-shadow: none;
+        padding-top: 0;
+        position: relative;
+        width: 100%;
+    }
+
+    .breadcrumb {
+        float: none !important;
+    }
+}

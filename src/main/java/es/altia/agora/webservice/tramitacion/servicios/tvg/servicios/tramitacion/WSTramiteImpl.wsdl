@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://servicios.tvg" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://servicios.tvg" xmlns:intf="http://servicios.tvg" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema targetNamespace="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://servicios.tvg"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="TramiteVO">
+    <sequence>
+     <element name="camposFormularios" nillable="true" type="xsd:string"/>
+     <element name="codTramite" nillable="true" type="xsd:string"/>
+     <element name="codigoTramiteFlujoSalida" nillable="true" type="xsd:string"/>
+     <element name="ejercicio" nillable="true" type="xsd:string"/>
+     <element name="entidad" nillable="true" type="xsd:string"/>
+     <element name="estado" nillable="true" type="xsd:string"/>
+     <element name="fechaFin" nillable="true" type="xsd:string"/>
+     <element name="fechaInicio" nillable="true" type="xsd:string"/>
+     <element name="municipio" nillable="true" type="xsd:string"/>
+     <element name="nombreTramite" nillable="true" type="xsd:string"/>
+     <element name="numeroExpediente" nillable="true" type="xsd:string"/>
+     <element name="observaciones" nillable="true" type="xsd:string"/>
+     <element name="ocurrenciaTramite" nillable="true" type="xsd:string"/>
+     <element name="organizacion" nillable="true" type="xsd:string"/>
+     <element name="procedimiento" nillable="true" type="xsd:string"/>
+     <element name="unidadOrganicaExp" nillable="true" type="xsd:string"/>
+     <element name="unidadTramitadoraAnterior" nillable="true" type="xsd:string"/>
+     <element name="unidadTramitadoraTram" nillable="true" type="xsd:string"/>
+     <element name="unidadTramitadoraUsu" nillable="true" type="xsd:string"/>
+     <element name="uor" nillable="true" type="xsd:string"/>
+     <element name="usuario" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="CROTramiteVO">
+    <sequence>
+     <element name="ano" nillable="true" type="xsd:string"/>
+     <element name="codMunicipio" nillable="true" type="xsd:string"/>
+     <element name="codProcedimiento" nillable="true" type="xsd:string"/>
+     <element name="codTramite" nillable="true" type="xsd:string"/>
+     <element name="codUnidadTramitadora" nillable="true" type="xsd:string"/>
+     <element name="codUsuario" nillable="true" type="xsd:string"/>
+     <element name="fechaFin" nillable="true" type="xsd:dateTime"/>
+     <element name="fechaFinPlazo" nillable="true" type="xsd:dateTime"/>
+     <element name="fechaInicio" nillable="true" type="xsd:dateTime"/>
+     <element name="fechaInicioPlazo" nillable="true" type="xsd:dateTime"/>
+     <element name="fechaLimite" nillable="true" type="xsd:dateTime"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+     <element name="nombreUnidadTramitadora" nillable="true" type="xsd:string"/>
+     <element name="numero" nillable="true" type="xsd:string"/>
+     <element name="observaciones" nillable="true" type="xsd:string"/>
+     <element name="ocurrencia" nillable="true" type="xsd:string"/>
+     <element name="resolucion" nillable="true" type="xsd:string"/>
+     <element name="usuarioFinalizacion" nillable="true" type="xsd:string"/>
+     <element name="visibleInternet" nillable="true" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+   <complexType name="SalidaBoolean">
+    <sequence>
+     <element name="incidencias" nillable="true" type="impl:ArrayOf_xsd_string"/>
+     <element name="resultado" nillable="true" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://servicios.tvg" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_tns1_CROTramiteVO">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:CROTramiteVO[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_xsd_string">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:string[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="finalizarTramiteResolucionResponse">
+
+      <wsdl:part name="finalizarTramiteResolucionReturn" type="tns1:SalidaBoolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="grabarCampoGenericoResponse">
+
+      <wsdl:part name="grabarCampoGenericoReturn" type="tns1:SalidaBoolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTramiteExpedienteRequest">
+
+      <wsdl:part name="in0" type="xsd:string"/>
+
+      <wsdl:part name="in1" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="grabarCampoGenericoRequest">
+
+      <wsdl:part name="in0" type="xsd:string"/>
+
+      <wsdl:part name="in1" type="xsd:string"/>
+
+      <wsdl:part name="in2" type="xsd:string"/>
+
+      <wsdl:part name="in3" type="xsd:string"/>
+
+      <wsdl:part name="in4" type="xsd:string"/>
+
+      <wsdl:part name="in5" type="xsd:string"/>
+
+      <wsdl:part name="in6" type="xsd:string"/>
+
+      <wsdl:part name="in7" type="xsd:string"/>
+
+      <wsdl:part name="in8" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="finalizarConTramitesResponse">
+
+      <wsdl:part name="finalizarConTramitesReturn" type="tns1:SalidaBoolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="finalizarTramiteResolucionRequest">
+
+      <wsdl:part name="in0" type="xsd:string"/>
+
+      <wsdl:part name="in1" type="xsd:boolean"/>
+
+      <wsdl:part name="in2" type="xsd:string"/>
+
+      <wsdl:part name="in3" type="xsd:string"/>
+
+      <wsdl:part name="in4" type="xsd:string"/>
+
+      <wsdl:part name="in5" type="xsd:string"/>
+
+      <wsdl:part name="in6" type="xsd:string"/>
+
+      <wsdl:part name="in7" type="xsd:string"/>
+
+      <wsdl:part name="in8" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="grabarCamposTramiteResponse">
+
+      <wsdl:part name="grabarCamposTramiteReturn" type="tns1:SalidaBoolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTramiteExpedienteResponse">
+
+      <wsdl:part name="getTramiteExpedienteReturn" type="impl:ArrayOf_tns1_CROTramiteVO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="grabarCamposTramiteRequest">
+
+      <wsdl:part name="in0" type="xsd:string"/>
+
+      <wsdl:part name="in1" type="xsd:string"/>
+
+      <wsdl:part name="in2" type="xsd:string"/>
+
+      <wsdl:part name="in3" type="xsd:string"/>
+
+      <wsdl:part name="in4" type="xsd:string"/>
+
+      <wsdl:part name="in5" type="xsd:string"/>
+
+      <wsdl:part name="in6" type="xsd:string"/>
+
+      <wsdl:part name="in7" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="finalizarConTramitesRequest">
+
+      <wsdl:part name="in0" type="xsd:string"/>
+
+      <wsdl:part name="in1" type="xsd:string"/>
+
+      <wsdl:part name="in2" type="xsd:string"/>
+
+      <wsdl:part name="in3" type="xsd:string"/>
+
+      <wsdl:part name="in4" type="xsd:string"/>
+
+      <wsdl:part name="in5" type="xsd:string"/>
+
+      <wsdl:part name="in6" type="xsd:string"/>
+
+      <wsdl:part name="in7" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="setTramiteRequest">
+
+      <wsdl:part name="in0" type="tns1:TramiteVO"/>
+
+      <wsdl:part name="in1" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="setTramiteResponse">
+
+      <wsdl:part name="setTramiteReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="WSTramiteImpl">
+
+      <wsdl:operation name="setTramite" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:setTramiteRequest" name="setTramiteRequest"/>
+
+         <wsdl:output message="impl:setTramiteResponse" name="setTramiteResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTramiteExpediente" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:getTramiteExpedienteRequest" name="getTramiteExpedienteRequest"/>
+
+         <wsdl:output message="impl:getTramiteExpedienteResponse" name="getTramiteExpedienteResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="finalizarTramiteResolucion" parameterOrder="in0 in1 in2 in3 in4 in5 in6 in7 in8">
+
+         <wsdl:input message="impl:finalizarTramiteResolucionRequest" name="finalizarTramiteResolucionRequest"/>
+
+         <wsdl:output message="impl:finalizarTramiteResolucionResponse" name="finalizarTramiteResolucionResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="grabarCamposTramite" parameterOrder="in0 in1 in2 in3 in4 in5 in6 in7">
+
+         <wsdl:input message="impl:grabarCamposTramiteRequest" name="grabarCamposTramiteRequest"/>
+
+         <wsdl:output message="impl:grabarCamposTramiteResponse" name="grabarCamposTramiteResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="finalizarConTramites" parameterOrder="in0 in1 in2 in3 in4 in5 in6 in7">
+
+         <wsdl:input message="impl:finalizarConTramitesRequest" name="finalizarConTramitesRequest"/>
+
+         <wsdl:output message="impl:finalizarConTramitesResponse" name="finalizarConTramitesResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="grabarCampoGenerico" parameterOrder="in0 in1 in2 in3 in4 in5 in6 in7 in8">
+
+         <wsdl:input message="impl:grabarCampoGenericoRequest" name="grabarCampoGenericoRequest"/>
+
+         <wsdl:output message="impl:grabarCampoGenericoResponse" name="grabarCampoGenericoResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="WSTramitacionImplSoapBinding" type="impl:WSTramiteImpl">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="setTramite">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="setTramiteRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.tvg" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setTramiteResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.tvg" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTramiteExpediente">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTramiteExpedienteRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.tvg" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTramiteExpedienteResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.tvg" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="finalizarTramiteResolucion">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="finalizarTramiteResolucionRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.tvg" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="finalizarTramiteResolucionResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.tvg" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="grabarCamposTramite">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="grabarCamposTramiteRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.tvg" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="grabarCamposTramiteResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.tvg" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="finalizarConTramites">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="finalizarConTramitesRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.tvg" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="finalizarConTramitesResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.tvg" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="grabarCampoGenerico">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="grabarCampoGenericoRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.tvg" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="grabarCampoGenericoResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.tvg" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="WSTramiteImplService">
+
+      <wsdl:port binding="impl:WSTramitacionImplSoapBinding" name="WSTramiteImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/sigp/services/WSTramiteImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

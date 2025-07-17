@@ -1,0 +1,70 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from WSExpedienteImplService WSDL service -->
+
+  <service name="WSExpedienteImpl" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="http://servicios.tvg"/>
+      <parameter name="wsdlServiceElement" value="WSExpedienteImplService"/>
+      <parameter name="schemaUnqualified" value="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"/>
+      <parameter name="wsdlServicePort" value="WSExpedienteImpl"/>
+      <parameter name="className" value="es.altia.agora.webservice.tramitacion.servicios.tvg.servicios.expediente.WSExpedienteImplSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="WSExpedienteImpl"/>
+      <parameter name="typeMappingVersion" value="1.1"/>
+      <operation name="setExpediente" qname="operNS:setExpediente" xmlns:operNS="http://servicios.tvg" returnQName="setExpedienteReturn" returnType="rtns:SalidaBooleanExpediente" xmlns:rtns="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es" soapAction="" >
+        <parameter qname="in0" type="tns:ExpedienteVO" xmlns:tns="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"/>
+        <parameter qname="in1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="setExpediente"/>
+
+      <typeMapping
+        xmlns:ns="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"
+        qname="ns:SalidaBooleanExpediente"
+        type="java:es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos.SalidaBooleanExpediente"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"
+        qname="ns:DomicilioVO"
+        type="java:es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos.DomicilioVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"
+        qname="ns:InteresadoVO"
+        type="java:es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos.InteresadoVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"
+        qname="ns:ExpedienteVO"
+        type="java:es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos.ExpedienteVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"
+        qname="ns:TramiteVO"
+        type="java:es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos.TramiteVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+  </service>
+</deployment>

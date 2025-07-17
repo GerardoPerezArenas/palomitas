@@ -1,0 +1,53 @@
+package es.altia.flexia.eni.exception;
+
+public enum CodigoMensajeEni {
+
+	//EXITO
+	EXPORTACION_CORRECTA							("ENI_000"),
+	IMPORTACION_CORRECTA							("ENI_001"),
+	
+	//ERRORES DE VALIDACION
+	NUM_EXPEDIENTE_NULL_O_VACIO						("ENI_011"),
+	ERROR_RECUPERAR_FORMATO							("ENI_012"),
+	ERROR_AL_RECUPERAR_TERCEROS						("ENI_013"),
+	ERROR_AL_RECUPERAR_UNIDADES_ORGANICAR			("ENI_014"),
+	ERROR_EXPEDIENTE_SIN_DOCUMENTOS					("ENI_015"),
+	ERROR_CONVERSION_ENI							("ENI_016"),
+
+	//ERRORES DE LECTURA
+	ERROR_EXCEPTION_LECTURA							("ENI_100"),
+	ERROR_LECTURA_DOCUMENTO_ENI						("ENI_101"),
+	ERROR_LECTURA_JSON_ZIP							("ENI_102"),
+	ERROR_LECTURA_ZIP_DOCUMENTO						("ENI_103"),
+
+	//ERRORES DE BASE DE DATOS
+	ERROR_INSERTAR_TABLA_ADJUNTO_EXT_NOTIFICACION	("ENI_201"),
+	ERROR_INSERTAR_TABLA_E_CRD						("ENI_301"),
+	ERROR_INSERTAR_TABLA_E_DOC_EXT					("ENI_401"),
+	ERROR_INSERTAR_TABLA_E_DOCS_PRESENTADOS			("ENI_501"),
+	ERROR_CONSULTAR_TABLA_E_DOE						("ENI_511"),
+	ERROR_CONSULTAR_TABLA_E_DOP						("ENI_521"),
+	ERROR_INSERTAR_TABLA_E_TFI						("ENI_601"),
+	ERROR_INSERTAR_TABLA_E_PCA						("ENI_611"),
+	ERROR_INSERTAR_TABLA_E_TFIT						("ENI_701"),
+	ERROR_INSERTAR_TABLA_E_TCA						("ENI_711"),
+	ERROR_INSERTAR_TABLA_NOTIFICACION				("ENI_801"), 
+	ERROR_INSERTAR_FIRMA							("ENI_901");
+
+
+	private final String codigo;
+	
+	private CodigoMensajeEni(String codigo) {
+		this.codigo = codigo;
+	}
+	
+	/**
+	 * Recupera el valor interno del enumerado.
+	 *
+	 * @return Valor interno.
+	 */
+	public String getCodigo() {
+		return codigo;
+	}
+
+}

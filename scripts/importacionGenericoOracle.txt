@@ -1,0 +1,83 @@
+delete from A_UAE;
+delete from A_EEA;
+delete from A_AAE;
+delete from A_AAU;
+delete from A_AID;
+delete from A_AML;
+delete from A_TEX;
+delete from A_UGO;
+delete from A_MOR;
+delete from A_MNU;
+delete from A_PID;
+delete from A_RPG;
+delete from A_RPU;
+delete from A_PRO;
+delete from A_APL;
+delete from A_ARE;
+delete from A_CML;
+delete from A_CLS;
+delete from A_ENT;
+delete from A_GRU;
+delete from A_UOU;
+delete from A_OUS;
+delete from A_USU;
+delete from A_IDI;
+delete from A_ORG;
+delete from A_ORGEX;
+delete from A_TPML;
+delete from A_TPR;
+delete from A_TRA;
+delete from A_UOREX;
+delete from A_UTML;
+delete from A_UTR;
+delete from R_BRE;
+delete from T_MUN;
+delete from T_PJU;
+delete from T_PRV;
+delete from T_AUT;
+delete from T_PAI;
+delete from T_ESC;
+delete from T_PLT;
+delete from USU_FIR_DEL;
+
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(T_PLT)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(T_ESC)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(T_PAI)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(T_AUT)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(T_PRV)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(T_PJU)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(T_MUN)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(R_BRE)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_UTR)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_UTML)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_UOREX)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_TRA)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_TPR)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_TPML)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_ORGEX)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_ORG)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_IDI)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_USU)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(USU_FIR_DEL)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_OUS)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_UOU)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_GRU)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_ENT)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_CLS)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_CML)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_ARE)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_APL)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_PRO)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_RPU)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_RPG)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_PID)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_MNU)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_MOR)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_UGO)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_TEX)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_AML)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_AID)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_AAU)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_AAE)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_EEA)
+imp sge_gen_134/sge_gen_134@ALTIA ignore=y file=sge_gen_134.dmp tables=(A_UAE)

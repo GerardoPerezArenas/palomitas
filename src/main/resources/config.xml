@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<configuration>
+    <system/>
+    <properties fileName="afirma.properties" delimiterParsingDisabled="true"/>
+    <properties fileName="configPKI.properties" delimiterParsingDisabled="true"/>
+	<properties fileName="certificados.properties" delimiterParsingDisabled="true"/>
+</configuration>

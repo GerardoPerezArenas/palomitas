@@ -1,0 +1,13 @@
+Ejecutar sobre el esquema de pruebas y de organización:
+
+
+1. En primer lugar habrá que ejecutar el procedimiento almacenado update_oficina_anotaciones() para que se actualize el campo RES_OFI
+   con la unidad 'OF' del usuario que ha creado las anotaciones ya existentes. Este procedimiento ya fué proporcionado anteriormente.
+2. El script 1_funcion.sql
+3. El script 2_procedimiento.sql
+4. A continuación ejecutar el procedimiento almacenado actualizarUorsOficinasRegistro
+
+
+NOTA: Estos scripts están realizados parar modificar la estructura organizativa en el entorno de producción de LANBIDE.
+Si se pasan en PRE tendrán que tener la misma estructura.
+

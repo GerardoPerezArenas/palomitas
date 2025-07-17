@@ -1,0 +1,262 @@
+/* INFORMES DE GESTION
+*/
+
+body {
+	background-color: white !important;
+}
+a:hover {
+	color:#eaaa27;
+	border-bottom: 1px solid #eaaa27;
+	cursor: hand;
+	cursor: pointer;
+}
+
+.cabeceroEntorno {
+	color: #0B3090;
+	font-size: 14pt;
+	font-weight: bold;
+	font-family: Arial;
+	text-transform: uppercase;
+	border: 1px solid white;	
+	vertical-align: middle;
+}
+.cabeceroEntorno IMG{
+	padding-right: 2em;
+}
+.cabeceroFecha {
+	color: #0B3090;
+	font-size: 12pt;
+	font-weight: bold;
+	font-family: Arial;
+	text-transform: uppercase;
+	border: 1px solid white;	
+	vertical-align: middle;
+}
+.encabezado
+{
+	background-color: #004595;
+	color: #ffffff;
+	font-size: 9pt;
+	font-weight:bold;
+	font-family: Arial ;
+	
+}
+
+.agrupaA
+{
+	background-color: Black;
+	color: White;
+	font-size: 9pt;
+	font-weight:bold;
+	font-family: Arial ;
+}
+
+
+.agrupaD
+{
+	background-color: Black;
+	color: White;
+	font-size: 9pt;
+	font-weight:bold;
+	font-family: Arial ;
+	text-align : right;
+	text-decoration:none;
+}
+
+
+
+.agrupaDborde
+{
+	background-color: Black;
+	color: White;
+	font-size: 9pt;
+	font-weight:bold;
+	font-family: Arial ;
+	text-align : right;
+	border-left: 1 solid White;
+	text-decoration:none;
+}
+
+
+.agrupacion1
+{
+	background-color: #00aff0;
+	color: #ffffff;
+	font-size: 9pt;
+	font-weight:normal;
+	font-family: Arial ;
+}
+
+.titulo1
+{
+	color: #0B3090;
+	font-size: 11pt;
+	font-weight: bold;
+	font-family: Arial;
+	text-transform: uppercase;
+}
+.titulo1 img {
+	margin-right: 2em;
+}
+
+.detalle1
+{
+	background-color: #00aff0;
+	color: white;
+	font-size: 9pt;
+	font-weight:bold;
+	font-family: Arial ;
+	text-align : right;
+	text-decoration:none;
+	cursor: default;
+}
+
+
+
+.detalle1borde
+{
+	background-color: #00aff0;
+	color: white;
+	font-size: 9pt;
+	font-weight:bold;
+	font-family: Arial ;
+	text-align : right;
+	border-left: Black solid 1;
+	text-decoration:none;
+	cursor: default;
+}
+
+
+.agrupacionU
+{
+	background-color: White;
+	color: Navy;
+	font-size: 9pt;
+	font-weight:normal;
+	font-family: Arial ;
+	border-left : thin solid Navy;
+}
+
+.tituloU
+{
+	background-color: White;
+	color: #0B3090;
+	font-size: 10pt;
+	font-weight:normal;
+	font-family: Arial ;
+	text-transform:uppercase;
+}
+
+.detalleU
+{
+	background-color: White;
+	color: Navy;
+	font-size: 9pt;
+	font-weight:normal;
+	font-family: Arial ;
+	text-align : right;
+	text-decoration:none;
+	cursor: default;
+}
+
+
+
+.detalleUborde
+{
+	background-color: White;
+	color: Navy;
+	font-size: 9pt;
+	font-weight:normal;
+	font-family: Arial ;
+	text-align : right;
+	border-left: 1 solid Black;
+	text-decoration:none;
+	cursor: default;
+}
+
+
+.agrupacionImpar
+{
+	background-color: White;
+	color: Black;
+	font-size: 9pt;
+	font-weight:bold;
+	font-family: Arial ;
+	border-bottom : thin solid #993300;
+}
+
+.tituloImpar
+{
+	background-color: White;
+	color: #0B3090;
+	font-size: 10pt;
+	font-weight:bold;
+	font-family: Arial ;	
+	text-transform:uppercase;
+}
+
+.detalleImpar
+{
+	background-color: Gray;
+	color: White;
+	font-size: 9pt;
+	font-weight:bold;
+	font-family: Arial ;
+	text-align : right;
+	text-decoration:none;
+}
+
+.detalleImparborde
+{
+	background-color: Gray;
+	color: White;
+	font-size: 9pt;
+	font-weight:bold;
+	font-family: Arial ;
+	text-align : right;
+	border-left:1 solid Black;
+	text-decoration:none;
+}
+
+.agrupacionPar
+{
+	background-color: White;
+	color: Navy;
+	font-size: 9pt;
+	font-weight:bold;
+	font-family: Arial ;
+	border-bottom : thin solid #333399;
+}
+
+.tituloPar
+{
+	background-color: White;
+	color: #0B3090;
+	font-size: 10pt;
+	font-weight:bold;
+	font-family: Arial ;
+	text-transform:uppercase;
+}
+
+.detallePar
+{
+	background-color: White;
+	color: Navy;
+	font-size: 9pt;
+	font-weight:bold;
+	font-family: Arial ;
+	text-align : right;
+	text-decoration:none;
+}
+
+.detalleParborde
+{
+	background-color: White;
+	color: Navy;
+	font-size: 9pt;
+	font-weight:bold;
+	font-family: Arial ;
+	text-align : right;
+	border-left: 1 solid Navy;
+	text-decoration:none;
+}

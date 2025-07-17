@@ -1,0 +1,40 @@
+.team {
+    text-align: center;
+    padding: 0 30px;
+}
+.team .image {
+    display: inline-block;
+    border-radius: 300px;
+    overflow: hidden;
+}
+.team .info {
+    margin-top: 15px;
+}
+.team .image img {
+    border-radius: 300px;
+}
+.team .name {
+    margin-bottom: 5px;
+}
+.team .title {
+    font-size: 12px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+.team p {
+    margin-bottom: 15px;
+}
+.team .social a {
+    border-radius: 300px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+    line-height: 28px;
+    text-align: center;
+    display: inline-block;
+    color: #ccc;
+}
+.team .social a + a {
+    margin-left: 5px;
+}

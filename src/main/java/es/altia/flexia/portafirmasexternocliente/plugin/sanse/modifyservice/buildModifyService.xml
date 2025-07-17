@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project name="clienteModifyService" default="init" basedir=".">
+    <!-- ======================   Propiedades comunes   ==========================           -->
+    <!-- Depende del entorno, pero generalmente para desarrollar las propiedades que hay que -->
+    <!-- tocar son "proyecto.home" y "ext.libs", con los valores del proyecto y la ruta de   -->
+    <!-- las librerías, respectivamente                                                      -->
+    <property name="version" value="1.0.0"/>
+    <property name="proyecto.home" value="D:/Workspace/flexia16+cotejo+csv+plantillas_MAYO"/>
+    <property name="proyecto.src" value="${proyecto.home}/src/java"/>
+    <property name="proyecto.dist" value="${proyecto.home}/dist"/>
+    <property name="ext.libs" value="D:/Workspace/libreriasFlexia/lib"/>
+    <property name="package.base.dir" value="es/altia/flexia/portafirmasexternocliente/plugin/sanse/modifyservice"/>
+    <property name="clasesCliente" value="${proyecto.home}/build/web/WEB-INF/classes/${package.base.dir}"/>
+    <property name="baseCliente" value="${proyecto.src}/${package.base.dir}"/>
+    <property name="fuentesCliente" value="${baseCliente}/client"/>
+    <property name="jarCliente" value="clientePortaFirmasSanseModifyService_${version}.jar"/>
+    <property name="wsdl" value="${baseCliente}/ModifyService.wsdl"/>
+    
+    <!-- Opciones del entorno de desarrollo  -->
+    <property name="build.compiler" value="modern"/>
+    <property name="javac.debug" value="on"/>
+    <property name="javac.optimize" value="off"/>
+    <property name="javac.deprecation" value="on"/>
+    <property name="javac.nowarn" value="on"/>
+    <patternset id="ignored.files">
+        <exclude name="**/SVN/**"/>
+        <exclude name="**/*.bak"/>
+    </patternset>
+
+    <!-- == Classpath ==================================================== -->
+    <path id="classpath">
+        <fileset dir="${ext.libs}">
+            <include name="*.jar"/>
+        </fileset>
+<!--        <fileset dir="${tomcat.libs}">
+            <include name="*.jar"/>
+        </fileset>-->
+    </path>
+
+    <!-- ========================== "axis" target =========================== -->
+    <taskdef name="java2wsdl" classname="org.apache.axis.tools.ant.wsdl.Java2WsdlAntTask" classpathref="classpath"/>
+    <taskdef name="wsdl2java" classname="org.apache.axis.tools.ant.wsdl.Wsdl2javaAntTask" classpathref="classpath"/>
+
+    <!-- == objetivo "init" ==================================================== -->
+    <target name="init">
+        <echo>
+            --------------------------------------------------------------------------------
+            "Cliente del servicio web ModifyService del portafirmas de SANSE" build ...
+            --------------------------------------------------------------------------------
+        </echo>
+    </target>
+
+    <!-- == generar los fuentes del cliente ========== -->
+
+    <!-- ==  ========== -->
+    <target name="cleanClasesCliente" depends="init">
+        <delete dir="${clasesCliente}"/>
+    </target>
+    
+    <target name="cleanFuentesCliente" depends="init">
+        <delete dir="${fuentesCliente}/juntadeandalucia"/>
+    </target>
+    
+    <!-- == generar los fuentes del cliente para comunicarse con el servicio web ========== -->
+    <target name="wsdl2javaCliente">
+        <mkdir dir="${fuentesCliente}"/>
+        <wsdl2java all="true" debug="false" helperGen="false"
+                   noimports="false"
+                   output="${proyecto.src}"
+                   serverside="false" testcase="false"
+                   typeMappingVersion="1.1"
+                   url="${wsdl}"
+                   verbose="true" noWrapped="true">
+            <mapping namespace="urn:juntadeandalucia:cice:pfirma:modify:v2.0"
+                     package="es.altia.flexia.portafirmasexternocliente.plugin.sanse.modifyservice.client.juntadeandalucia.cice.pfirma.modify" />
+            <mapping namespace="urn:juntadeandalucia:cice:pfirma:modify:request:v2.0"
+                     package="es.altia.flexia.portafirmasexternocliente.plugin.sanse.modifyservice.client.juntadeandalucia.cice.pfirma.modify.request" />
+            <mapping namespace="urn:juntadeandalucia:cice:pfirma:type:v2.0"
+                     package="es.altia.flexia.portafirmasexternocliente.plugin.sanse.modifyservice.client.juntadeandalucia.cice.pfirma.type" />
+            <mapping namespace="http://administracionelectronica.gob.es/ENI/XSD/v1.0/documento-e/metadatos"
+                     package="es.altia.flexia.portafirmasexternocliente.plugin.sanse.modifyservice.client.juntadeandalucia.cice.pfirma.documento_e.metadatos" />
+        </wsdl2java>
+    </target>
+
+    <!-- == objetivo "compileCliente" ============================================ -->
+    <target name="compileCliente" depends="init, cleanClasesCliente">
+        <mkdir dir="${clasesCliente}"/>
+        <javac srcdir="${fuentesCliente}"
+               destdir="${clasesCliente}"
+               classpathref="classpath"
+               debug="${javac.debug}"
+               target="1.6"
+               source="1.6"
+               optimize="${javac.optimize}"
+               deprecation="${javac.deprecation}"
+               nowarn="${javac.nowarn}"/>
+    </target>
+
+    <!-- == objetivo "jarCliente"============================================ -->
+    <target name="jarCliente" depends="init, wsdl2javaCliente, compileCliente">
+        <jar destfile="${proyecto.dist}/${jarCliente}"
+             basedir="${clasesCliente}"/>
+    </target>
+</project>

@@ -1,0 +1,4 @@
+.nav > li > a:focus, .nav > li > a:hover {
+    background: #fafafa none repeat scroll 0 0 !important;
+    color: #333 !important;
+}

@@ -1,0 +1,114 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from WSTramiteImplService WSDL service -->
+
+  <service name="WSTramiteImpl" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="http://servicios.tvg"/>
+      <parameter name="wsdlServiceElement" value="WSTramiteImplService"/>
+      <parameter name="schemaUnqualified" value="http://servicios.tvg,http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"/>
+      <parameter name="wsdlServicePort" value="WSTramiteImpl"/>
+      <parameter name="className" value="es.altia.agora.webservice.tramitacion.servicios.tvg.servicios.tramitacion.WSTramitacionImplSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="WSTramiteImpl"/>
+      <parameter name="typeMappingVersion" value="1.1"/>
+      <operation name="setTramite" qname="operNS:setTramite" xmlns:operNS="http://servicios.tvg" returnQName="setTramiteReturn" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="in0" type="tns:TramiteVO" xmlns:tns="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"/>
+        <parameter qname="in1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getTramiteExpediente" qname="operNS:getTramiteExpediente" xmlns:operNS="http://servicios.tvg" returnQName="getTramiteExpedienteReturn" returnType="rtns:ArrayOf_tns1_CROTramiteVO" xmlns:rtns="http://servicios.tvg" returnItemType="tns2:CROTramiteVO" xmlns:tns2="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es" soapAction="" >
+        <parameter qname="in0" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="finalizarTramiteResolucion" qname="operNS:finalizarTramiteResolucion" xmlns:operNS="http://servicios.tvg" returnQName="finalizarTramiteResolucionReturn" returnType="rtns:SalidaBoolean" xmlns:rtns="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es" soapAction="" >
+        <parameter qname="in0" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in1" type="tns:boolean" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in2" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in3" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in4" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in5" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in6" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in7" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in8" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="grabarCamposTramite" qname="operNS:grabarCamposTramite" xmlns:operNS="http://servicios.tvg" returnQName="grabarCamposTramiteReturn" returnType="rtns:SalidaBoolean" xmlns:rtns="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es" soapAction="" >
+        <parameter qname="in0" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in2" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in3" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in4" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in5" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in6" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in7" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="finalizarConTramites" qname="operNS:finalizarConTramites" xmlns:operNS="http://servicios.tvg" returnQName="finalizarConTramitesReturn" returnType="rtns:SalidaBoolean" xmlns:rtns="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es" soapAction="" >
+        <parameter qname="in0" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in2" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in3" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in4" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in5" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in6" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in7" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="grabarCampoGenerico" qname="operNS:grabarCampoGenerico" xmlns:operNS="http://servicios.tvg" returnQName="grabarCampoGenericoReturn" returnType="rtns:SalidaBoolean" xmlns:rtns="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es" soapAction="" >
+        <parameter qname="in0" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in2" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in3" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in4" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in5" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in6" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in7" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in8" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="getTramiteExpediente finalizarTramiteResolucion grabarCamposTramite finalizarConTramites grabarCampoGenerico setTramite"/>
+
+      <arrayMapping
+        xmlns:ns="http://servicios.tvg"
+        qname="ns:ArrayOf_xsd_string"
+        type="java:java.lang.String[]"
+        innerType="cmp-ns:string" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"
+        qname="ns:SalidaBoolean"
+        type="java:es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos.SalidaBoolean"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"
+        qname="ns:CROTramiteVO"
+        type="java:es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos.CROTramiteVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <arrayMapping
+        xmlns:ns="http://servicios.tvg"
+        qname="ns:ArrayOf_tns1_CROTramiteVO"
+        type="java:es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos.CROTramiteVO[]"
+        innerType="cmp-ns:CROTramiteVO" xmlns:cmp-ns="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"
+        qname="ns:TramiteVO"
+        type="java:es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos.TramiteVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+  </service>
+</deployment>

@@ -1,0 +1,63 @@
+<HTML>
+
+<head>
+	<TITLE>::: REXISTRO DE ENTRADA - Búsqueda por tipo de documento ::: </TITLE>
+
+	<META http-equiv="expires" content="0">
+	<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+	<LINK rel="stylesheet" href="<%=request.getContextPath()%>/css/estilo.css" type="text/css">
+
+	
+</head>
+
+<BODY>
+
+   <TABLE bgcolor="#ffffff" cellpadding="5px" cellspacing="0" border="0" width="300px" align="center">
+	<TR>
+		<TD colspan="2" bgcolor="#7B9EC0" class="titulo">Criterios de filtrado</TD>
+	</TR>
+
+	<!-- Separador. -->
+	<TR>
+		<TD height="15px"></TD>
+	</TR>
+	<TR>
+		<TD class="txtverde" align="left" width="50%"><B>Tipo de documento:</B></TD>
+
+		<TD class="txtverde" align="left" width="50%">
+			<SELECT class="inputtxtblanco" style="width: 120px">
+				<OPTION selected></OPTION>
+				<OPTION value="1">D.N.I.</OPTION>
+				<OPTION value="2">C.I.F.</OPTION>						
+			</SELECT>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="txtverde" align="left" width="50%"><B>Documento:</B></TD>
+
+		<TD class="txtverde" align="left" width="50%">
+			<INPUT type="text" class="inputtxtblanco" size="17">
+		</TD>
+	</TR>
+         </TABLE>
+
+        <div class="botoneraPrincipal">
+            <input type= "button" class="boton" value="Buscar" name="cmdAceptar" onclick = "pulsarAceptar();">
+            <input type="button" class="boton" value="Cancelar" name="cmdSalir" onclick="pulsarCancelar();">
+        </div>
+</BODY>
+
+<script>
+
+function pulsarCancelar()
+{	
+	close();
+}
+
+function pulsarAceptar()
+{
+	close();
+}
+</script>
+</HTML>

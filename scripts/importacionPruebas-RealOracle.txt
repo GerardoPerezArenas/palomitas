@@ -1,0 +1,293 @@
+delete from a_car;
+delete from a_dep;
+delete from a_doc;
+delete from a_eti;
+delete from a_plt;
+delete from a_uot;
+delete from a_wrd;
+delete from CAMPOCONDICIONINFORME;
+delete from CAMPOENTIDADEINFORME;
+delete from CAMPOINFORME;
+delete from CAMPOORDEINFORME;
+delete from CAMPOSELECCIONINFORME;
+delete from CAMPOSJOIN;
+delete from ENTIDADEAPLICACION;
+delete from ENTIDADEINFORME;
+delete from ENTSUBENT;
+delete from ESTRUCTURAINFORME;
+delete from ETIQUETA;
+delete from ETIQUETAXERADOR;
+delete from ETIQ_PLT;
+delete from E_CML;
+delete from E_CRD;
+delete from E_CRD_FIR;
+delete from E_CRO;
+delete from E_DES;
+delete from E_DES_VAL;
+delete from E_DOE;
+delete from E_DOP;
+delete from E_DOT;
+delete from E_DOT_FIR;
+delete from E_DPML;
+delete from E_DTML;
+delete from E_ENP;
+delete from E_ENT;
+delete from E_EXP;
+delete from E_EXR;
+delete from E_EXT;
+delete from E_FLS;
+delete from E_MAS;
+delete from E_NEX;
+delete from E_PCA;
+delete from E_PLT;
+delete from E_PML;
+delete from E_TRA;
+delete from E_PRO;
+delete from E_PRO_X;
+delete from E_PUI;
+delete from E_REX;
+delete from E_ROL;
+delete from E_RTDM;
+delete from E_RTDP;
+delete from E_SAL;
+delete from E_SML;
+delete from E_TCA;
+delete from E_TDA;
+delete from E_TDE;
+delete from E_TDET;
+delete from E_TDML;
+delete from E_TDO;
+delete from E_TEN;
+delete from E_TFE;
+delete from E_TFET;
+delete from E_TFI;
+delete from E_TFIT;
+delete from E_TML;
+delete from E_TNU;
+delete from E_TNUT;
+delete from E_TRP;
+delete from E_TTL;
+delete from E_TTLT;
+delete from E_TXT;
+delete from E_TXTT;
+delete from FONTELETRA;
+delete from F_DEFFORM_TRA;
+delete from F_DEF_FORM;
+delete from F_EST_FORM;
+delete from F_PLANTILLA2_FORM;
+delete from F_RESTRICCION;
+delete from F_TIPO_FORM;
+delete from GEN_AGENDA_DETALLE;
+delete from GEN_CALENDARIO;
+delete from G_CRO;
+delete from G_EXP;
+delete from G_NEX;
+delete from G_REL;
+delete from INFORMEXERADOR;
+delete from LISTADOXERADOR;
+delete from PLAN_TABLE;
+delete from RESULTADO_SW_TRAMITE;
+delete from R_ACT;
+delete from R_BWC;
+delete from R_DIL;
+delete from R_NRE;
+delete from R_REG;
+delete from R_RER;
+delete from R_RES;
+delete from a_uor;
+delete from R_RET;
+delete from R_TDO;
+delete from R_TEM;
+delete from R_TPE;
+delete from R_TTR;
+delete from T_CBJ;
+delete from T_CEC;
+delete from T_CES;
+delete from T_CLS;
+delete from T_CNU;
+delete from T_COM;
+delete from T_CPO;
+delete from T_CSU;
+delete from T_CVE;
+delete from T_DIN;
+delete from T_DIS;
+delete from T_DNN;
+delete from T_DPO;
+delete from T_DSU;
+delete from T_ECO;
+delete from T_ESI;
+delete from T_GRT;
+delete from T_GRU;
+delete from T_HDP;
+delete from T_HDS;
+delete from T_HNU;
+delete from T_HTE;
+delete from T_DOT;
+delete from T_DOM;
+delete from T_HVI;
+delete from T_MNZ;
+delete from T_MZI;
+delete from T_NDC;
+delete from T_NUC;
+delete from T_OEX;
+delete from T_PAR;
+delete from T_PRM;
+delete from T_SEC;
+delete from T_SGT;
+delete from T_SSC;
+delete from T_TER;
+delete from T_TID;
+delete from T_TNU;
+delete from T_TOC;
+delete from T_TRM;
+delete from T_TVI;
+delete from T_TVV;
+delete from T_VIA;
+delete from WEB_SERVICES;
+
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(a_car)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(a_dep)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(a_doc)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(a_eti)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(a_plt)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(a_uot)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(a_wrd)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(CAMPOINFORME)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(ENTIDADEINFORME)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(CAMPOCONDICIONINFORME)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(CAMPOENTIDADEINFORME)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(CAMPOORDEINFORME)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(CAMPOSELECCIONINFORME)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(ENTSUBENT)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(CAMPOSJOIN)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(ENTIDADEAPLICACION)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(ESTRUCTURAINFORME)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(ETIQUETA)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(ETIQUETAXERADOR)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(ETIQ_PLT)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_CML)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_CRD)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_CRD_FIR)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_CRO)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_DES)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_DES_VAL)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_TDO)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_DOP)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_DOE)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_DOT)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_DOT_FIR)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_DPML)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_DTML)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_ENP)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_ENT)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_EXP)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(a_uor)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(R_ACT)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(R_TDO)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(R_TPE)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(R_TTR)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(R_RES)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_EXR)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_TID)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_TER)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_TOC)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_DOM)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_DOT)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_HTE)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_EXT)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_FLS)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_MAS)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_NEX)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_PCA)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_PLT)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_PRO)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_PML)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_TRA)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_PRO_X)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_PUI)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_REX)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_ROL)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_RTDM)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_RTDP)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_SAL)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_SML)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_TCA)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_TDA)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_TDE)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_TDET)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_TDML)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_TEN)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_TFE)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_TFET)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_TFI)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_TFIT)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_TML)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_TNU)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_TNUT)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_TRP)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_TTL)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_TTLT)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_TXT)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(E_TXTT)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(FONTELETRA)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(F_DEF_FORM)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(F_DEFFORM_TRA)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(F_EST_FORM)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(F_PLANTILLA2_FORM)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(F_RESTRICCION)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(F_TIPO_FORM)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(GEN_AGENDA_DETALLE)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(GEN_CALENDARIO)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(G_CRO)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(G_EXP)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(G_NEX)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(G_REL)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(INFORMEXERADOR)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(LISTADOXERADOR)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(PLAN_TABLE)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(RESULTADO_SW_TRAMITE)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(R_BWC)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(R_DIL)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(R_NRE)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(R_REG)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(R_RER)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(R_TEM)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(R_RET)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_CBJ)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_OEX)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_ECO)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_CEC)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_ESI)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_CES)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_CLS)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_NUC)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_CNU)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_COM)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_CPO)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_CSU)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_CVE)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_DIN)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_DIS)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_DNN)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_TVV)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_DPO)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_TNU)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_SEC)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_SSC)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_MZI)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_VIA)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_TRM)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_DSU)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_GRU)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_SGT)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_GRT)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_HDP)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_HDS)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_HNU)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_HVI)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_MNZ)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_NDC)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_PAR)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_PRM)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(T_TVI)
+imp sge_134/sge_134@ALTIA ignore=y file=sge_134.dmp tables=(WEB_SERVICES)

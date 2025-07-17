@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+    Document   : DescripcionMovimiento.dtd
+    Created on : 1 de octubre de 2008, 9:30
+    Author     : juan.jato
+-->
+
+<!-- Elemento raíz -->
+<!ELEMENT DescripcionMovimiento (AltaAnotacion | ModificarAnotacion |
+                                 ReservarAnotacion | AnularAnotacion | 
+                                 DesanularAnotacion | AceptarAnotacion | 
+                                 RechazarAnotacion | InicioExpediente |
+                                 AdjuntarExpediente | RecuperarHistorico |
+                                 AnularReserva | ImportarAnotacion)>
+
+<!-- Importacion de anotación (igual que alta) -->                                 
+<!ELEMENT ImportarAnotacion (tipo, fechaEntrada, horaEntrada, fechaPres, horaPres?,
+                         asunto?, extracto, observaciones?, unidad?, tipoEntrada,
+                         tipoDocumento?, tipoTransporte?, numTransporte?, 
+                         tipoRemitente?, procedimiento?, expediente?, actuacion?,
+                         autoridad?, orgDestino?, unidadDestino?, orgProcedencia?, 
+                         unidadProcedencia?, entradaRelacionada?, interesado+,
+                         tema*, relacion*, documento*)>
+                                 
+<!-- Alta de anotación -->                                 
+<!ELEMENT AltaAnotacion (tipo, fechaEntrada, horaEntrada, fechaPres, horaPres?,
+                         asunto?, extracto, observaciones?, unidad?, tipoEntrada,
+                         tipoDocumento?, tipoTransporte?, numTransporte?, 
+                         tipoRemitente?, procedimiento?, expediente?, actuacion?,
+                         autoridad?, orgDestino?, unidadDestino?, orgProcedencia?, 
+                         unidadProcedencia?, entradaRelacionada?, interesado+,
+                         tema*, relacion*, documento*)>
+
+<!ELEMENT tipo (#PCDATA)>
+<!ELEMENT fechaEntrada (#PCDATA)>
+<!ELEMENT horaEntrada (#PCDATA)>
+<!ELEMENT fechaPres (#PCDATA)>
+<!ELEMENT horaPres (#PCDATA)>
+<!ELEMENT asunto (#PCDATA)>
+<!ELEMENT extracto (#PCDATA)>
+<!ELEMENT observaciones (#PCDATA)>
+<!ELEMENT unidad (#PCDATA)>
+<!ELEMENT tipoEntrada (#PCDATA)>
+<!ELEMENT tipoDocumento (#PCDATA)>
+<!ELEMENT tipoTransporte (#PCDATA)>
+<!ELEMENT numTransporte (#PCDATA)>
+<!ELEMENT tipoRemitente (#PCDATA)>
+<!ELEMENT procedimiento (#PCDATA)>
+<!ELEMENT expediente (#PCDATA)>
+<!ELEMENT actuacion (#PCDATA)>
+<!ELEMENT autoridad (#PCDATA)>
+<!ELEMENT orgDestino (#PCDATA)>
+<!ELEMENT unidadDestino (#PCDATA)>
+<!ELEMENT orgProcedencia (#PCDATA)>
+<!ELEMENT unidadProcedencia (#PCDATA)>
+<!ELEMENT entradaRelacionada (#PCDATA)>
+<!ELEMENT interesado (#PCDATA)>
+<!ELEMENT tema (#PCDATA)>
+
+<!-- En la relación se guarda por separado el tipo pq hay que traducirlo -->
+<!ELEMENT relacion (tipo, ejeNum)>
+<!-- Si no tiene tipo o fecha, es NO APORTADO -->
+<!ELEMENT documento (nombre, tipo?, fecha?)>
+
+<!ELEMENT ejeNum (#PCDATA)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT fecha (#PCDATA)>
+
+<!-- Modificación de anotación -->
+<!ELEMENT ModificarAnotacion (tipo?, cambioFechaEntrada?, cambioHoraEntrada?, 
+        cambioFechaPres?, cambioHoraPres?, cambioAsunto?, cambioExtracto?, 
+        cambioObservaciones?, cambioUnidad?, cambioTipoEntrada?,
+        cambioTipoDocumento?, cambioTipoTransporte?, cambioNumTransporte?, 
+        cambioTipoRemitente?, cambioProcedimiento?, cambioExpediente?, 
+        cambioActuacion?, cambioAutoridad?, cambioOrgDestino?, 
+        cambioUnidadDestino?, cambioOrgProcedencia?, cambioUnidadProcedencia?, 
+        cambioEntradaRelacionada?, 
+        nuevoInteresado*, borrarInteresado*, cambioInteresado*,
+        nuevoDocumento*, borrarDocumento*, cambioDocumento*,
+        nuevaRelacion*, borrarRelacion*,
+        nuevoTema*, borrarTema*)>
+
+<!ELEMENT anterior (#PCDATA)>
+<!ELEMENT actual (#PCDATA)>
+<!ELEMENT cambioFechaEntrada (anterior, actual)>
+<!ELEMENT cambioHoraEntrada (anterior, actual)>
+<!ELEMENT cambioFechaPres (anterior, actual)>
+<!ELEMENT cambioHoraPres (anterior, actual)>
+<!ELEMENT cambioAsunto (anterior, actual)>
+<!ELEMENT cambioExtracto (anterior, actual)>
+<!ELEMENT cambioObservaciones (anterior, actual)>
+<!ELEMENT cambioUnidad (anterior, actual)>
+<!ELEMENT cambioTipoEntrada (anterior, actual)>
+<!ELEMENT cambioTipoDocumento (anterior, actual)>
+<!ELEMENT cambioTipoTransporte (anterior, actual)>
+<!ELEMENT cambioNumTransporte (anterior, actual)>
+<!ELEMENT cambioTipoRemitente (anterior, actual)>
+<!ELEMENT cambioProcedimiento (anterior, actual)>
+<!ELEMENT cambioExpediente (anterior, actual)>
+<!ELEMENT cambioActuacion (anterior, actual)>
+<!ELEMENT cambioAutoridad (anterior, actual)>
+<!ELEMENT cambioOrgDestino (anterior, actual)>
+<!ELEMENT cambioUnidadDestino (anterior, actual)>
+<!ELEMENT cambioOrgProcedencia (anterior, actual)>
+<!ELEMENT cambioUnidadProcedencia (anterior, actual)>
+<!ELEMENT cambioEntradaRelacionada (anterior, actual)>
+
+<!ELEMENT cambioInteresado (anterior, actual)>
+<!ELEMENT nuevoInteresado (#PCDATA)>
+<!ELEMENT borrarInteresado (#PCDATA)>
+
+<!ELEMENT cambioDocumento (docAnterior, docActual)>
+<!ELEMENT nuevoDocumento (nombre, tipo?, fecha?)>
+<!ELEMENT borrarDocumento (nombre, tipo?, fecha?)>
+<!ELEMENT docAnterior (nombre, tipo?, fecha?)>
+<!ELEMENT docActual (nombre, tipo?, fecha?)>
+
+<!ELEMENT nuevaRelacion (tipo, ejeNum)>
+<!ELEMENT borrarRelacion (tipo, ejeNum)>
+
+<!ELEMENT nuevoTema (#PCDATA)>
+<!ELEMENT borrarTema (#PCDATA)>
+
+<!-- Reservar anotación -->
+<!ELEMENT ReservarAnotacion (ejercicio, numero, fechaEntrada, horaEntrada)>
+<!ELEMENT ejercicio (#PCDATA)>
+<!ELEMENT numero (#PCDATA)>
+                                 
+<!-- Anular anotación -->
+<!ELEMENT AnularAnotacion (diligenciaAnulacion)>
+<!ELEMENT diligenciaAnulacion (#PCDATA)>
+
+<!-- Recuperar anotación anulada -->
+<!ELEMENT DesanularAnotacion EMPTY>
+                                 
+<!-- Aceptar anotación -->
+<!ELEMENT AceptarAnotacion (textoAceptacion)>
+<!ELEMENT textoAceptacion (#PCDATA)>
+
+<!-- Rechazar anotación -->
+<!ELEMENT RechazarAnotacion (textoRechazo)>
+<!ELEMENT textoRechazo (#PCDATA)>
+
+<!-- Iniciar expediente a partir de anotación -->
+<!ELEMENT InicioExpediente (expedienteIniciado)>
+<!ELEMENT expedienteIniciado (#PCDATA)>
+                                 
+<!-- Adjuntar expediente a anotación -->
+<!ELEMENT AdjuntarExpediente (expedienteAdjunto)>
+<!ELEMENT expedienteAdjunto (#PCDATA)>
+
+<!-- Recuperar anotación de histórico -->
+<!ELEMENT RecuperarHistorico EMPTY>
+
+<!-- Anular reserva -->
+<!ELEMENT AnularReserva (diligenciaAnulacion)>
+

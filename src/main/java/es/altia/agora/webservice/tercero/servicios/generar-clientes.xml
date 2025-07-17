@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+
+<project name="GenerarClientesBusquedaTercero" default="generarClientePist" basedir=".\..">
+
+
+    <property name="sge.sources" value="${basedir}\..\..\..\..\.."/>
+    <property name="axis.lib" value="C:\LIBRERIAS\axis 1.4\axis-1_4\lib\"/>
+    <property name="sw.pist.url" value="http://localhost:82/WSBusquedaTerceroPist/services/WSBusquedaTerceroEndPoint?wsdl"/>
+    <property name="sw.map.url" value="http://localhost:82/WSBusquedaTerceroMAP/services/WSBusquedaTerceroEndPoint?wsdl"/>
+    <property name="sw.padron.url" value="http://localhost:82/WSBusquedaTerceroPadron/services/WSBusquedaTerceroEndPoint?wsdl"/>
+    <property name="sw.tributaria.url" value="http://localhost:82/WSBusquedaTerceroTributaria/services/WSBusquedaTerceroEndPoint?wsdl"/>
+    <property name="sw.epsilon.url" value="http://localhost:82/WSBusquedaTerceroEpsilon/services/WSBusquedaTerceroEndPoint?wsdl"/>
+    <property name="sw.uxxiec.url" value="http://localhost:82/WSBusquedaTerceroUxxiec/services/WSBusquedaTerceroEndPoint?wsdl"/>
+    <property name="sw.pisa.url" value="http://net.sicalwin.com:9080/services/Pisa?wsdl"/>
+    <property name="sw.arkhe.url" value="http://localhost:82/WSBusquedaTerceroArkhe/services/WSBusquedaTerceroEndPoint?wsdl"/>
+    <property name="sw.xescampus.url" value="http://localhost:82/WSBusquedaTerceroXesCampus/services/WSBusquedaTerceroEndPoint?wsdl"/>
+    <property name="sw.xescampusudc.url" value="http://localhost:8080/WSBusquedaTerceroXescampusUDC/services/WSBusquedaTerceroEndPoint?wsdl"/>
+	<property name="sw.lanbide.url" value="http://172.16.4.101:17003/langaiWS/services/LangaiEECC?wsdl"/>
+
+    <path id="axis.classpath">
+        <fileset dir="${axis.lib}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+
+    <!-- ========================== "axis" target =========================== -->
+    <taskdef resource="axis-tasks.properties" classpathref="axis.classpath"/>
+
+    <target name="generarClientePist">
+        <axis-wsdl2java  all="false" debug="false" helperGen="false"
+                   noimports="false"
+                   output="${sge.sources}"
+                   serverside="false" testcase="false"
+                   typeMappingVersion="1.1"
+                   url="${sw.pist.url}"
+                   verbose="true" noWrapped="true">
+            <mapping namespace="http://tercero.ws.altia.es"
+                     package="es.altia.agora.webservice.tercero.servicios.pist.cliente"/>
+        </axis-wsdl2java>
+    </target>
+
+    <target name="generarClienteMAP">
+        <axis-wsdl2java  all="false" debug="false" helperGen="false"
+                   noimports="false"
+                   output="${sge.sources}"
+                   serverside="false" testcase="false"
+                   typeMappingVersion="1.1"
+                   url="${sw.map.url}"
+                   verbose="true" noWrapped="true">
+            <mapping namespace="http://tercero.ws.altia.es"
+                     package="es.altia.agora.webservice.tercero.servicios.map.cliente"/>
+        </axis-wsdl2java>
+    </target>
+
+    <target name="generarClientePadron">
+        <axis-wsdl2java  all="false" debug="false" helperGen="false"
+                   noimports="false"
+                   output="${sge.sources}"
+                   serverside="false" testcase="false"
+                   typeMappingVersion="1.1"
+                   url="${sw.padron.url}"
+                   verbose="true" noWrapped="true">
+            <mapping namespace="http://tercero.ws.altia.es"
+                     package="es.altia.agora.webservice.tercero.servicios.padron.cliente"/>
+        </axis-wsdl2java>
+    </target>
+
+    <target name="generarClienteTributaria">
+        <axis-wsdl2java  all="false" debug="false" helperGen="false"
+                   noimports="false"
+                   output="${sge.sources}"
+                   serverside="false" testcase="false"
+                   typeMappingVersion="1.1"
+                   url="${sw.tributaria.url}"
+                   verbose="true" noWrapped="true">
+            <mapping namespace="http://tercero.ws.altia.es"
+                     package="es.altia.agora.webservice.tercero.servicios.tributaria.cliente"/>
+        </axis-wsdl2java>
+    </target>
+
+    <target name="generarClienteEpsilon">
+        <axis-wsdl2java  all="false" debug="false" helperGen="false"
+                   noimports="false"
+                   output="${sge.sources}"
+                   serverside="false" testcase="false"
+                   typeMappingVersion="1.1"
+                   url="${sw.epsilon.url}"
+                   verbose="true" noWrapped="true">
+            <mapping namespace="http://tercero.ws.altia.es"
+                     package="es.altia.agora.webservice.tercero.servicios.epsilon.cliente"/>
+        </axis-wsdl2java>
+    </target>
+
+    <target name="generarClienteUxxiec">
+        <axis-wsdl2java  all="false" debug="false" helperGen="false"
+                   noimports="false"
+                   output="${sge.sources}"
+                   serverside="false" testcase="false"
+                   typeMappingVersion="1.1"
+                   url="${sw.uxxiec.url}"
+                   verbose="true" noWrapped="true">
+            <mapping namespace="http://tercero.ws.altia.es"
+                     package="es.altia.agora.webservice.tercero.servicios.uxxiec.cliente"/>
+        </axis-wsdl2java>
+    </target>
+
+    <target name="generarClientePisa">
+        <axis-wsdl2java  all="false" debug="false" helperGen="false"
+                   noimports="false"
+                   output="${sge.sources}"
+                   serverside="false" testcase="false"
+                   typeMappingVersion="1.1"
+                   url="${sw.pisa.url}"
+                   verbose="true" noWrapped="true">
+            <mapping namespace="http://registro.sw.aytos" package="es.altia.agora.webservice.tercero.servicios.pisa.cliente"/>
+            <mapping namespace="http://negocio.util.aytos" package="es.altia.agora.webservice.tercero.servicios.pisa.cliente"/>
+            <mapping namespace="http://net.sicalwin.com:9080/services/Pisa" package="es.altia.agora.webservice.tercero.servicios.pisa.cliente"/>
+        </axis-wsdl2java>
+    </target>
+
+    <target name="generarClienteArkhe">
+        <axis-wsdl2java  all="false" debug="false" helperGen="false"
+                   noimports="false"
+                   output="${sge.sources}"
+                   serverside="false" testcase="false"
+                   typeMappingVersion="1.1"
+                   url="${sw.arkhe.url}"
+                   verbose="true" noWrapped="true">
+            <mapping namespace="http://tercero.ws.altia.es"
+                     package="es.altia.agora.webservice.tercero.servicios.arkhe.cliente"/>
+        </axis-wsdl2java>
+    </target>
+
+    <target name="generarClienteXesCampus">
+        <axis-wsdl2java  all="false" debug="false" helperGen="false"
+                   noimports="false"
+                   output="${sge.sources}"
+                   serverside="false" testcase="false"
+                   typeMappingVersion="1.1"
+                   url="${sw.xescampus.url}"
+                   verbose="true" noWrapped="true">
+            <mapping namespace="http://tercero.ws.altia.es"
+                     package="es.altia.agora.webservice.tercero.servicios.xescampus.cliente"/>
+        </axis-wsdl2java>
+    </target>
+
+    <target name="generarClienteXesCampusUDC">
+        <axis-wsdl2java  all="false" debug="false" helperGen="false"
+                   noimports="false"
+                   output="${sge.sources}"
+                   serverside="false" testcase="false"
+                   typeMappingVersion="1.1"
+                   url="${sw.xescampusudc.url}"
+                   verbose="true" noWrapped="true">
+            <mapping namespace="http://tercero.ws.altia.es"
+                     package="es.altia.agora.webservice.tercero.servicios.xescampusUDC.cliente"/>
+        </axis-wsdl2java>
+    </target>
+	
+	<target name="generarClienteLanbide">
+        <axis-wsdl2java  all="false" debug="false" helperGen="false"
+                   noimports="false"
+                   output="${sge.sources}"
+                   serverside="false" testcase="false"
+                   typeMappingVersion="1.1"
+                   url="${sw.lanbide.url}"
+                   verbose="true" noWrapped="true">
+            <mapping namespace="urn:LangaiEECC"
+                     package="es.altia.agora.webservice.tercero.servicios.lanbide.cliente"/>
+            <mapping namespace="http://langai.altia.es/business/util"
+                     package="es.altia.agora.webservice.tercero.servicios.lanbide.cliente"/>
+            <mapping namespace="http://technical.altia.es"
+                     package="es.altia.agora.webservice.tercero.servicios.lanbide.cliente"/>
+           <mapping namespace="http://xml.apache.org/xml-soap"
+                     package="es.altia.agora.webservice.tercero.servicios.lanbide.cliente"/>
+                     <mapping namespace="http://langai.altia.es/business/acceso"
+                     package="es.altia.agora.webservice.tercero.servicios.lanbide.cliente"/>
+                     <mapping namespace="http://langai.altia.es/business/personafisica"
+                     package="es.altia.agora.webservice.tercero.servicios.lanbide.cliente"/>
+                     <mapping namespace="http://langai.altia.es/business/demanda"
+                     package="es.altia.agora.webservice.tercero.servicios.lanbide.cliente"/>
+        </axis-wsdl2java>
+    </target>
+
+</project>

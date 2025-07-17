@@ -1,0 +1,123 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from WSTramitacionFlexiaImplService WSDL service -->
+
+  <service name="WSTramitacionFlexiaImpl" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="http://servicios.flexia"/>
+      <parameter name="wsdlServiceElement" value="WSTramitacionFlexiaImplService"/>
+      <parameter name="schemaUnqualified" value="http://datos.bd.tramitacion.flexiaWS.altia.es,http://servicios.flexia"/>
+      <parameter name="wsdlServicePort" value="WSTramitacionFlexiaImpl"/>
+      <parameter name="className" value="es.altia.flexiaWS.tramitacion.WSTramitacionFlexiaImplSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="WSTramitacionFlexiaImpl"/>
+      <parameter name="typeMappingVersion" value="1.1"/>
+      <operation name="finalizarTramiteOperacion" qname="operNS:finalizarTramiteOperacion" xmlns:operNS="http://servicios.flexia" returnQName="finalizarTramiteOperacionReturn" returnType="rtns:SalidaBoolean" xmlns:rtns="http://datos.bd.tramitacion.flexiaWS.altia.es" soapAction="" >
+        <parameter qname="in0" type="tns:ExpedienteVO" xmlns:tns="http://datos.bd.tramitacion.flexiaWS.altia.es"/>
+        <parameter qname="in1" type="tns:TramiteVO" xmlns:tns="http://datos.bd.tramitacion.flexiaWS.altia.es"/>
+        <parameter qname="in2" type="tns:CondicionFinalizacionVO" xmlns:tns="http://datos.bd.tramitacion.flexiaWS.altia.es"/>
+        <parameter qname="in3" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in4" type="tns:InfoConexionVO" xmlns:tns="http://datos.bd.tramitacion.flexiaWS.altia.es"/>
+      </operation>
+      <operation name="iniciarExpedienteOperacion" qname="operNS:iniciarExpedienteOperacion" xmlns:operNS="http://servicios.flexia" returnQName="iniciarExpedienteOperacionReturn" returnType="rtns:RespuestasTramitacionVO" xmlns:rtns="http://datos.bd.tramitacion.flexiaWS.altia.es" soapAction="" >
+        <parameter qname="in0" type="tns:ExpedienteVO" xmlns:tns="http://datos.bd.tramitacion.flexiaWS.altia.es"/>
+        <parameter qname="in1" type="tns:InfoConexionVO" xmlns:tns="http://datos.bd.tramitacion.flexiaWS.altia.es"/>
+      </operation>
+      <parameter name="allowedMethods" value="iniciarExpedienteOperacion finalizarTramiteOperacion"/>
+
+      <typeMapping
+        xmlns:ns="http://datos.bd.tramitacion.flexiaWS.altia.es"
+        qname="ns:ExpedienteVO"
+        type="java:es.altia.flexiaWS.tramitacion.bd.datos.ExpedienteVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.tramitacion.flexiaWS.altia.es"
+        qname="ns:CondicionFinalizacionVO"
+        type="java:es.altia.flexiaWS.tramitacion.bd.datos.CondicionFinalizacionVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.tramitacion.flexiaWS.altia.es"
+        qname="ns:RespuestasTramitacionVO"
+        type="java:es.altia.flexiaWS.tramitacion.bd.datos.RespuestasTramitacionVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.tramitacion.flexiaWS.altia.es"
+        qname="ns:InteresadoVO"
+        type="java:es.altia.flexiaWS.tramitacion.bd.datos.InteresadoVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.tramitacion.flexiaWS.altia.es"
+        qname="ns:InfoConexionVO"
+        type="java:es.altia.flexiaWS.tramitacion.bd.datos.InfoConexionVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.tramitacion.flexiaWS.altia.es"
+        qname="ns:SalidaBoolean"
+        type="java:es.altia.flexiaWS.tramitacion.bd.datos.SalidaBoolean"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.tramitacion.flexiaWS.altia.es"
+        qname="ns:DomicilioVO"
+        type="java:es.altia.flexiaWS.tramitacion.bd.datos.DomicilioVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <arrayMapping
+        xmlns:ns="http://servicios.flexia"
+        qname="ns:ArrayOf_tns1_InteresadoVO"
+        type="java:es.altia.flexiaWS.tramitacion.bd.datos.InteresadoVO[]"
+        innerType="cmp-ns:InteresadoVO" xmlns:cmp-ns="http://datos.bd.tramitacion.flexiaWS.altia.es"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <arrayMapping
+        xmlns:ns="http://servicios.flexia"
+        qname="ns:ArrayOf_tns1_TramiteVO"
+        type="java:es.altia.flexiaWS.tramitacion.bd.datos.TramiteVO[]"
+        innerType="cmp-ns:TramiteVO" xmlns:cmp-ns="http://datos.bd.tramitacion.flexiaWS.altia.es"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.tramitacion.flexiaWS.altia.es"
+        qname="ns:FlujoFinalizacionVO"
+        type="java:es.altia.flexiaWS.tramitacion.bd.datos.FlujoFinalizacionVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.tramitacion.flexiaWS.altia.es"
+        qname="ns:TramiteVO"
+        type="java:es.altia.flexiaWS.tramitacion.bd.datos.TramiteVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+  </service>
+</deployment>

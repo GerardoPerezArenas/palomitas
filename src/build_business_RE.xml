@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+
+<project name="Generar-JAR-Business_RE" default="MakeJAR_BRE" basedir="./..">
+
+    <property name="build.dir" location="C:/oscar/proyectos/LCE_11.11/build/web/WEB-INF/classes"/>
+    <mkdir dir="./dist"/>
+    <property name="dist.dir" location="./dist/"/>
+    
+    <target name="MakeJAR_BRE"  description="Genera la libreria Business_RE.jar" >
+		
+		
+		<jar destfile="${dist.dir}/business_RE.jar" update="true"
+			basedir="${build.dir}/"
+			includes="
+				es/altia/agora/webservice/registro/**,			
+				es/altia/agora/business/escritorio/*,
+                                es/altia/agora/business/sge/**,
+                                es/altia/agora/business/registro/**,
+                                es/altia/agora/business/util/**,
+                                es/altia/agora/interfaces/user/web/util/**,
+                                es/altia/util/**,
+                                es/altia/agora/business/administracion/mantenimiento/**,
+                                es/altia/agora/business/terceros/**,
+                                es/altia/common/exception/**,
+                                es/altia/agora/technical/**,
+                                es/altia/technical/**,
+                                es/altia/agora/business/escritorio/persistence/**,
+                                es/altia/agora/business/**
+                                es/altia/common/service/**
+                                es/altia/agora/business/sge/persistence/manual/**,
+                                es/altia/flexia/integracion/moduloexterno/plugin/exception/**
+                                ">
+		
+	    	<manifest>
+		      	<attribute name="Built-By" value="${user}"/>
+		      	<attribute name="Implementation-Vendor" value="${user}"/>
+		      	<attribute name="Implementation-Title" value="${titletext}"/>
+		      	<attribute name="Implementation-Version" value="${versiontext}"/>
+	    	</manifest>		
+		</jar>
+	</target>
+
+        <target name="MakeJAR_REI"  description="Genera la libreria con las interfaces necesarias para el registro externo" >
+		
+		
+		<jar destfile="${dist.dir}/RE_Interfaces.jar" update="true"
+			basedir="${build.dir}/"
+			includes="
+				es/altia/agora/webservice/registro/**,
+                                es/altia/agora/business/escritorio/UsuarioValueObject
+                                ">
+		
+	    	<manifest>
+		      	<attribute name="Built-By" value="${user}"/>
+		      	<attribute name="Implementation-Vendor" value="${user}"/>
+		      	<attribute name="Implementation-Title" value="${titletext}"/>
+		      	<attribute name="Implementation-Version" value="${versiontext}"/>
+	    	</manifest>		
+		</jar>
+	</target>
+
+
+</project>

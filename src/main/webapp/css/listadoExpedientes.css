@@ -1,0 +1,69 @@
+H1,H2,H3,H4,H5,H6 {
+	font-family:Times;
+}
+.page{
+	font-family:Times;
+	font-size:8;
+	background-color:white;
+	size:A4-landscape;
+	padding-left:10mm;
+	padding-right:5mm;
+	padding-bottom:5mm;
+	padding-top:5mm;
+}
+.cabecera {
+	font-size: 10;
+	font-weight: bold;
+ 	font-family: Times;
+ 	color: black;
+	background-color: white;
+	vertical-align: top;
+	margin-bottom:1mm;
+	border-bottom:solid black 1px;
+	border-top:solid black 1px;
+}
+
+.fila {
+ 	color: black;
+	background-color: white;
+	vertical-align: top;
+	align: center;
+	margin-bottom:2mm;
+	margin-top:2mm;
+	border-bottom:solid black 1px;
+}
+
+.titulo {
+	font-size: 14;
+	font-weight: bold;
+ 	font-family: Times;
+ 	color: black;
+	background-color: white;
+	border-color: white;
+	border-style: none;
+	vertical-align: middle;
+	align: center;
+	margin-bottom:2mm;
+}
+
+.etiqueta{
+	font-size: 8;
+	font-weight: bold;
+ 	font-family: Times;
+ 	color: black;
+	background-color: white;
+	vertical-align: middle;
+	align: left;
+	margin-bottom:1mm;
+}
+
+.valor{
+	font-size: 8;
+	font-weight: normal;
+ 	font-family: Times;
+ 	color: black;
+	background-color: white;
+	vertical-align: middle;
+	align: left;
+	margin-bottom:1mm;
+}

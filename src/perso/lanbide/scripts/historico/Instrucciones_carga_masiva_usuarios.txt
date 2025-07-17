@@ -1,0 +1,50 @@
+Ejecutar los scripts de carga masiva en el siguiente orden:
+
+
+1. En primer lugar se deberá ejecutar el script 1_carga_usuarios_permiso_lectura_tabla_uors.sql
+	para que desde el esquema genérico de Flexia, se tenga permiso de lectura sobre la tabla A_UOR del esquema
+	de pruebas y de real de Flexia.
+	
+	Primero se edita el fichero 1_carga_usuarios_permiso_lectura_tabla_uors.sql y se modifica los valores
+	de las variables:
+	
+		DEFINE esquema_pruebas = flbpru;  => Nombre del esquema de pruebas		
+		DEFINE esquema_organizacion = flb; => Nombre del esquema de producción		
+		DEFINE esquema_generico = flbgen;  => Nombre del esquema genérico
+		
+	A continuación se ejecuta.
+	
+2. Una vez concedido el permiso de lectura al esquema genérico, sobre la tabla A_UOR de cada uno de 
+   los esquemas de pruebas y de producción, se debe ejecutar el script 2_carga_masiva_usuarios_funciones_generico.sql.
+   Este script se ejecutará con el esquema genérico y deberá crear en él, una serie de funciones de Oracle.
+   Antes de nada se edita el script y se cambia el valor de las variables:
+   
+   DEFINE nombre_esquema = flb_pru;    => Esta variable contiene el nombre del esquema de pruebas
+   DEFINIE nombre_esquema_real = flb;  => Esta variable contiene el nombre del esquema de producción.
+   
+   A continuación, ejecutar el script con el usuario del esquema genérico. Asegurarse que se han creado las funciones.
+   
+3. A continuación se edita el fichero 3_carga_masiva_usuarios.sql y si es necesario, habrá que editar el valor
+de la variable:
+
+	COD_VISIBLE_UNIDAD_REGISTRO:='REGLAN';		
+	
+	Actualmente toma el valor REGLAN que es el código visible que identifica a la unidad de registro "REGISTRO GENERAL
+	LANBIDE". Este valor es el utilizado en producción en los dos esquema de regexlan. En principio no se tendría
+	que modificar
+	
+	Ejecuta el script 3_carga_masiva_usuarios.sql contra el esquema genérico.
+	
+4. A continuación se edita el fichero 4_carga_masiva_usuarios.sql y si es necesario, habrá que editar el valor
+de la variable:
+
+	COD_VISIBLE_UNIDAD_REGISTRO:='REGLAN';		
+	
+	Actualmente toma el valor REGLAN que es el código visible que identifica a la unidad de registro "REGISTRO GENERAL
+	LANBIDE". Este valor es el utilizado en producción en los dos esquema de regexlan. En principio no se tendría
+	que modificar
+		
+	Ejecuta el script 4_carga_masiva_usuarios.sql contra el esquema genérico.	
+
+	
+	

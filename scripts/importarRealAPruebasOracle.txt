@@ -1,0 +1,609 @@
+-------------------------------------------------------------------------------------------
+IMPORTAR LOS PROCEDIMIENTOS QUE SE QUIERAN CONSERVAR AL ESQUEMA REAL MEDIANTE LA APLICACION
+-------------------------------------------------------------------------------------------
+
+-----------------------------------------------
+Ejecutamos sqlplus sge_pru_134/sge_pru_134@SID: 
+-----------------------------------------------
+
+delete from a_car;
+delete from a_dep;
+delete from a_doc;
+delete from a_eti;
+delete from a_plt;
+delete from a_uot;
+delete from a_wrd;
+delete from CAMPOCONDICIONINFORME;
+delete from CAMPOENTIDADEINFORME;
+delete from CAMPOINFORME;
+delete from CAMPOORDEINFORME;
+delete from CAMPOSELECCIONINFORME;
+delete from CAMPOSJOIN;
+delete from ENTIDADEAPLICACION;
+delete from ENTIDADEINFORME;
+delete from ENTSUBENT;
+delete from ESTRUCTURAINFORME;
+delete from ETIQUETA;
+delete from ETIQUETAXERADOR;
+delete from ETIQ_PLT;
+delete from E_CML;
+delete from E_CRD;
+delete from E_CRD_FIR;
+delete from E_CRO;
+delete from E_DES;
+delete from E_DES_VAL;
+DROP TABLE E_DOP CASCADE CONSTRAINTS ; 
+CREATE TABLE E_DOP ( 
+  DOP_MUN  NUMBER (3)    NOT NULL, 
+  DOP_PRO  VARCHAR2 (5)  NOT NULL, 
+  DOP_COD  NUMBER (6)    NOT NULL, 
+  DOP_OBL  CHAR (1), 
+  DOP_TDO  NUMBER (3), 
+  PRIMARY KEY ( DOP_MUN, DOP_PRO, DOP_COD ) 
+    USING INDEX 
+     TABLESPACE SGE_PRU_134 PCTFREE 10
+     STORAGE ( INITIAL 40960 ))
+   TABLESPACE SGE_PRU_134
+   PCTFREE 10
+   INITRANS 1
+   MAXTRANS 255
+  STORAGE ( 
+   INITIAL 40960
+   MINEXTENTS 1
+   MAXEXTENTS 2147483645
+ )
+   NOCACHE; 
+ALTER TABLE E_DOP ADD CONSTRAINT E_DOP_FK1
+ FOREIGN KEY (DOP_TDO) 
+  REFERENCES SGE_PRU_134.E_TDO (TDO_COD) ;
+COMMENT ON TABLE E_DOP IS 'Documentos de Procedimiento';
+COMMENT ON COLUMN E_DOP.DOP_COD IS 'Código del Documento';
+COMMENT ON COLUMN E_DOP.DOP_MUN IS 'Municipio del Procedimiento';
+COMMENT ON COLUMN E_DOP.DOP_OBL IS 'Obligatorio (S/N)';
+COMMENT ON COLUMN E_DOP.DOP_PRO IS 'Codigo del Procedimiento';
+COMMENT ON COLUMN E_DOP.DOP_TDO IS 'Codigo del Tipo de Documento';
+DROP TABLE E_DOE CASCADE CONSTRAINTS ; 
+CREATE TABLE E_DOE ( 
+  DOE_MUN  NUMBER (3)    NOT NULL, 
+  DOE_EJE  NUMBER (4)    NOT NULL, 
+  DOE_NUM  VARCHAR2 (30)  NOT NULL, 
+  DOE_PRO  VARCHAR2 (5)  NOT NULL, 
+  DOE_COD  NUMBER (3)    NOT NULL, 
+  DOE_FEC  DATE, 
+  PRIMARY KEY ( DOE_MUN, DOE_EJE, DOE_NUM, DOE_PRO, DOE_COD ) 
+    USING INDEX 
+     TABLESPACE SGE_PRU_134 PCTFREE 10
+     STORAGE ( INITIAL 81920 ))
+   TABLESPACE SGE_PRU_134
+   PCTFREE 10
+   INITRANS 1
+   MAXTRANS 255
+  STORAGE ( 
+   INITIAL 81920
+   MINEXTENTS 1
+   MAXEXTENTS 2147483645
+ )
+   NOCACHE; 
+
+ALTER TABLE E_DOE ADD CONSTRAINT E_DOE_FK1
+ FOREIGN KEY (DOE_MUN, DOE_PRO, DOE_COD) 
+  REFERENCES SGE_PRU_134.E_DOP (DOP_MUN, DOP_PRO, DOP_COD) ;
+COMMENT ON TABLE E_DOE IS 'RELACION DOCUMENTOS ENTREGADOS Y EXPEDIENTES';
+COMMENT ON COLUMN E_DOE.DOE_COD IS 'Codigo del documento';
+COMMENT ON COLUMN E_DOE.DOE_EJE IS 'Año de creación del expediente';
+COMMENT ON COLUMN E_DOE.DOE_FEC IS 'Fecha de entrega del documento (sistema)';
+COMMENT ON COLUMN E_DOE.DOE_MUN IS 'Municipio del expediente y del documento';
+COMMENT ON COLUMN E_DOE.DOE_NUM IS 'Numero de expediente';
+COMMENT ON COLUMN E_DOE.DOE_PRO IS 'Codigo del procedimiento del documento';
+delete from E_DOT;
+delete from E_DOT_FIR;
+delete from E_DPML;
+delete from E_DTML;
+delete from E_ENP;
+delete from E_ENT;
+delete from E_EXP;
+delete from E_EXR;
+delete from E_EXT;
+delete from E_FLS;
+delete from E_MAS;
+delete from E_NEX;
+delete from E_PCA;
+delete from E_PLT;
+delete from E_PML;
+delete from E_TRA;
+delete from E_PRO;
+delete from E_PRO_X;
+delete from E_PUI;
+delete from E_REX;
+delete from E_ROL;
+delete from E_RTDM;
+delete from E_RTDP;
+delete from E_SAL;
+delete from E_SML;
+delete from E_TCA;
+delete from E_TDA;
+delete from E_TDE;
+delete from E_TDET;
+delete from E_TDML;
+delete from E_TDO;
+delete from E_TEN;
+delete from E_TFE;
+delete from E_TFET;
+delete from E_TFI;
+delete from E_TFIT;
+delete from E_TML;
+delete from E_TNU;
+delete from E_TNUT;
+delete from E_TRP;
+delete from E_TTL;
+delete from E_TTLT;
+delete from E_TXT;
+delete from E_TXTT;
+delete from FONTELETRA;
+delete from F_DEFFORM_TRA;
+delete from F_DEF_FORM;
+delete from F_EST_FORM;
+delete from F_PLANTILLA2_FORM;
+delete from F_RESTRICCION;
+delete from F_TIPO_FORM;
+delete from GEN_AGENDA_DETALLE;
+delete from GEN_CALENDARIO;
+delete from G_CRO;
+delete from G_EXP;
+delete from G_NEX;
+delete from G_REL;
+delete from INFORMEXERADOR;
+delete from LISTADOXERADOR;
+delete from PLAN_TABLE;
+delete from RESULTADO_SW_TRAMITE;
+delete from R_ACT;
+delete from R_BWC;
+delete from R_DIL;
+delete from R_NRE;
+delete from R_REG;
+delete from R_RER;
+delete from R_RES;
+delete from a_uor;
+delete from R_RET;
+delete from R_TDO;
+delete from R_TEM;
+delete from R_TPE;
+delete from R_TTR;
+delete from T_CBJ;
+delete from T_CEC;
+delete from T_CES;
+delete from T_CLS;
+delete from T_CNU;
+delete from T_COM;
+delete from T_CPO;
+delete from T_CSU;
+delete from T_CVE;
+delete from T_DIN;
+delete from T_MZI;
+delete from T_SEC;
+delete from T_DIS;
+delete from T_DNN;
+delete from T_DPO;
+delete from T_DSU;
+delete from T_ECO;
+delete from T_ESI;
+delete from T_GRT;
+delete from T_GRU;
+delete from T_HDP;
+delete from T_HDS;
+delete from T_HNU;
+delete from T_HTE;
+delete from T_DOT;
+delete from T_DOM;
+delete from T_HVI;
+delete from T_MNZ;
+delete from T_NDC;
+delete from T_NUC;
+delete from T_OEX;
+delete from T_PAR;
+delete from T_PRM;
+delete from T_SGT;
+delete from T_SSC;
+delete from T_TER;
+delete from T_TID;
+delete from T_TNU;
+delete from T_TOC;
+delete from T_TRM;
+delete from T_TVI;
+delete from T_TVV;
+delete from T_VIA;
+delete from WEB_SERVICES;
+
+---------------------
+EN LINEA DE COMANDOS:
+---------------------
+
+exp userid=sge_134/sge_134@ALTIA tables=(a_car) file=a_car.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(a_dep) file=a_dep.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(a_doc) file=a_doc.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(a_eti) file=a_eti.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(a_plt) file=a_plt.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(a_uot) file=a_uot.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(a_wrd) file=a_wrd.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(CAMPOINFORME) file=CAMPOINFORME.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(ENTIDADEINFORME) file=ENTIDADEINFORME.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(CAMPOCONDICIONINFORME) file=CAMPOCONDICIONINFORME.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(CAMPOENTIDADEINFORME) file=CAMPOENTIDADEINFORME.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(CAMPOORDEINFORME) file=CAMPOORDEINFORME.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(CAMPOSELECCIONINFORME) file=CAMPOSELECCIONINFORME.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(ENTSUBENT) file=ENTSUBENT.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(CAMPOSJOIN) file=CAMPOSJOIN.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(ENTIDADEAPLICACION) file=ENTIDADEAPLICACION.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(ESTRUCTURAINFORME) file=ESTRUCTURAINFORME.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(ETIQUETA) file=ETIQUETA.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(ETIQUETAXERADOR) file=ETIQUETAXERADOR.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(ETIQ_PLT) file=ETIQ_PLT.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_CRD) file=E_CRD.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_CRD_FIR) file=E_CRD_FIR.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_CRO) file=E_CRO.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_DES) file=E_DES.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_DES_VAL) file=E_DES_VAL.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_TDO) file=E_TDO.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_DOP) file=E_DOP.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_DOE) file=E_DOE.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_DOT) file=E_DOT.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_DOT_FIR) file=E_DOT_FIR.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_DPML) file=E_DPML.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_DTML) file=E_DTML.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_ENP) file=E_ENP.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_ENT) file=E_ENT.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_EXP) file=E_EXP.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(a_uor) file=A_UOR.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(R_ACT) file=R_ACT.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(R_TDO) file=R_TDO.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(R_TPE) file=R_TPE.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(R_TTR) file=R_TTR.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(R_RES) file=R_RES.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_EXR) file=E_EXR.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_TID) file=T_TID.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_TER) file=T_TER.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_TOC) file=T_TOC.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_DOM) file=T_DOM.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_DOT) file=T_DOT.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_HTE) file=T_HTE.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_EXT) file=E_EXT.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_FLS) file=E_FLS.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_MAS) file=E_MAS.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_NEX) file=E_NEX.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_PCA) file=E_PCA.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_PLT) file=E_PLT.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_PRO) file=E_PRO.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_PML) file=E_PML.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_TRA) file=E_TRA.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_PRO_X) file=E_PRO_X.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_PUI) file=E_PUI.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_REX) file=E_REX.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_ROL) file=E_ROL.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_RTDM) file=E_RTDM.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_RTDP) file=E_RTDP.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_SAL) file=E_SAL.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_SML) file=E_SML.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_TCA) file=E_TCA.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_TDA) file=E_TDA.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_TDE) file=E_TDE.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_TDET) file=E_TDET.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_TDML) file=E_TDML.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_TEN) file=E_TEN.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_TFE) file=E_TFE.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_TFET) file=E_TFET.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_TFI) file=E_TFI.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_TFIT) file=E_TFIT.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_TML) file=E_TML.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_TNU) file=E_TNU.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_TNUT) file=E_TNUT.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_TRP) file=E_TRP.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_TTL) file=E_TTL.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_TTLT) file=E_TTLT.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_TXT) file=E_TXT.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(E_TXTT) file=E_TXTT.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(FONTELETRA) file=FONTELETRA.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(F_DEF_FORM) file=F_DEF_FORM.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(F_DEFFORM_TRA) file=F_DEFFORM_TRA.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(F_DEFFORM_UOR) file=F_DEFFORM_UOR.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(F_EST_FORM) file=F_EST_FORM.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(F_PLANTILLA2_FORM) file=F_PLANTILLA2_FORM.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(F_RESTRICCION) file=F_RESTRICCION.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(F_TIPO_FORM) file=F_TIPO_FORM.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(GEN_AGENDA_DETALLE) file=GEN_AGENDA_DETALLE.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(GEN_CALENDARIO) file=GEN_CALENDARIO.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(G_CRO) file=G_CRO.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(G_EXP) file=G_EXP.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(G_NEX) file=G_NEX.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(G_REL) file=G_REL.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(INFORMEXERADOR) file=INFORMEXERADOR.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(LISTADOXERADOR) file=LISTADOXERADOR.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(RESULTADO_SW_TRAMITE) file=RESULTADO_SW_TRAMITE.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(R_BWC) file=R_BWC.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(R_DIL) file=R_DIL.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(R_NRE) file=R_NRE.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(R_REG) file=R_REG.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(R_RER) file=R_RER.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(R_TEM) file=R_TEM.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(R_RET) file=R_RET.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_CBJ) file=T_CBJ.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_OEX) file=T_OEX.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_ECO) file=T_ECO.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_CEC) file=T_CEC.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_ESI) file=T_ESI.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_CES) file=T_CES.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_CLS) file=T_CLS.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_NUC) file=T_NUC.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_CNU) file=T_CNU.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_COM) file=T_COM.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_CPO) file=T_CPO.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_CSU) file=T_CSU.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_CVE) file=T_CVE.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_DIN) file=T_DIN.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_DIS) file=T_DIS.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_DNN) file=T_DNN.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_TVV) file=T_TVV.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_DPO) file=T_DPO.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_TNU) file=T_TNU.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_SEC) file=T_SEC.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_SSC) file=T_SSC.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_MZI) file=T_MZI.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_VIA) file=T_VIA.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_TRM) file=T_TRM.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_DSU) file=T_DSU.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_GRU) file=T_GRU.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_SGT) file=T_SGT.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_GRT) file=T_GRT.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_HDP) file=T_HDP.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_HDS) file=T_HDS.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_HNU) file=T_HNU.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_HVI) file=T_HVI.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_MNZ) file=T_MNZ.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_NDC) file=T_NDC.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_PAR) file=T_PAR.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_PRM) file=T_PRM.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(T_TVI) file=T_TVI.dmp
+exp userid=sge_134/sge_134@ALTIA tables=(WEB_SERVICES) file=WEB_SERVICES.dmp
+
+
+
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=a_car.dmp tables=(a_car)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=a_dep.dmp tables=(a_dep)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=a_doc.dmp tables=(a_doc)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=a_eti.dmp tables=(a_eti)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=a_plt.dmp tables=(a_plt)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=a_uot.dmp tables=(a_uot)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=a_wrd.dmp tables=(a_wrd)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=CAMPOINFORME.dmp tables=(CAMPOINFORME)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=ENTIDADEINFORME.dmp tables=(ENTIDADEINFORME)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=CAMPOCONDICIONINFORME.dmp tables=(CAMPOCONDICIONINFORME)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=CAMPOENTIDADEINFORME.dmp tables=(CAMPOENTIDADEINFORME)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=CAMPOORDEINFORME.dmp tables=(CAMPOORDEINFORME)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=CAMPOSELECCIONINFORME.dmp tables=CAMPOSELECCIONINFORME
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=ENTSUBENT.dmp tables=(ENTSUBENT)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=CAMPOSJOIN.dmp tables=(CAMPOSJOIN)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=ENTIDADEAPLICACION.dmp tables=(ENTIDADEAPLICACION)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=ESTRUCTURAINFORME.dmp tables=(ESTRUCTURAINFORME)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=ETIQUETA.dmp tables=(ETIQUETA)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=ETIQUETAXERADOR.dmp tables=(ETIQUETAXERADOR)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=ETIQ_PLT.dmp tables=(ETIQ_PLT)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_CRD.dmp tables=(E_CRD)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_CRD_FIR.dmp tables=(E_CRD_FIR)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_CRO.dmp tables=(E_CRO)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_DES.dmp tables=(E_DES)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_DES_VAL.dmp tables=(E_DES_VAL)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_TDO.dmp tables=(E_TDO)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_DOP.dmp tables=(E_DOP)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_DOE.dmp tables=(E_DOE)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_DOT.dmp tables=(E_DOT)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_DOT_FIR.dmp tables=(E_DOT_FIR)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_DPML.dmp tables=(E_DPML)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_DTML.dmp tables=(E_DTML)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_ENP.dmp tables=(E_ENP)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_ENT.dmp tables=(E_ENT)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_EXP.dmp tables=(E_EXP)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=A_UOR.dmp tables=(A_UOR)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=R_ACT.dmp tables=(R_ACT)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=R_TDO.dmp tables=(R_TDO)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=R_TPE.dmp tables=(R_TPE)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=R_TTR.dmp tables=(R_TTR)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=R_RES.dmp tables=(R_RES)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_EXR.dmp tables=(E_EXR)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_TID.dmp tables=(T_TID)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_TER.dmp tables=(T_TER)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_TOC.dmp tables=(T_TOC)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_DOM.dmp tables=(T_DOM)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_DOT.dmp tables=(T_DOT)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_HTE.dmp tables=(T_HTE)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_EXT.dmp tables=(E_EXT)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_FLS.dmp tables=(E_FLS)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_MAS.dmp tables=(E_MAS)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_NEX.dmp tables=(E_NEX)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_PCA.dmp tables=(E_PCA)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_PLT.dmp tables=(E_PLT)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_PRO.dmp tables=(E_PRO)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_PML.dmp tables=(E_PML)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_TRA.dmp tables=(E_TRA)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_PRO_X.dmp tables=(E_PRO_X)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_PUI.dmp tables=(E_PUI)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_REX.dmp tables=(E_REX)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_ROL.dmp tables=(E_ROL)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_RTDM.dmp tables=(E_RTDM)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_RTDP.dmp tables=(E_RTDP)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_SAL.dmp tables=(E_SAL)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_SML.dmp tables=(E_SML)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_TCA.dmp tables=(E_TCA)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_TDA.dmp tables=(E_TDA)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_TDE.dmp tables=(E_TDE)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_TDET.dmp tables=(E_TDET)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_TDML.dmp tables=(E_TDML)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_TEN.dmp tables=(E_TEN)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_TFE.dmp tables=(E_TFE)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_TFET.dmp tables=(E_TFET)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_TFI.dmp tables=(E_TFI)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_TFIT.dmp tables=(E_TFIT)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_TML.dmp tables=(E_TML)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_TNU.dmp tables=(E_TNU)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_TNUT.dmp tables=(E_TNUT)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_TRP.dmp tables=(E_TRP)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_TTL.dmp tables=(E_TTL)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_TTLT.dmp tables=(E_TTLT)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_TXT.dmp tables=(E_TXT)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=E_TXTT.dmp tables=(E_TXTT)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=FONTELETRA.dmp tables=(FONTELETRA)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=F_DEF_FORM.dmp tables=(F_DEF_FORM)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=F_DEFFORM_TRA.dmp tables=(F_DEFFORM_TRA)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=F_DEFFORM_UOR.dmp tables=(F_DEFFORM_UOR)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=F_EST_FORM.dmp tables=F_EST_FORM
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=F_PLANTILLA2_FORM.dmp tables=(F_PLANTILLA2_FORM)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=F_RESTRICCION.dmp tables=(F_RESTRICCION)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=F_TIPO_FORM.dmp tables=(F_TIPO_FORM)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=GEN_AGENDA_DETALLE.dmp tables=(GEN_AGENDA_DETALLE)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=GEN_CALENDARIO.dmp tables=(GEN_CALENDARIO)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=G_CRO.dmp tables=(G_CRO)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=G_EXP.dmp tables=(G_EXP)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=G_NEX.dmp tables=(G_NEX)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=G_REL.dmp tables=(G_REL)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=INFORMEXERADOR.dmp tables=(INFORMEXERADOR)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=LISTADOXERADOR.dmp tables=(LISTADOXERADOR)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=RESULTADO_SW_TRAMITE.dmp tables=(RESULTADO_SW_TRAMITE)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=R_BWC.dmp tables=(R_BWC)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=R_DIL.dmp tables=(R_DIL)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=R_NRE.dmp tables=(R_NRE)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=R_REG.dmp tables=(R_REG)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=R_RER.dmp tables=(R_RER)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=R_TEM.dmp tables=(R_TEM)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=R_RET.dmp tables=(R_RET)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_CBJ.dmp tables=(T_CBJ)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_OEX.dmp tables=(T_OEX)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_ECO.dmp tables=(T_ECO)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_CEC.dmp tables=(T_CEC)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_ESI.dmp tables=(T_ESI)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_CES.dmp tables=(T_CES)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_CLS.dmp tables=(T_CLS)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_NUC.dmp tables=(T_NUC)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_CNU.dmp tables=(T_CNU)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_COM.dmp tables=(T_COM)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_CPO.dmp tables=(T_CPO)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_CSU.dmp tables=(T_CSU)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_CVE.dmp tables=(T_CVE)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_DIN.dmp tables=(T_DIN)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_DIS.dmp tables=(T_DIS)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_DNN.dmp tables=(T_DNN)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_TVV.dmp tables=(T_TVV)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_DPO.dmp tables=(T_DPO)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_TNU.dmp tables=(T_TNU)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_SEC.dmp tables=(T_SEC)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_SSC.dmp tables=(T_SSC)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_MZI.dmp tables=(T_MZI)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_VIA.dmp tables=(T_VIA)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_TRM.dmp tables=(T_TRM)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_DSU.dmp tables=(T_DSU)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_GRU.dmp tables=(T_GRU)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_SGT.dmp tables=(T_SGT)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_GRT.dmp tables=(T_GRT)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_HDP.dmp tables=(T_HDP)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_HDS.dmp tables=(T_HDS)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_HNU.dmp tables=(T_HNU)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_HVI.dmp tables=(T_HVI)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_MNZ.dmp tables=(T_MNZ)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_NDC.dmp tables=(T_NDC)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_PAR.dmp tables=(T_PAR)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_PRM.dmp tables=(T_PRM)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=T_TVI.dmp tables=(T_TVI)
+imp sge_pru_134/sge_pru_134@ALTIA ignore=y file=WEB_SERVICES.dmp tables=(WEB_SERVICES)
+
+
+-----------------------------------------------
+Volvemos a sqlplus sge_pru_134/sge_pru_134@SID:
+-----------------------------------------------
+
+alter table E_TTLT disable constraint E_TTLT_FK1;
+alter table E_TTL disable constraint E_TTL_FK1;
+alter table E_TXTT disable constraint E_TXTT_FK1;
+alter table E_TXT disable constraint E_TXT_FK1;
+alter table E_TNUT disable constraint E_TNUT_FK1;
+alter table E_TNU disable constraint E_TNU_FK1;
+alter table E_TDET disable constraint E_TDET_FK1;
+alter table E_TDE disable constraint E_TDE_FK1;
+alter table E_TFET disable constraint E_TFET_FK1;
+alter table E_TFE disable constraint E_TFE_FK1;
+alter table E_TFIT disable constraint E_TFIT_FK1;
+alter table E_TFI disable constraint E_TFI_FK1;
+alter table E_CRD_FIR disable constraint CRDFIR_CRD;
+alter table E_DOP disable constraint E_DOP_FK1;
+alter table E_DOE disable constraint E_DOE_FK1;
+alter table E_PML disable constraint E_PML_FK1;
+alter table E_TRA disable constraint E_TRA_FK1;
+
+update E_EXP set exp_mun=0;
+update E_CRO set cro_mun=0;
+update E_TFE set tfe_mun=0;
+update E_TFET set tfet_mun=0;
+update E_TDE set tde_mun=0;
+update E_TDET set tdet_mun=0;
+update E_TNU set tnu_mun=0;
+update E_TNUT set tnut_mun=0;
+update E_TXT set txt_mun=0;
+update E_TXTT set txtt_mun=0;
+update E_TTL set ttl_mun=0;
+update E_TTLT set ttlt_mun=0;
+update E_TFI set tfi_mun=0;
+update E_TFIT set tfit_mun=0;
+update E_EXT set ext_mun=0;
+update E_NEX set nex_mun=0;
+update E_CRD set crd_mun=0;
+update E_CRD_FIR set crd_mun=0;
+update E_DOE set doe_mun=0;
+update E_DOP set dop_mun=0;
+update E_DOT set dot_mun=0;
+update E_DOT_FIR set dot_mun=0;
+update E_DPML set dpml_mun=0;
+update E_DTML set dtml_mun=0;
+update E_ENP set enp_mun=0;
+update E_ENT set ent_mun=0;
+update E_EXR set exr_mun=0;
+update E_FLS set fls_mun=0;
+update E_PCA set pca_mun=0;
+update E_PML set pml_mun=0;
+update E_PRO set pro_mun=0;
+update E_PRO_X set pro_mun=0;
+update E_PUI set pui_mun=0;
+update E_REX set rex_mun=0;
+update E_ROL set rol_mun=0;
+update E_SAL set sal_mun=0;
+update E_SML set sml_mun=0;
+update E_TCA set tca_mun=0;
+update E_TEN set ten_mun=0;
+update E_TML set tml_mun=0;
+update E_TRA set tra_mun=0;
+update E_TRP set trp_mun=0;
+update F_DEFFORM_TRA set dft_mun=0;
+update F_TRAFORM_TRA set tft_tra_mun=0;
+update G_CRO set cro_mun=0;
+-------------------------------update G_EXP???????
+update G_NEX set nex_mun=0;
+update G_REL set rel_mun=0;
+update RESULTADO_SW_TRAMITE set municipio=0;
+
+alter table E_TTLT enable constraint E_TTLT_FK1;
+alter table E_TTL enable constraint E_TTL_FK1;
+alter table E_TXTT enable constraint E_TXTT_FK1;
+alter table E_TXT enable constraint E_TXT_FK1;
+alter table E_TNUT enable constraint E_TNUT_FK1;
+alter table E_TNU enable constraint E_TNU_FK1;
+alter table E_TDET enable constraint E_TDET_FK1;
+alter table E_TDE enable constraint E_TDE_FK1;
+alter table E_TFET enable constraint E_TFET_FK1;
+alter table E_TFE enable constraint E_TFE_FK1;
+alter table E_TFIT enable constraint E_TFIT_FK1;
+alter table E_TFI enable constraint E_TFI_FK1;
+alter table E_CRD_FIR enable constraint CRDFIR_CRD;
+alter table E_DOP enable constraint E_DOP_FK1;
+alter table E_DOE enable constraint E_DOE_FK1;
+alter table E_PML enable constraint E_PML_FK1;
+alter table E_TRA enable constraint E_TRA_FK1;
+
+-------------------------------------------------------------------------------------------------------------------------------------
+MODIFICAR LAS UNIDADES ORGANICAS ASIGNADAS A LOS USUARIOS DE PRUEBAS MEDIANTE LA APLICACION PARA QUE SE VEAN TODOS LOS EXPEDIENTES
+-------------------------------------------------------------------------------------------------------------------------------------
+ELIMINAR EN EL ESQUEMA REAL LOS PROCEDIMIENTOS QUE NO DEBEN ESTAR AHI (MEDIANTE LA APLICACION)

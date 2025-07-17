@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+
+    <definition name=".BasePopUp" path="/jsp/gestionInformes/tpls/WindowTemplatePopUp.jsp">
+        <put name="altiaAppFormTitle" value="${altiaAppFormTitle}" />
+        <put name="altiaAppFormContent" value="${altiaAppFormContent}" />
+        <put name="altiaAppFormBotons" value="${altiaAppFormBotons}" />
+    </definition>
+
+    <definition name=".Base" path="/jsp/gestionInformes/tpls/WindowTemplate.jsp">
+        <put name="title" value="${contenido}" />
+        <put name="salir" value="${contenido}" />
+        <put name="altiaAppTitle" value="${altiaAppTitle}" />
+        <put name="altiaAppFormMenu" value="/jsp/gestionInformes/tpls/Menubar.jsp" />
+        <put name="altiaAppFormTitle" value="${altiaAppFormTitle}" />
+        <put name="altiaAppFormContent" value="${altiaAppFormContent}" />
+        <put name="altiaAppFormBotons" value="${altiaAppFormBotons}" />
+    </definition>
+    
+    <definition name=".BasePresentacion" path="/jsp/gestionInformes/tpls/EmptyTemplate.jsp">
+        <put name="title" value="${contenido}" />
+        <put name="salir" value="${contenido}" />
+        <put name="altiaAppTitle" value="${altiaAppTitle}" />
+        <put name="altiaAppFormMenu" value="/jsp/gestionInformes/tpls/Menubar.jsp" />
+        <put name="altiaAppFormTitle" value="${altiaAppFormTitle}" />
+    </definition>
+    
+    <definition name=".BaseExpedientes" path="/jsp/gestionInformes/tpls/WindowTemplateExpedientes.jsp">
+        <put name="title" value="${contenido}" />
+        <put name="altiaAppTitle" value="${altiaAppTitle}" />
+        <put name="altiaAppFormMenu" value="/jsp/gestionInformes/tpls/Menubar.jsp" />
+        <put name="altiaAppFormTitle" value="${altiaAppFormTitle}" />
+        <put name="altiaAppFormContent" value="${altiaAppFormContent}" />
+        <put name="altiaAppFormBotons" value="${altiaAppFormBotons}" />
+    </definition>
+
+    
+ <definition name=".PresentacionInformes" extends=".BasePresentacion">
+        <put name="title" value="GestionInformes.Application.title" />
+        <put name="salir" value="GestionInformes.Application.salir" />
+        <put name="altiaAppTitle" value="GestionInformes.Application.title" />
+        <put name="altiaAppFormTitle" value="GestionInformes.Application.title" />
+    </definition>
+
+
+
+
+    <definition name=".MainGestionInformes" extends=".Base">
+        <put name="title" value="GestionInformes.Application.title" />
+        <put name="salir" value="GestionInformes.Application.salir" />
+        <put name="altiaAppTitle" value="GestionInformes.Application.title" />
+        <put name="altiaAppFormTitle" value="GestionInformes.Application.title" />
+        <put name="altiaAppFormContent" value="/jsp/gestionInformes/gestionInformes.jsp" />
+        <put name="altiaAppFormBotons" value="/jsp/gestionInformes/gestionInformesBotones.jsp" />
+    </definition>
+
+    <definition name=".CargarListaCriterios" path="/jsp/gestionInformes/tpls/WindowTemplateBodyPopUp.jsp">
+        <put name="altiaAppFormContent" value="/jsp/gestionInformes/cargarListaCriterios.jsp" />
+    </definition>
+
+    <definition name=".MainGestionGeneracionInformes" extends=".Base">
+        <put name="title" value="GeneracionInformes.Application.title" />
+        <put name="salir" value="GestionInformes.Application.salir" />
+        <put name="altiaAppTitle" value="GeneracionInformes.Application.title" />
+        <put name="altiaAppFormTitle" value="GeneracionInformes.Application.title" />
+        <put name="altiaAppFormContent" value="/jsp/gestionInformes/gestionGeneracionInformes.jsp" />
+        <put name="altiaAppFormBotons" value="/jsp/gestionInformes/gestionGeneracionInformesBotones.jsp" />
+    </definition>
+    
+    <definition name=".MainMantenimientoOrigen" extends=".Base">
+        <put name="title" value="GeneracionInformes.Application.title" />
+        <put name="salir" value="GestionInformes.Application.salir" />
+        <put name="altiaAppTitle" value="GeneracionInformes.Application.title" />
+        <put name="altiaAppFormTitle" value="GeneracionInformes.Application.title" />
+        <put name="altiaAppFormContent" value="/jsp/gestionInformes/mantenimientoOrigen.jsp" />
+        <put name="altiaAppFormBotons" value="/jsp/gestionInformes/mantenimientoOrigenBotones.jsp" />
+    </definition>
+    
+     <definition name=".MainMantenimientoModoOrigen" extends=".Base">
+        <put name="title" value="GeneracionInformes.Application.title" />
+        <put name="salir" value="GestionInformes.Application.salir" />
+        <put name="altiaAppTitle" value="GeneracionInformes.Application.title" />
+        <put name="altiaAppFormTitle" value="GeneracionInformes.Application.title" />
+        <put name="altiaAppFormContent" value="/jsp/gestionInformes/mantenimientoModoOrigen.jsp" />
+        <put name="altiaAppFormBotons" value="/jsp/gestionInformes/mantenimientoModoOrigenBotones.jsp" />
+    </definition>
+    
+    <definition name=".MainMantenimientoCampos" extends=".Base">
+        <put name="title" value="GeneracionInformes.Application.title" />
+        <put name="salir" value="GestionInformes.Application.salir" />
+        <put name="altiaAppTitle" value="GeneracionInformes.Application.title" />
+        <put name="altiaAppFormTitle" value="GeneracionInformes.Application.title" />
+        <put name="altiaAppFormContent" value="/jsp/gestionInformes/mantenimientoCampos.jsp" />
+        <put name="altiaAppFormBotons" value="/jsp/gestionInformes/mantenimientoModoOrigenBotones.jsp" />
+    </definition>
+
+    <definition name=".MainGestionGeneracionInformesExpedientes" extends=".BaseExpedientes">
+        <put name="title" value="GeneracionInformes.Application.title" />
+        <put name="altiaAppTitle" value="GeneracionInformes.Application.title" />
+        <put name="altiaAppFormTitle" value="GeneracionInformes.Application.title" />
+        <put name="altiaAppFormContent" value="/jsp/gestionInformes/gestionGeneracionInformes.jsp" />
+        <put name="altiaAppFormBotons" value="/jsp/gestionInformes/gestionGeneracionInformesBotones.jsp" />
+    </definition>
+
+    <definition name=".MainSolicitudesInformes" extends=".Base">
+        <put name="title" value="BuzonInformes.Application.title" />
+        <put name="salir" value="GestionInformes.Application.salir" />
+        <put name="altiaAppTitle" value="BuzonInformes.Application.title" />
+        <put name="altiaAppFormTitle" value="BuzonInformes.Application.title" />
+        <put name="altiaAppFormContent" value="/jsp/gestionInformes/solicitudesInformes.jsp" />
+        <put name="altiaAppFormBotons" value="/jsp/gestionInformes/solicitudesInformesBotones.jsp" />
+    </definition>
+  
+    <definition name=".MainSolicitudesInformesExpedientes" extends=".BaseExpedientes">
+        <put name="title" value="BuzonInformes.Application.title" />
+        <put name="altiaAppFormTitle" value="BuzonInformes.Application.title" />
+        <put name="altiaAppFormContent" value="/jsp/gestionInformes/solicitudesInformes.jsp" />
+        <put name="altiaAppFormBotons" value="/jsp/gestionInformes/solicitudesInformesBotones.jsp" />
+    </definition>
+
+    <definition name=".DetallesGestionInformes" extends=".Base">
+        <put name="title" value="GestionInformes.Application.title" />
+        <put name="altiaAppTitle" value="GestionInformes.Application.title" />
+        <put name="altiaAppFormTitle" value="GestionInformes.Application.detalles" />
+        <put name="altiaAppFormContent" value="/jsp/gestionInformes/detallesGestionInformes.jsp" />
+        <put name="altiaAppFormBotons" value="/jsp/gestionInformes/detallesGestionInformesBotones.jsp" />
+    </definition>
+
+    <definition name=".InicioGestionInformes" extends=".BasePopUp">
+        <put name="altiaAppFormTitle" value="GestionInformes.Application.alta" />
+        <put name="altiaAppFormContent" value="/jsp/gestionInformes/inicioGestionInformes.jsp" />
+        <put name="altiaAppFormBotons" value="/jsp/gestionInformes/inicioGestionInformesBotones.jsp" />
+    </definition>
+
+    <definition name=".InicioGestionInformes2" extends=".BasePopUp">
+        <put name="altiaAppFormTitle" value="GestionInformes.Application.alta" />
+        <put name="altiaAppFormContent" value="/jsp/gestionInformes/inicioGestionInformes2.jsp" />
+        <put name="altiaAppFormBotons" value="/jsp/gestionInformes/inicioGestionInformes2Botones.jsp" />
+    </definition>
+
+    <definition name=".BaseInformeParticular" path="/jsp/gestionInformes/tpls/WindowTemplateInformeParticular.jsp">
+        <put name="altiaAppFormContent" value="${altiaAppFormContent}" />
+        <put name="altiaAppFormBotons" value="${altiaAppFormBotons}" />
+    </definition>
+
+    <definition name=".InformeParticular" extends=".BaseInformeParticular">
+        <put name="altiaAppFormContent" value="/jsp/gestionInformes/particular/paginaDatos.jsp" />
+        <put name="altiaAppFormBotons" value="/jsp/gestionInformes/particular/botonesPaginaDatos.jsp" />
+    </definition>
+
+    <definition name=".InformeFinalizado" extends=".BaseInformeParticular">
+        <put name="altiaAppFormContent" value="/jsp/gestionInformes/particular/verInformeParticular.jsp" />
+        <put name="altiaAppFormBotons" value="/jsp/gestionInformes/particular/botonesPaginaDatos.jsp" />
+    </definition>
+    
+    <definition name=".BaseIntegracionSW" path="/jsp/integracionsw/tpls/WindowTemplate.jsp">
+        <put name="title" value="${contenido}" />
+        <put name="altiaAppTitle" value="${altiaAppTitle}" />
+        <put name="altiaAppFormTitle" value="${altiaAppFormTitle}" />
+        <put name="altiaAppFormContent" value="${altiaAppFormContent}" />
+        <put name="altiaAppFormBotons" value="${altiaAppFormBotons}" />
+    </definition>
+
+    <definition name=".BasePopUpSW" path="/jsp/integracionsw/tpls/WindowTemplatePopUp.jsp">
+        <put name="altiaAppFormTitle" value="${altiaAppFormTitle}" />
+        <put name="altiaAppFormContent" value="${altiaAppFormContent}" />
+        <put name="altiaAppFormBotons" value="${altiaAppFormBotons}" />
+    </definition> 
+
+    <definition name=".InicioIntegracionSW" extends=".BasePopUpSW">
+        <put name="altiaAppFormTitle" value="IntegracionSW.Application.alta" />
+        <put name="altiaAppFormContent" value="/jsp/integracionsw/altaSW.jsp" />
+        <put name="altiaAppFormBotons" value="/jsp/integracionsw/altaSWBotones.jsp" />
+    </definition>
+
+    <definition name=".ListaSWDisponibles" extends=".BaseIntegracionSW">
+        <put name="title" value="IntegracionSW.Application.title" />
+        <put name="altiaAppTitle" value="IntegracionSW.Application.title" />
+        <put name="altiaAppFormTitle" value="IntegracionSW.Application.servicios" />
+        <put name="altiaAppFormContent" value="/jsp/integracionsw/listaSWDisponibles.jsp" />
+        <put name="altiaAppFormBotons" value="/jsp/integracionsw/listaSWDisponiblesBotones.jsp" />
+    </definition>
+
+   <definition name=".ListadoOperacionesSW" extends=".BaseIntegracionSW">
+        <put name="title" value="IntegracionSW.Application.title" />
+        <put name="altiaAppTitle" value="IntegracionSW.Application.title" />
+        <put name="altiaAppFormTitle" value="IntegracionSW.Application.modificar" />
+        <put name="altiaAppFormContent" value="/jsp/integracionsw/listadoOperacionesSW.jsp" />
+        <put name="altiaAppFormBotons" value="/jsp/integracionsw/listadoOperacionesSWBotones.jsp" />
+    </definition>
+
+	<definition name=".InicioOperacionSW" extends=".BasePopUpSW">
+        <put name="altiaAppFormTitle" value="IntegracionSW.Application.altaOp" />
+        <put name="altiaAppFormContent" value="/jsp/integracionsw/altaOperacion.jsp" />
+        <put name="altiaAppFormBotons" value="/jsp/integracionsw/altaOperacionBotones.jsp" />
+    </definition>
+    
+    <definition name=".MantenimientoOperacionSW" extends=".BaseIntegracionSW">
+    	<put name="title" value="IntegracionSW.Application.title" />
+        <put name="altiaAppTitle" value="IntegracionSW.Application.title" />
+        <put name="altiaAppFormTitle" value="IntegracionSW.Application.operacion" />
+        <put name="altiaAppFormContent" value="/jsp/integracionsw/mantenimientoOperacion.jsp" />
+        <put name="altiaAppFormBotons" value="/jsp/integracionsw/mantenimientoOperacionBotones.jsp" />
+	</definition>
+	
+    <definition name=".BaseIntegracionSWPopUp" path="/jsp/integracionsw/tpls/WindowTemplateTest.jsp">
+   
+        <put name="altiaAppTitle" value="${altiaAppTitle}" />
+        <put name="altiaAppFormTitle" value="${altiaAppFormTitle}" />
+        <put name="altiaAppFormContent" value="${altiaAppFormContent}" />
+        <put name="altiaAppFormBotons" value="${altiaAppFormBotons}" />
+    </definition>
+    	
+	<definition name=".MantenimientoArraysSW" extends=".BaseIntegracionSW">
+    	<put name="title" value="IntegracionSW.Application.title" />
+        <put name="altiaAppTitle" value="IntegracionSW.Application.title" />
+        <put name="altiaAppFormTitle" value="IntegracionSW.Application.operacion" />
+        <put name="altiaAppFormContent" value="/jsp/integracionsw/mantenimientoArray.jsp" />
+        <put name="altiaAppFormBotons" value="/jsp/integracionsw/mantenimientoArrayBotones.jsp" />
+	</definition>
+
+    <definition name=".TestOperacionSW" extends=".BaseIntegracionSWPopUp">
+        <put name="altiaAppTitle" value="IntegracionSW.Application.title" />
+        <put name="altiaAppFormTitle" value="IntegracionSW.Application.test" />
+        <put name="altiaAppFormContent" value="/jsp/integracionsw/testOperacion.jsp" />
+        <put name="altiaAppFormBotons" value="/jsp/integracionsw/testOperacionBotones.jsp" />
+    </definition>
+
+</tiles-definitions>

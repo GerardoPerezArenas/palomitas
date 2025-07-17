@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<quartz xmlns="http://www.opensymphony.com/quartz/JobSchedulingData"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.quartz-scheduler.org/xml/job_scheduling_data_1_5.xsd"
+        version="1.5">
+<!--
+    Document   : quartz_jobs.xml
+    Created on : 15 de abril de 2009, 18:29
+    Author     : mjesus.lopez
+    Description:
+        Purpose of the document follows.
+-->
+
+    <job>
+        <job-detail>
+            <name>NotificacionPlazosTramitesJob</name>
+            <group>SIGPNotificacionGroup</group>
+            <description>Notificacion a tramites</description>
+            <job-class>es.altia.agora.interfaces.user.web.sge.notificacion.job.NotificacionPlazoJob</job-class>
+            <job-data-map allows-transient-data="false">
+                <entry>
+                    <key>jndis_lanzamiento_proceso</key>
+                    <value>jdbc_flexia_pruebas</value>
+                </entry>
+            </job-data-map>
+        </job-detail>
+        <trigger>
+            <cron>
+                <name>QuartzExampleTrigger</name>
+                <group>SIGPNotificacionTriggerGroup</group>
+                <job-name>NotificacionPlazosTramitesJob</job-name>
+                <job-group>SIGPNotificacionGroup</job-group>
+                 <!-- A las 12 de cada dia -->
+                <cron-expression>0 0 0 * * ?</cron-expression>
+            </cron>
+        </trigger>
+    </job>
+     
+    <job>
+       <job-detail>
+              <name>HistoricoExpedientesJob</name>
+              <group>HistoricoExpedientesGroup</group>
+              <description>Paso de expedientes al historico</description>
+              <job-class>
+                es.altia.flexia.historico.expedientes.batch.ProcesoHistoricoExpedientesJob
+              </job-class>
+              <job-data-map allows-transient-data="false">
+                      <entry>
+                               <key>jndis_lanzamiento_proceso</key>
+                               <value>jdbc_flexia_pruebas</value>
+                      </entry>
+              </job-data-map>
+      </job-detail>
+      <trigger>
+             <cron>
+                    <name>HistoricoExpedientesTrigger</name>
+                    <group>HistoricoExpedientesTriggerGroup</group>
+                    <job-name>HistoricoExpedientesJob</job-name>
+                    <job-group>HistoricoExpedientesGroup</job-group>
+                    
+                    <!--cada minuto 05:00 de cada hora-->
+                    <!--cron-expression>0 5 * * * ?</cron-expression-->
+                    <!--cada 5 minutos-->
+                    <!--cron-expression>0 0/5 * * * ?</cron-expression-->
+					 <!-- A las 12 de cada dia -->
+					<cron-expression>0 0 0 * * ?</cron-expression>
+               </cron>
+     </trigger>
+     </job>
+     
+         <!-- CRTVG ME Jobs -->
+		 <!--
+     	<job>
+         <job-detail>
+           <name>ProcesoDescargaDocumentacionIFMS</name>
+           <group>ProcesoDescargaDocumentIFMSGroup</group>
+           <description>Circulacion Facturas CRTVG</description>
+           <job-class>es.altia.flexia.integracion.moduloexterno.tvg.metvgifms.procesos.ProcesoDescargaDocumentacionIFMS</job-class>
+           <job-data-map allows-transient-data="false">
+                    <entry>
+                       <key>jndis_lanzamiento_proceso</key>
+                      <value>jdbc_flexia_pruebas</value>
+                    </entry>
+            </job-data-map>
+         </job-detail> 
+        <trigger>
+            <cron>                                                                                                                                                                                                                                                                                                                                                                               
+                <name>QuartzExampleTrigger</name>
+                <group>ProcesoDescargaDocumentIFMSGroup</group>
+                <job-name>ProcesoDescargaDocumentacionIFMS</job-name>              
+                <cron-expression>0 5 * * * ?</cron-expression>
+            </cron>
+        </trigger>
+    </job>    
+    
+    <job>
+         <job-detail>
+           <name>InicioExpedienteCirculacionFacturaIFMS</name>
+           <group>FlexiaIFMSGroup</group>
+           <description>Circulacion Facturas CRTVG</description>
+           <job-class>es.altia.flexia.integracion.moduloexterno.tvg.metvgifms.procesos.InicioExpedienteCirculacionFacturaIFMS</job-class>
+           <job-data-map allows-transient-data="false">
+                    <entry>
+                       <key>jndis_lanzamiento_proceso</key>
+                      <value>jdbc_flexia_pruebas</value>
+                    </entry>
+            </job-data-map>
+         </job-detail>
+        <trigger>
+            <cron>                                                                                                                                                                                                                                                                                                                                                                                
+                <name>QuartzExampleTrigger</name>
+                <group>FlexiaIFMSGroup</group>
+                <job-name>InicioExpedienteCirculacionFacturaIFMS</job-name>              
+                <cron-expression>0 5 * * * ?</cron-expression>
+            </cron>
+        </trigger>
+    </job>
+     
+    <job>
+        <job-detail>
+            <name>CaducidadTokenExternosJob</name>
+            <group>SIGPSecurityGroup</group>
+            <description>Eliminacion de los tokens caducados</description>
+            <job-class>es.altia.util.security.job.CaducidadTokenExternosJob</job-class>
+            <job-data-map allows-transient-data="false">
+                <entry>
+                    <key>jndis_lanzamiento_proceso</key>
+                    <value>jdbc_flexia_pruebas</value>
+                </entry>
+            </job-data-map>
+        </job-detail>
+        <trigger>
+            <cron>
+                <name>CaducidadTokenExternosTrigger</name>
+                <group>SIGPSecurityTriggerGroup</group>
+                <job-name>CaducidadTokenExternosJob</job-name>
+                <job-group>SIGPSecurityGroup</job-group>
+                Cada hora
+                <cron-expression>0 0 0/1 1/1 * ? *</cron-expression>
+            </cron>
+        </trigger>
+    </job>
+	
+	<job>
+       <job-detail>
+              <name>NotificacionPendientesFinalizarRegistradorJob</name>
+              <group>NotificacionPendientesFinalizarRegistradorGroup</group>
+              <description>Notificacion Entradas Pendientes Fin Digitalizar Usuario Registrador</description>
+              <job-class>
+                es.altia.agora.interfaces.user.web.registro.notificacion.job.NotificacionPendientesFinalizarRegistradorJob
+              </job-class>
+              <job-data-map allows-transient-data="false">
+                      <entry>
+                               <key>jndis_lanzamiento_proceso</key>
+                               <value>jdbc_flexia_pruebas</value>
+                      </entry>
+              </job-data-map>
+      </job-detail>
+      <trigger>
+             <cron>
+                    <name>NotificacionPendientesFinalizarRegistradorTrigger</name>
+                    <group>NotificacionPendientesFinalizarRegistradorGroup</group>
+                    <job-name>NotificacionPendientesFinalizarRegistradorJob</job-name>
+                    <job-group>NotifiacionPendientesFinalizarRegistradorGroup</job-group>
+                     A las 12 de cada dia 
+                     <cron-expression>0 0 0 * * ?</cron-expression> 
+               </cron>
+     </trigger>
+     </job>
+	 
+	 <job>
+       <job-detail>
+              <name>NotificacionPendientesFinalizarOrganizacionJob</name>
+              <group>NotificacionPendientesFinalizarOrganizacionGroup</group>
+              <description>Notificación Pendientes Fin Digitalización Organización</description>
+              <job-class>
+                es.altia.agora.interfaces.user.web.registro.notificacion.job.NotificacionPendientesFinalizarOrganizacionJob
+              </job-class>
+              <job-data-map allows-transient-data="false">
+                      <entry>
+                               <key>jndis_lanzamiento_proceso</key>
+                               <value>jdbc_flexia_pruebas</value>
+                      </entry>
+              </job-data-map>
+      </job-detail>
+      <trigger>
+             <cron>
+                    <name>NotificacionPendientesFinalizarOrganizacionTrigger</name>
+                    <group>NotificacionPendientesFinalizarOrganizacionGroup</group>
+                    <job-name>NotificacionPendientesFinalizarOrganizacionJob</job-name>
+                    <job-group>NotificacionPendientesFinalizarOrganizacionGroup</job-group>
+                      Todos los viernes a las  00:00 
+                    <cron-expression>0 0 0 ? * FRI *</cron-expression> 
+               </cron>
+     </trigger>
+     </job>
+     
+     <job>
+       <job-detail>
+              <name>NotificacionEntradasRechazadasRegistradorJob</name>
+              <group>NotificacionEntradasRechazadasRegistradorGroup</group>
+              <description>Notificacion Entradas Rechazadas Usuario Registrador</description>
+              <job-class>
+                es.altia.agora.interfaces.user.web.registro.notificacion.job.NotificacionEntradasRechazadasRegistradorJob
+              </job-class>
+              <job-data-map allows-transient-data="false">
+                      <entry>
+                               <key>jndis_lanzamiento_proceso</key>
+                               <value>jdbc_flexia_pruebas</value>
+                      </entry>
+              </job-data-map>
+      </job-detail>
+      <trigger>
+             <cron>
+                    <name>NotificacionEntradasRechazadasRegistradorTrigger</name>
+                    <group>NotificacionEntradasRechazadasRegistradorGroup</group>
+                    <job-name>NotificacionEntradasRechazadasRegistradorJob</job-name>
+                    <job-group>NotifiacionEntradasRechazadasRegistradorGroup</job-group>
+                     A las 12 de cada dia 
+                    <cron-expression>0 0 0 * * ?</cron-expression>
+               </cron>
+     </trigger>
+     </job>
+
+     <job>
+       <job-detail>
+              <name>NotificacionEntradasRechazadasOrganizacionJob</name>
+              <group>NotificacionEntradasRechazadasOrganizacionGroup</group>
+              <description>Notificacion Entradas Rechazadas Organizaci?n</description>
+              <job-class>
+                es.altia.agora.interfaces.user.web.registro.notificacion.job.NotificacionEntradasRechazadasOrganizacionJob
+              </job-class>
+              <job-data-map allows-transient-data="false">
+                      <entry>
+                               <key>jndis_lanzamiento_proceso</key>
+                               <value>jdbc_flexia_pruebas</value>
+                      </entry>
+              </job-data-map>
+      </job-detail>
+      <trigger>
+             <cron>
+                    <name>NotificacionEntradasRechazadasOrganizacionTrigger</name>
+                    <group>NotificacionEntradasRechazadasOrganizacionGroup</group>
+                    <job-name>NotificacionEntradasRechazadasOrganizacionJob</job-name>
+                    <job-group>NotifiacionEntradasRechazadasOrganizacionGroup</job-group>
+                      Todos los viernes a las  00:00 
+                     <cron-expression>0 0 0 ? * FRI *</cron-expression> 
+               </cron>
+     </trigger>
+     </job>
+     
+	 <job>
+		<job-detail>
+			<name>EnvioAsientosPendientesJob</name>
+			<group>SIGPEnvioAsientosPendientesGroup</group>
+			<description>Notificacion a tramites</description>
+			<job-class>es.altia.flexia.sir.job.EnvioAsientosPendientesJob</job-class>
+			<job-data-map allows-transient-data="false">
+				<entry>
+					<key>jndis_lanzamiento_proceso</key>
+					<value>jdbc_flexia_pruebas</value>
+				</entry>
+			</job-data-map>
+		</job-detail>
+		<trigger>
+			<cron>
+				<name>QuartzExampleTrigger</name>
+				<group>EnvioAsientosPendientesGroup</group>
+				<job-name>EnvioAsientosPendientesJob</job-name>
+				<job-group>SIGPEnvioAsientosPendientesGroup</job-group>
+					A las 12 de cada dia 
+				<cron-expression>0 0 0 * * ?</cron-expression>
+			</cron>
+		</trigger>
+	</job>
+	-->
+</quartz>
+

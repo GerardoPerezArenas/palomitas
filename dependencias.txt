@@ -1,0 +1,47 @@
+################################################################################
+#####                                FLEXIA                                  ###
+################################################################################
+
+###########
+# Cambios #
+###########
+--------------------------------------------------------------------------------
+Fecha: 18/11/2022
+Version: 18.02.00
+Descripcion:
+- Versión inicial del documento.
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Fecha: 
+Version: 
+Descripcion:
+--------------------------------------------------------------------------------
+
+#####################
+# A tener en cuenta #
+#####################
+
+Al cargar el proyecto en NebBeans este marcará como errores que faltan las clases del paquete es.altia.flexia.sir.soap.generated.
+Para generar estas clases se debe hacer lo siguiente:
+- Clic derecho en el proyecto desde Netbeans.
+- Clic en 'New'
+- Seleccionar 'Other'. 
+- En la ventana que se abre seleccionar:
+	- en 'Categorías': "Web Services"
+	- en 'Tipos de Fichero': "Web Service Client".
+- Pulsar [Siguiente].
+- Marcar el radio button 'Local File', hacer clic en el botón 'Browse' y navegar en el proyecto hasta la ruta /src/conf.
+- Seleccionar el fichero "flexiaInterno_SIR.wsdl" y pulsar [Sbrir] o hacer doble clic sobre el fichero.
+- En el desplegable de nombre 'Package' localizar y seleccionar el paquete es.altia.flexia.sir.soap.generated.
+- Pulsar [Siguiente].
+Con estos pasos se creará en 'Generated Sources' el paquete es.altia.flexia.sir.soap.generated con todas las clases necesarias para que el proyecto deje de mostrar errores y pueda compilar.
+ 
+
+################
+# Dependencias #
+################
+
+--- JAVASCRIPT ---
+dojo
+
+--- JAVA (el proyecto está mavenizado, esta info está en el pom.xml ---

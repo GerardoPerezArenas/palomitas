@@ -1,0 +1,68 @@
+/* Hack para mostrar los tooltips */
+select.select2 {
+    display: block !important;
+    height: 1px !important;
+    padding: 30px 0 0 0 !important;
+    position: absolute !important;
+    visibility: hidden !important;
+    width: 1px !important;
+}
+/* /Hack para mostrar los tooltips */
+
+.select2.select2-container {
+    width: 100% !important;
+}
+
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--multiple {
+    border-color: #ccd0d4 !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    font-size: 100%;
+}
+
+.select2-container--default .select2-selection--multiple {
+    height: 100% !important;
+}
+
+.default-select2.width-full + .select2-container,
+.multiple-select2.width-full + .select2-container {
+    width: 100% !important;
+}
+
+ul.select2-selection__rendered:before {
+    content: "\f0dd";
+    font-size: 13px;
+    position: absolute;
+    right: 10px;
+    top: 6px;
+}
+
+.select2-container--open ul.select2-selection__rendered:before {
+    content: "\f0de";
+    font-size: 14px;
+    top: 11px;
+}
+
+ul.select2-selection__rendered:before {
+    font-family: FontAwesome;    
+}
+
+ul.select2-selection__rendered {
+    color: #888;
+    cursor: pointer;
+    display: inline-block !important;
+    font-feature-settings: normal;
+    font-kerning: auto;
+    font-language-override: normal;
+    font-size-adjust: none;
+    font-stretch: normal;
+    font-style: normal;
+    font-synthesis: weight style;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    text-rendering: auto;
+    transform: translate(0, 0);
+}

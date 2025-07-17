@@ -1,0 +1,16 @@
+ H1,H2,H3,H4,H5,H6 {
+	font-family:Times;
+}
+ .page    {
+	font-family:Times;
+	font-size:8;
+	background-color:white;
+	size:A4-landscape;
+	padding-bottom:2mm;
+}
+ .rowodd  {}
+ .roweven {}
+ .coleven  {background-color:#E5E5E5;color:black; }
+ .colodd {background-color:#FFFAFA;color:black;}
+ .colwhite {background-color: #FFFFFF;color:black}
+

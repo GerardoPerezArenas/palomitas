@@ -1,0 +1,111 @@
+.page {
+    font-family:Helvetica;
+    font-size:10;
+    background-color:white;
+    /*size:A4-landscape;*/
+}
+
+.cabecera {
+    font-size: 18;
+    font-weight: bold;
+    font-family: Helvetica; 	
+    color: black;
+    padding-top: 4px;
+    padding-bottom: 0px;
+}
+
+.titulo1{
+    font-size: 14;
+    font-weight: bold;
+    font-family: Helvetica; 	
+    color: black;
+    padding-top: 4px;
+    padding-bottom: 0px;
+    background-color: #e6f0fe;
+    border-top-style: groove;
+    border-bottom-style: groove;
+    border-left-style: groove;
+    border-right-style: groove;
+    vertical-align: middle;
+    border-top-color: black;
+    border-bottom-color: black;
+    border-left-color: black;
+    border-right-color: black;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+}
+
+.titulo2{
+    font-size: 14;
+    font-weight: bold;
+    font-family: Helvetica; 	
+    color: black;
+    padding-top: 4px;
+    padding-bottom: 0px;
+    background-color: #ffffcc;
+    border-top-style: none;
+    border-bottom-style: groove;
+    border-left-style: none;
+    border-right-style: none;
+    vertical-align: middle;
+    border-top-color: black;
+    border-bottom-color: black;
+    border-left-color: black;
+    border-right-color: black;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    text-align: left;
+}
+
+.subtitulo {
+    font-size: 14;
+    font-weight: bold;
+    font-family: Helvetica; 	
+    color: black;
+    padding-top: 4px;
+    padding-bottom: 0px;
+    background-color: #ffffff;
+}
+
+.etiqueta {
+    font-size: 10;
+    font-weight: bold;
+    font-family: Helvetica; 	
+    color: black;
+    padding-top: 2px;
+    padding-bottom: 0px;
+    text-align: inherit;
+    margin-right: 5px;
+}
+
+.valor{
+    font-size: 10;
+    font-weight: normal;
+    font-family: Helvetica; 	
+    color: black;
+    padding-top: 2px;
+    padding-bottom: 0px;
+}
+
+.textoFijo{
+    font-family: Helvetica;
+    font-size: 10;
+    border-left-width: 0px;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    
+}
+
+.tablaTramites {
+    border: 1px;
+    cellpadding: 2px;
+    background-color: #00ffff;
+}
+
+
+

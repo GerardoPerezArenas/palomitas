@@ -1,0 +1,21 @@
+.textoCuneus{
+	font-family:Helvetica;
+	font-size:7pt;
+	text-align:center;
+	background-color:white;	
+}
+.textoCuneusLan{
+	font-family:Helvetica;
+	font-size:7pt;
+	text-align:center;
+	background-color:white;	
+}
+ .page    {
+	font-family:Helvetica;
+	font-size:7pt;
+	background-color:white;
+	size:A4;
+	padding-right:2mm;
+	padding-left:2mm;
+}
+

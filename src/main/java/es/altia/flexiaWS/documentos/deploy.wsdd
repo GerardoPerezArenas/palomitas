@@ -1,0 +1,106 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from WSDocumentosFlexiaImplService WSDL service -->
+
+  <service name="WSDocumentosFlexiaImpl" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="http://servicios.flexia"/>
+      <parameter name="wsdlServiceElement" value="WSDocumentosFlexiaImplService"/>
+      <parameter name="schemaUnqualified" value="http://datos.bd.documentos.flexiaWS.altia.es"/>
+      <parameter name="wsdlServicePort" value="WSDocumentosFlexiaImpl"/>
+      <parameter name="className" value="es.altia.flexiaWS.documentos.WSDocumentosFlexiaImplSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="WSDocumentosFlexiaImpl"/>
+      <parameter name="typeMappingVersion" value="1.1"/>
+      <operation name="getDocumentoByCSV" qname="operNS:getDocumentoByCSV" xmlns:operNS="http://servicios.flexia" returnQName="getDocumentoByCSVReturn" returnType="rtns:SalidaFicheroDocumento" xmlns:rtns="http://datos.bd.documentos.flexiaWS.altia.es" soapAction="" >
+        <parameter qname="in0" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in1" type="tns:InfoConexionVO" xmlns:tns="http://datos.bd.documentos.flexiaWS.altia.es"/>
+      </operation>
+      <operation name="setDocumentoRegistro" qname="operNS:setDocumentoRegistro" xmlns:operNS="http://servicios.flexia" returnQName="setDocumentoRegistroReturn" returnType="rtns:EstadoOperacionVO" xmlns:rtns="http://datos.bd.documentos.flexiaWS.altia.es" soapAction="" >
+        <parameter qname="in0" type="tns:DocumentoRegistroVO" xmlns:tns="http://datos.bd.documentos.flexiaWS.altia.es"/>
+        <parameter qname="in1" type="tns:InfoConexionVO" xmlns:tns="http://datos.bd.documentos.flexiaWS.altia.es"/>
+      </operation>
+      <operation name="getJustificanteRegistro" qname="operNS:getJustificanteRegistro" xmlns:operNS="http://servicios.flexia" returnQName="getJustificanteRegistroReturn" returnType="rtns:SalidaJustificante" xmlns:rtns="http://datos.bd.documentos.flexiaWS.altia.es" soapAction="" >
+        <parameter qname="in0" type="tns:AnotacionVO" xmlns:tns="http://datos.bd.documentos.flexiaWS.altia.es"/>
+        <parameter qname="in1" type="tns:InfoConexionVO" xmlns:tns="http://datos.bd.documentos.flexiaWS.altia.es"/>
+      </operation>
+      <operation name="getCodigoCSV" qname="operNS:getCodigoCSV" xmlns:operNS="http://servicios.flexia" returnQName="getCodigoCSVReturn" returnType="rtns:SalidaCodigoCSV" xmlns:rtns="http://datos.bd.documentos.flexiaWS.altia.es" soapAction="" >
+        <parameter qname="in0" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in1" type="tns:InfoConexionVO" xmlns:tns="http://datos.bd.documentos.flexiaWS.altia.es"/>
+      </operation>
+      <parameter name="allowedMethods" value="getDocumentoByCSV getCodigoCSV getJustificanteRegistro setDocumentoRegistro"/>
+
+      <typeMapping
+        xmlns:ns="http://datos.bd.documentos.flexiaWS.altia.es"
+        qname="ns:SalidaCodigoCSV"
+        type="java:es.altia.flexiaWS.documentos.bd.datos.SalidaCodigoCSV"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.documentos.flexiaWS.altia.es"
+        qname="ns:InfoConexionVO"
+        type="java:es.altia.flexiaWS.documentos.bd.datos.InfoConexionVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.documentos.flexiaWS.altia.es"
+        qname="ns:DocumentoRegistroVO"
+        type="java:es.altia.flexiaWS.documentos.bd.datos.DocumentoRegistroVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.documentos.flexiaWS.altia.es"
+        qname="ns:FicheroDocumentoVO"
+        type="java:es.altia.flexiaWS.documentos.bd.datos.FicheroDocumentoVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.documentos.flexiaWS.altia.es"
+        qname="ns:SalidaFicheroDocumento"
+        type="java:es.altia.flexiaWS.documentos.bd.datos.SalidaFicheroDocumento"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.documentos.flexiaWS.altia.es"
+        qname="ns:EstadoOperacionVO"
+        type="java:es.altia.flexiaWS.documentos.bd.datos.EstadoOperacionVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.documentos.flexiaWS.altia.es"
+        qname="ns:SalidaJustificante"
+        type="java:es.altia.flexiaWS.documentos.bd.datos.SalidaJustificante"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.documentos.flexiaWS.altia.es"
+        qname="ns:AnotacionVO"
+        type="java:es.altia.flexiaWS.documentos.bd.datos.AnotacionVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+  </service>
+</deployment>

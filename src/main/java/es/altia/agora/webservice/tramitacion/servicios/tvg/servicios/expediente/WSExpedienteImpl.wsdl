@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://servicios.tvg" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://servicios.tvg" xmlns:intf="http://servicios.tvg" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema targetNamespace="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="DomicilioVO">
+    <sequence>
+     <element name="bloque" nillable="true" type="xsd:string"/>
+     <element name="codMunicipio" type="xsd:int"/>
+     <element name="codPais" type="xsd:int"/>
+     <element name="codPostal" nillable="true" type="xsd:string"/>
+     <element name="codProvincia" type="xsd:int"/>
+     <element name="emplazamiento" nillable="true" type="xsd:string"/>
+     <element name="esPrincipal" type="xsd:boolean"/>
+     <element name="escalera" nillable="true" type="xsd:string"/>
+     <element name="nombreVia" nillable="true" type="xsd:string"/>
+     <element name="planta" nillable="true" type="xsd:string"/>
+     <element name="portal" nillable="true" type="xsd:string"/>
+     <element name="primerNumero" type="xsd:int"/>
+     <element name="primeraLetra" nillable="true" type="xsd:string"/>
+     <element name="puerta" nillable="true" type="xsd:string"/>
+     <element name="tipoVia" type="xsd:int"/>
+     <element name="ultimaLetra" nillable="true" type="xsd:string"/>
+     <element name="ultimoNumero" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="InteresadoVO">
+    <sequence>
+     <element name="ap1" nillable="true" type="xsd:string"/>
+     <element name="ap2" nillable="true" type="xsd:string"/>
+     <element name="coddomicilio" nillable="true" type="xsd:string"/>
+     <element name="codigo" nillable="true" type="xsd:string"/>
+     <element name="doc" nillable="true" type="xsd:string"/>
+     <element name="domicilio" nillable="true" type="tns1:DomicilioVO"/>
+     <element name="email" nillable="true" type="xsd:string"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+     <element name="telefono" nillable="true" type="xsd:string"/>
+     <element name="tipoDoc" nillable="true" type="xsd:string"/>
+     <element name="version" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="TramiteVO">
+    <sequence>
+     <element name="camposFormularios" nillable="true" type="xsd:string"/>
+     <element name="codTramite" nillable="true" type="xsd:string"/>
+     <element name="codigoTramiteFlujoSalida" nillable="true" type="xsd:string"/>
+     <element name="ejercicio" nillable="true" type="xsd:string"/>
+     <element name="entidad" nillable="true" type="xsd:string"/>
+     <element name="estado" nillable="true" type="xsd:string"/>
+     <element name="fechaFin" nillable="true" type="xsd:string"/>
+     <element name="fechaInicio" nillable="true" type="xsd:string"/>
+     <element name="municipio" nillable="true" type="xsd:string"/>
+     <element name="nombreTramite" nillable="true" type="xsd:string"/>
+     <element name="numeroExpediente" nillable="true" type="xsd:string"/>
+     <element name="observaciones" nillable="true" type="xsd:string"/>
+     <element name="ocurrenciaTramite" nillable="true" type="xsd:string"/>
+     <element name="organizacion" nillable="true" type="xsd:string"/>
+     <element name="procedimiento" nillable="true" type="xsd:string"/>
+     <element name="unidadOrganicaExp" nillable="true" type="xsd:string"/>
+     <element name="unidadTramitadoraAnterior" nillable="true" type="xsd:string"/>
+     <element name="unidadTramitadoraTram" nillable="true" type="xsd:string"/>
+     <element name="unidadTramitadoraUsu" nillable="true" type="xsd:string"/>
+     <element name="uor" nillable="true" type="xsd:string"/>
+     <element name="usuario" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ExpedienteVO">
+    <sequence>
+     <element name="asunto" nillable="true" type="xsd:string"/>
+     <element name="camposFormularios" nillable="true" type="xsd:string"/>
+     <element name="departamento" nillable="true" type="xsd:string"/>
+     <element name="ejercicico" nillable="true" type="xsd:string"/>
+     <element name="ejercicio" nillable="true" type="xsd:string"/>
+     <element name="ejercicioAsiento" nillable="true" type="xsd:string"/>
+     <element name="entidadUsuario" nillable="true" type="xsd:string"/>
+     <element name="fechaInicio" nillable="true" type="xsd:string"/>
+     <element name="municipio" nillable="true" type="xsd:string"/>
+     <element name="numero" nillable="true" type="xsd:string"/>
+     <element name="numeroAsiento" nillable="true" type="xsd:string"/>
+     <element name="organizacionUsuario" nillable="true" type="xsd:string"/>
+     <element name="procedimiento" nillable="true" type="xsd:string"/>
+     <element name="rol" nillable="true" type="xsd:string"/>
+     <element name="tercero" nillable="true" type="tns1:InteresadoVO"/>
+     <element name="tipoAsiento" nillable="true" type="xsd:string"/>
+     <element name="tramite" nillable="true" type="tns1:TramiteVO"/>
+     <element name="unidadRegistradora" nillable="true" type="xsd:string"/>
+     <element name="uor" nillable="true" type="xsd:string"/>
+     <element name="usuario" nillable="true" type="xsd:string"/>
+     <element name="version" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="SalidaBooleanExpediente">
+    <sequence>
+     <element name="codigoTramite" nillable="true" type="xsd:string"/>
+     <element name="incidencias" nillable="true" type="xsd:string"/>
+     <element name="numExpediente" nillable="true" type="xsd:string"/>
+     <element name="ocurrenciaTramite" nillable="true" type="xsd:string"/>
+     <element name="resultado" nillable="true" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="setExpedienteRequest">
+
+      <wsdl:part name="in0" type="tns1:ExpedienteVO"/>
+
+      <wsdl:part name="in1" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="setExpedienteResponse">
+
+      <wsdl:part name="setExpedienteReturn" type="tns1:SalidaBooleanExpediente"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="WSExpedienteImpl">
+
+      <wsdl:operation name="setExpediente" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:setExpedienteRequest" name="setExpedienteRequest"/>
+
+         <wsdl:output message="impl:setExpedienteResponse" name="setExpedienteResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="WSExpedienteImplSoapBinding" type="impl:WSExpedienteImpl">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="setExpediente">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="setExpedienteRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.tvg" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setExpedienteResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.tvg" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="WSExpedienteImplService">
+
+      <wsdl:port binding="impl:WSExpedienteImplSoapBinding" name="WSExpedienteImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/flexia/services/WSExpedienteImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

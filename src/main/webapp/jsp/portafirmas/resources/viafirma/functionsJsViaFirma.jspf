@@ -1,0 +1,126 @@
+<%-- Fragmento para encapsular las funciones de firma del cliente viafirma--%>
+<%-- 
+    Document   : viaFirma
+    Created on : 29-nov-2012
+    Author     : david.caamano
+--%>
+
+<%@page import="es.altia.common.service.config.Config"%>
+<%@page import="es.altia.common.service.config.ConfigServiceHelper"%>
+
+<%@include file="/jsp/appletUtilidades.jspf" %>
+
+<script type="text/javascript">
+    function fjsFirmaMostrarError(htmlMsg){
+        var theDiv = document.getElementById('mensajeError');
+        if (theDiv) {
+            if (htmlMsg){
+                theDiv.innerHTML = htmlMsg;
+                theDiv.style.display = "block";
+            }else{
+                theDiv.style.display = "none";
+            }//if (htmlMsg)
+        }// if (theDiv) 
+    }//fjsFirmaMostrarError(htmlMsg)
+</script>
+
+<script type="text/javascript">
+    
+    //Variables que guardan el resultado de la operacion de firma
+    var firmaTexto;
+    var firmaFichero;
+    var mensajeError;
+
+    function inicializarClienteViaFirma(){
+        //incrustarAppletUtils();
+        //cargarAppletViaFirma();
+    }//inicializarClienteFirma
+    
+    function firmarTextoClienteVia (cadenaTexto) {
+    
+        var context = "<%=request.getContextPath()%>";			
+        var accion = context + '/jsp/portafirmas/resources/viafirma/viaFirma.jsp?titulo=firmarTexto';
+        
+        var arguments = new Object();
+            arguments.op="firmarTexto";
+            arguments.texto=cadenaTexto;
+            arguments.hashFichero="";
+            
+        abrirXanelaAuxiliar(accion,arguments,
+	'width=1200,height=700,status=no,scrollbars=no',function(respuesta){
+                        if(respuesta.error==""){
+                            if(respuesta!=null){
+                                return respuesta.firmas[0];
+                            }else{
+                                return null;
+                            }//if(respuesta!=null)
+                        }else{
+                            mensajeError=respuesta.error;
+                            return null;
+                        }//if(respuesta.error=="")
+                    });
+    }//firmarTextoCliente
+    
+    function firmarFicheroClienteVia(rutaFichero){
+        /*
+        try{
+            netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+        }catch (e){
+            alert('Imposible el acceso a ficheros locales debido a la configuracion de seguridad del navegador. Para solucionarlo, siga los siguentes pasos: (1) Introduzca "about:config" en el campo URL del navegador; (2) Click con boton derecho y seleccione New->Boolean; (3) Introduzca "signed.applets.codebase_principal_support" (sin las comillas) como nuevo nombre; (4) Click OK y intente cargar el fichero de nuevo.');
+            return;
+        }//try-catch
+        */
+        comprobarAppletUtilsOK();
+        var hash = appletUtils.obtenerHashFicheros(rutaFichero);
+        var context = "<%=request.getContextPath()%>";
+        var accion = context + '/jsp/portafirmas/resources/viafirma/viaFirma.jsp?titulo=firmarFichero';
+        var arguments = new Object();
+            arguments.op="firmarHashFichero";
+            arguments.texto="";
+            arguments.hashFichero=hash;
+        abrirXanelaAuxiliar(accion,arguments,
+	'width=1200,height=700,status=no,scrollbars=no',function(respuesta){
+                        if(respuesta.error==""){
+                            if(respuesta!=null){
+                                document.getElementById("firma").value = respuesta.firmas[0];
+                                return respuesta.firmas[0];
+                            }else{
+                                return null;
+                            }//if(respuesta!=null)
+                        }else{
+                            mensajeError=respuesta.error;
+                            return null;
+                        }//if(respuesta.error=="")
+                    });
+    }//firmarFicheroClienteVia
+    
+    function cargarAppletViaFirma(){
+        var applet;
+        applet = document.createElement("OBJECT");
+        applet.id = "appletUtils";
+        applet.hspace = 100;
+        applet.vspace = 100;
+	applet.height = 1;
+	applet.width = 1;
+        applet.align = "middle";
+	applet.code = "es.altia.applets.AppletUtilidades.class";
+        appendParam (applet,"Locale:","es_ES");
+        appendParam (applet,"UserAgent:",'<%=request.getHeader("User-Agent")%>');
+        appendParam (applet,"scriptable","true");
+        appendParam (applet,"mayscript","false");
+        appendParam (applet,"java_codebase", DOMAIN_NAME+ "/jsp/portafirmas/resources/viafirma");
+        appendParam (applet,"java_archive","appletUtilidades.jar");
+        appendParam (applet,"type","application/x-java-applet");   
+        document.getElementById("divApplets").appendChild(applet);
+	return applet;
+    }//cargarAppletViaFirma
+    
+    function appendParam(parent, name, value){
+	var param 	= document.createElement("param");
+	param.name	= name;
+	param.value	= value;
+	parent.appendChild(param);
+	return param;
+    }//appendParam
+    
+</script>

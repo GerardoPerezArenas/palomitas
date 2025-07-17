@@ -1,0 +1,20 @@
+<%@ taglib uri="/WEB-INF/tlds/c.tld" prefix="c" %>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <jsp:include page="/jsp/administracion/tpls/app-constants.jsp" />
+    <%@ include file="/jsp/plantillas/Metas.jsp" %>
+    <link rel="stylesheet" type="text/css" href="<c:url value='/css/estilo.css'/>">
+<!--[if lte IE 9]> 
+  <link rel="stylesheet" type="text/css" href="<c:url value='/css/estiloie9.css'/>"> 
+  <![endif]-->
+  </head>
+<body style="margin:0">
+    <iframe name="oculto" src="about:blank" style="display:none"></iframe>
+    <iframe src="<%=request.getContextPath()%>/jsp/menuLateral.jsp" name="menu" class="iframeMenu" noresize scrolling="NO" frameborder="0" marginwidth="0" marginheight="0"></iframe>
+    <iframe src="<%=request.getContextPath()%>/jsp/administracion/presentacionADM.jsp" name="mainFrame" class="iframeMainFrame" noresize scrolling="NO" frameborder="0" marginwidth="0" marginheight="0"></iframe>
+    <SCRIPT type="text/javascript">
+        top.focus();
+    </script>
+    </body>
+</html>

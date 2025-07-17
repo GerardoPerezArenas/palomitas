@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+
+<project name="Generar-Plugins-RE" default="generar_RE" basedir="./">
+
+    <property name="build.dir" location="../build/classes/"/>
+    <property name="src.dir" location="."/>
+    <property name="javacompiler.debug" value="true"/>
+    <property name="javacompiler.optimize" value="on"/>
+    <property name="javacompiler.source" value="1.6"/>
+    <property name="javacompiler.target" value="1.6"/>
+    <property name="javacompiler.deprecation" value="off"/>
+    <property name="javacompiler.compiler" value="javac1.6"/>
+    <property name="plugin.vers" value="3.0"/>
+    
+    
+    <mkdir dir="../dist/"/>
+    <property name="dist.dir" location="../dist/"/>
+
+    <target name="Clean"  description="Delete whole build directory">
+        <echo>Cleaning "${module.name}" subsystem...</echo>
+        <delete dir="${build.dir}"/>
+    </target>
+    
+     <path id="module.classpath">
+         
+        <fileset dir="C:/Users/MilaNP/proyectos/Librerias_PLUGIN_REXTERNO">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+   <target name="Compile" depends="Clean" description="Compile this subsystem">
+        <echo>Compiling Plugin-RE subsystem...</echo>
+        <echo message="My build-path is ${toString:module.classpath}" />
+        <mkdir dir="${build.dir}"/>
+        <javac srcdir="${src.dir}"
+               destdir="${build.dir}"
+               classpathref="module.classpath"
+               debug="${javacompiler.debug}"
+               optimize="${javacompiler.optimize}"
+               source="${javacompiler.source}"
+               target="${javacompiler.target}"
+               deprecation="${javacompiler.deprecation}"/>
+    </target>
+
+     <target name="generar_RE_PISA"  description="Genera la libreria jar del registro externo PISA" >
+		<jar destfile="${dist.dir}/plugin_re_pisa-${plugin.vers}.jar" update="true"
+			basedir="${build.dir}/"
+			includes="
+				es/altia/agora/webservice/registro/pisa/*,
+                                es/altia/agora/webservice/registro/pisa/regexterno/**
+                                ">
+		
+	    	<manifest>
+		      	<attribute name="Built-By" value="${user}"/>
+		      	<attribute name="Implementation-Vendor" value="${user}"/>
+		      	<attribute name="Implementation-Title" value="${titletext}"/>
+		      	<attribute name="Implementation-Version" value="${versiontext}"/>
+	    	</manifest>		
+		</jar>
+	</target>
+        
+        <target name="generar_RE_PIST"  description="Genera la libreria jar del registro externo PIST" >
+		<jar destfile="${dist.dir}/plugin_re_pist-${plugin.vers}.jar" update="true"
+			basedir="${build.dir}/"
+			includes="
+				es/altia/agora/webservice/registro/pist/*
+                                ">
+		
+	    	<manifest>
+		      	<attribute name="Built-By" value="${user}"/>
+		      	<attribute name="Implementation-Vendor" value="${user}"/>
+		      	<attribute name="Implementation-Title" value="${titletext}"/>
+		      	<attribute name="Implementation-Version" value="${versiontext}"/>
+	    	</manifest>		
+		</jar>
+	</target>
+        
+        <target name="generar_RE_REC"  description="Genera la libreria jar del registro externo REC" >
+		<jar destfile="${dist.dir}/plugin_re_rec-${plugin.vers}.jar" update="true"
+			basedir="${build.dir}/"
+			includes="
+				es/altia/agora/webservice/registro/rec/**
+                                ">
+		
+	    	<manifest>
+		      	<attribute name="Built-By" value="${user}"/>
+		      	<attribute name="Implementation-Vendor" value="${user}"/>
+		      	<attribute name="Implementation-Title" value="${titletext}"/>
+		      	<attribute name="Implementation-Version" value="${versiontext}"/>
+	    	</manifest>		
+		</jar>
+	</target>
+        
+         
+        <target name="generar_RE_SGE"  description="Genera la libreria jar del registro externo SGE" >
+		<jar destfile="${dist.dir}/plugin_re_sge-${plugin.vers}.jar" update="true"
+			basedir="${build.dir}/"
+			includes="
+				es/altia/agora/webservice/registro/sge/** ">
+		
+	    	<manifest>
+		      	<attribute name="Built-By" value="${user}"/>
+		      	<attribute name="Implementation-Vendor" value="${user}"/>
+		      	<attribute name="Implementation-Title" value="${titletext}"/>
+		      	<attribute name="Implementation-Version" value="${versiontext}"/>
+	    	</manifest>		
+		</jar>
+	</target>
+
+
+        <target name="generar_RE_RTE"  description="Genera la libreria jar del registro telematico externo" >
+		<jar destfile="${dist.dir}/plugin_re_rte-${plugin.vers}.jar" update="true"
+			basedir="${build.dir}/"
+			includes="es/altia/agora/webservice/registro/rte/*,
+                                    es/altia/agora/webservice/registro/rte/cliente/*">
+		
+	    	<manifest>
+		      	<attribute name="Built-By" value="${user}"/>
+		      	<attribute name="Implementation-Vendor" value="${user}"/>
+		      	<attribute name="Implementation-Title" value="${titletext}"/>
+		      	<attribute name="Implementation-Version" value="${versiontext}"/>
+	    	</manifest>		
+		</jar>
+	</target>
+
+
+       <target name="generar_RE"  description="Genera la libreria jar de todos los registros externos" >
+		<jar destfile="${dist.dir}/plugin_re-${plugin.vers}.jar" update="true"
+			basedir="${build.dir}/"
+			includes="
+				es/altia/agora/webservice/registro/rec/**,
+                                es/altia/agora/webservice/registro/rte/*,
+                                es/altia/agora/webservice/registro/rte/cliente/*
+                                es/altia/agora/webservice/registro/sge/**,
+                                es/altia/agora/webservice/registro/pist/*,
+                                es/altia/agora/webservice/registro/pisa/*,
+                                es/altia/agora/webservice/registro/pisa/regexterno/**
+                                ">
+		
+	    	<manifest>
+		      	<attribute name="Built-By" value="${user}"/>
+		      	<attribute name="Implementation-Vendor" value="${user}"/>
+		      	<attribute name="Implementation-Title" value="${titletext}"/>
+		      	<attribute name="Implementation-Version" value="${versiontext}"/>
+	    	</manifest>		
+		</jar>
+	</target>
+        
+
+</project>

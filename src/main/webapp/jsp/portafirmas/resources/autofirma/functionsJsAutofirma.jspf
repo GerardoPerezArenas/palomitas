@@ -1,0 +1,94 @@
+<%-- Fragmento para encapsular las funciones de firma del cliente autofirma--%>
+<%-- 
+    Document   : AutoFirma
+    Created on : 22-ago-2017
+--%>
+<%@ taglib uri="/WEB-INF/tlds/c.tld" prefix="c" %>
+
+<script type="text/javascript" src="<c:url value='/scripts/miniapplet.js'/>?v=<c:out value='${applicationScope.appVersion}'/>"></script>
+
+<script type="text/javascript">
+	var URL_AUTOFIRMA = "";
+
+    // Carga el applet de JS de Autofirma
+    function inicializarClienteAutofirma(host) {
+        var deferred = $.Deferred();
+        
+        try {
+            URL_AUTOFIRMA = host + APP_CONTEXT_PATH;
+            MiniApplet.cargarAppAfirma(URL_AUTOFIRMA);
+
+            deferred.resolve();
+        } catch (error) {
+            deferred.reject('<%=descriptor.getDescripcion("ErrCargarAppletAutoFirma")%>');
+        }
+        
+        return deferred.promise();
+    }
+    
+    // Firma de un documento con descarga a memoria del fichero desde url
+    function firmarFicheroClienteAutofirmaDownloadRemote(params){
+        var deferred = $.Deferred();
+        var urlFichero = params.url;
+        var algoritmo = params.algoritmoFirma;
+        var formato = params.formatoFirma;
+
+        try {
+            MiniApplet.downloadRemoteData(
+                    urlFichero,
+                    successDescargarFichero,
+                    errorDescargarFichero);
+        } catch (error) {
+            errorDescargarFichero();
+        }
+        
+        // Callback success de MiniApplet.downloadRemoteData(...)
+        function successDescargarFichero(datosB64) {
+            if (datosB64) {
+                try {
+					MiniApplet.checkTime(MiniApplet.CHECKTIME_RECOMMENDED, 60000, URL_AUTOFIRMA);
+                    MiniApplet.sign(datosB64, algoritmo, formato,
+                        null, successFirma, errorFirma);
+                } catch (error) {
+                    errorFirma();
+                }
+            } else {
+                errorDescargarFichero();
+            }
+        };
+        
+        // Callback error de MiniApplet.downloadRemoteData(...)
+        function errorDescargarFichero() {
+            deferred.reject('<%=descriptor.getDescripcion("ErrDescargarFicheroAFirmar")%>');
+        };
+        
+        // Callback success de MiniApplet.sign(...)
+        function successFirma(signatureB64, certificateB64) {
+            $('input[name="firma"]').val(signatureB64);
+            $('input[name="hashB64"]').val(signatureB64);
+            deferred.resolve(signatureB64);
+        };
+
+        // Callback error de MiniApplet.sign(...)
+        function errorFirma(error) {
+            deferred.reject('<%=descriptor.getDescripcion("msjErrorFirmarDocumento")%>');
+        };
+        
+        return deferred.promise();
+    }
+    
+    // Determina el formato de la encriptacion segun el tipo mime del documento
+    function determinarFormatoAutoFirmaPorMimeType(tipoMime) {
+        var formatoFirma = "";
+        
+        if (tipoMime === "application/pdf") {
+            formatoFirma = "PAdES";
+        } else if (tipoMime === "application/xml" || tipoMime === "text/xml") {
+            formatoFirma = "XAdES";
+        } else {
+            formatoFirma = "CAdES";
+        }
+        
+        return formatoFirma;
+    }
+</script>

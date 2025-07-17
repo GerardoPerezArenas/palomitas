@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.altia.es/sigp/sigpLicense"
+            xmlns="http://www.altia.es/sigp/sigpLicense"
+            elementFormDefault="qualified">
+        
+<xsd:complexType name="License">
+    <xsd:sequence>
+         <xsd:element name="description" type="xsd:string"/>
+         <xsd:element name="signature" type="xsd:string"/>
+    </xsd:sequence>
+</xsd:complexType>
+
+<xsd:complexType name="ModuleLicense" block="extension">
+    <xsd:complexContent>
+        <xsd:extension base="License">
+            <xsd:sequence>
+                <xsd:element name="module-id" type="xsd:short"/>
+                <xsd:element name="expiration-date" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:extension>         
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:complexType name="ParamLicense" block="extension">
+    <xsd:complexContent>
+        <xsd:extension base="License">
+            <xsd:sequence>
+                <xsd:element name="param-id" type="xsd:string"/>                
+            </xsd:sequence>
+        </xsd:extension>         
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:complexType name="MaxUsersLicense" block="extension">
+    <xsd:complexContent>
+        <xsd:extension base="ParamLicense">
+            <xsd:sequence>
+                <xsd:element name="max-users" type="xsd:int"/>                
+            </xsd:sequence>
+        </xsd:extension>         
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:complexType name="Sigp-Licenses">
+    <xsd:sequence>
+		<xsd:element name="sigp-license" type="License" minOccurs="1" maxOccurs="unbounded"/>				        		
+    </xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="sigp-licenses" type="Sigp-Licenses"/>
+
+</xsd:schema>

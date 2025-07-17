@@ -1,0 +1,180 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: Arial,Verdana,Helvetica,sans-serif;
+}
+
+#CuerpoAplicacion h2:not(.panel-title) {
+    color: #77aa38;
+}
+
+/* ESTILOS GENERALES */
+/*#CuerpoAplicacion ul:not(.nav) li {
+    margin-top: 15px;
+}
+
+#CuerpoAplicacion ul li:first-child {
+    margin-top: 0;
+}*/
+.web p,
+.wizard p,
+.web li,
+.wizard li {
+    font-size: 1.3rem;
+    line-height: 200%;
+}
+/* /ESTILOS GENERALES */
+
+/* PESTAÑA FORMACION */
+#formacion-wizard {
+    font-size: 1.4rem !important;
+}
+
+#formacion-wizard .well {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#formacion-wizard .well h2 {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+/* /PESTAÑA FORMACION */
+
+.navbar-toggle:focus, .navbar-toggle:hover {
+    background: #fff !important;
+}
+
+.header.navbar .nav.navbar-nav > li.active > a,
+.header.navbar .nav.navbar-nav > li:hover > a {
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-right-width: 1px;
+    border-right-style: solid;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+.navbar-top .nav.navbar-nav > li.active > a,
+.navbar-top .nav.navbar-nav > li:hover > a,
+.navbar-top .nav.navbar-nav > .open > a {
+    color: #333;
+}
+
+.navbar-bottom .nav.navbar-nav > li:hover > a {
+    border-color: #fff;
+}
+
+.navbar-top .nav.navbar-nav > li:not(.navbar-user) .caret {
+    margin-left: 7px;
+}
+
+/* hover/active del 1 nivel del menu superior */
+.header.navbar .navbar-nav > .open > a,
+.header.navbar .navbar-nav > .active > a,
+.header.navbar .navbar-nav > li > a:focus,
+.header.navbar .navbar-nav > li > a:hover,
+/* /hover/active del 1 nivel del menu superior */
+/* hover/active del 2 nivel del menu superior */
+.header.navbar .navbar-nav > .open > ul > .open > a,
+.header.navbar .navbar-nav > .active > ul > .active > a,
+.header.navbar .navbar-nav > li > ul > li > a:focus,
+.header.navbar .navbar-nav > li > ul > li > a:hover {
+    background: #cdcdcd none repeat scroll 0 0 !important;
+}
+/* /hover/active del 2 nivel del menu superior */
+
+/* hover/active del 3 nivel del menu superior */
+.header.navbar .dropdown-menu > .open > a,
+.header.navbar .dropdown-menu > .active > a,
+.header.navbar .dropdown-menu > li > a:focus,
+.header.navbar .dropdown-menu > li > a:hover {
+    background: #edf0f5 none repeat scroll 0 0 !important;
+}
+/* /hover/active del 3 nivel del menu superior */
+
+/* Verde cabecera, loading */
+.navbar.navbar-inverse .navbar-brand, .sidebar .nav > li.active > a, .sidebar .nav > li.active > a:focus, .sidebar .nav > li.active > a:hover, .page-sidebar-minified .sidebar .nav > li.has-sub.active:focus > a, .page-sidebar-minified .sidebar .nav > li.has-sub.active:hover > a, .page-sidebar-minified .sidebar .nav > li.has-sub.active > a, .label.label-theme, .btn.btn-scroll-to-top,
+.pace-progress {
+    background-color: #02d22f;
+}
+
+.pace .pace-activity,
+.spinner {
+    border-left-color: #02d22f;
+    border-top-color: #02d22f;
+}
+
+.text-theme,
+.sidebar .sub-menu > li.active > a::before {
+    color: #02d22f;
+}
+/* /Verde cabecera, loading */
+
+/* Color de fondo del menu activo/botones */
+.btn.btn-primary,
+.btn.btn-info,
+.btn.btn-danger,
+.btn.btn-success,
+.btn.btn-warning,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary {
+    background-color: #036936 !important;
+}
+/* /Color de fondo del menu activo/botones */
+
+/* Borde de los botones */
+.btn.btn-primary,
+.btn.btn-info,
+.btn.btn-danger,
+.btn.btn-success,
+.btn.btn-warning,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary {
+    border-color: #036936 !important;
+}
+/* Borde de los botones */
+
+/* hover/open */
+.btn.btn-primary:hover,
+.open .dropdown-toggle.btn-primary,
+.btn.btn-info:hover,
+.open .dropdown-toggle.btn-info,
+.btn.btn-danger:hover,
+.open .dropdown-toggle.btn-danger,
+.btn.btn-success:hover,
+.open .dropdown-toggle.btn-success,
+.btn.btn-warning:hover,
+.open .dropdown-toggle.btn-warning,
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary:hover,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary:hover {
+    background-color: #034926 !important;
+    border-color: #034926 !important;
+}
+
+.btn-group .btn.btn-success:not(.active) + .btn.btn-success,
+.input-group-btn .btn.btn-success:not(.active) + .btn.btn-success {
+    border-left-color: #034926 !important;
+}
+/* /hover/open */
+
+/* sidebar-text */
+.page-sidebar-minified .sidebar-text {
+    display: none;
+}
+/* /sidebar-text */
+/*
+#page-container {
+	background: url(../../images/logo_tr.png) no-repeat top 25px right 25px
+}
+*/
+#entrar:hover {
+	color: white;
+	background-color:  #eaaa27;
+}
+#logoFlexiaLogin {
+float: right;
+padding-right: 20px;
+}

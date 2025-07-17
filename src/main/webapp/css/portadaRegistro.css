@@ -1,0 +1,34 @@
+.page    {
+	font-family:Times;
+	font-size:8;
+	background-color:white;
+	size:A4-landscape;
+	padding-left:28mm;
+	padding-bottom:2mm;
+}
+
+.tituloPortada{
+	font-family:Helvetica;
+	font-size:34pt;
+    font-weight:bold;
+    text-align:center;
+	background-color:white;
+    word-spacing: 10mm;
+}
+
+.encabezadoPortada{
+    font-family: Helvetica;
+    font-size: 20pt;
+    text-align:center;
+    background-color:white;
+}
+
+.textoPortada{
+    font-family: Helvetica;
+    font-size: 12pt;
+}
+
+td.textoFirma{
+    font-family: Helvetica;
+    font-size: 10pt;
+}

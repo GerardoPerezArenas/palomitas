@@ -1,0 +1,15 @@
+log4j-1.2.17.jar
+commons-logging-1.0.4.jar
+servlet-api.jar
+axis-1.4.jar
+jaxrpc.jar
+struts.jar
+lib_serialization_telematic_head.jar
+lib_ws_cliente_telematic.jar
+AdaptadoresPlateaLan6-1.5.8
+
+Es necesario además generar un .zip que contenga todas las clases de Flexia, renombrarlo a .jar e añadirlo como librería.
+	
+	
+	
+	

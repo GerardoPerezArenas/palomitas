@@ -1,0 +1,93 @@
+<%@ page import="es.altia.util.configuration.ConfigurationParametersManager"%>
+
+<script type="text/javascript">
+    
+    var mensajeErrorApplet = null;
+    var fechaDocumentoApplet = null;
+    var sizeDocumentoApplet = null;
+    var infoDocumentoApplet = null;
+    
+    var apUtils_IntervaloTimeOut = 1000; // 1sg
+    var apUtils_MaxIntentos = 10;
+    var apUtils_IntentosPorRealizar = apUtils_MaxIntentos;
+    
+    function appletUtilsMostrarError( htmlMsg ) {
+        var theDiv = document.getElementById('mensajeError');
+        if(theDiv){
+            if(htmlMsg){
+                theDiv.innerHTML = htmlMsg;
+                theDiv.style.display = "block";
+            }else{
+                theDiv.style.display = "none";
+            }//if(htmlMsg)
+        } else {
+            alert(htmlMsg);
+        }//if(theDiv)
+        //funGeneralesOcultarCargando();
+    }//appletUtilsMostrarError
+
+    function incrustarAppletUtils() {
+        //try {log.info(".incrustarAppletUtils() Incrustando AppletUtils...");} catch (jsErr1) {}
+        //funGeneralesMostrarCargando();
+        /*
+        var attributes = {codebase:'<%=ConfigurationParametersManager.getParameter("direccionAppletUtilidades")%>',
+                        code:'es.altia.applets.AppletUtilidades.class',
+                        archive:'appletUtilidades.jar',
+                        width:10, height:10,
+                        name:'appletUtils', id:'appletUtils'} ;
+        var parameters = {UserAgent:'<%=request.getHeader("User-Agent")%>',
+                        Locale:'es_ES'} ;
+        var version = '1.6' ;
+        deployJava.runApplet(attributes, parameters, version);
+        */
+    }//incrustarAppletUtils
+    
+    function timeoutAppletUtils() {
+	//funGeneralesMostrarCargando();
+	try {
+            var theAppletUtils = document.appletUtils;
+            if(!theAppletUtils || !theAppletUtils.isAppletAlive()){
+                apUtils_IntentosPorRealizar--;
+                if(apUtils_IntentosPorRealizar > 0){
+                    setTimeout(function() {timeoutAppletUtils();}, apUtils_IntervaloTimeOut);
+                    return;
+                }else{
+                    //try {log.error(".timeoutAppletUtils() Agotados re-intentos para la carga del applet AppletUtils.");} catch (jsErr2) {}
+                    appletUtilsMostrarError(apUtils_COLETILLA_INICIO+" Agotados re-intentos para la carga del applet AppletUtils. "+apUtils_COLETILLA_FIN);
+                    return;
+                }//if(apUtils_IntentosPorRealizar > 0)
+            } else {
+                //try {log.info(".timeoutAppletUtils() AppletUtils cargado.");} catch (jsErr1) {}
+            }//if(!theAppletUtils || !theAppletUtils.isAppletAlive())
+	} catch (err) {
+            try {log.error(".timeoutAppletUtils() Tiempo de espera para la carga del applet AppletUtils - " + err);} catch (jsErr2) {}
+	}//try-catch
+	apUtils_IntentosPorRealizar = apUtils_MaxIntentos;
+        //funGeneralesOcultarCargando();
+	try {
+            appletUtilsInicializado();
+	} catch(err) {
+            //funGeneralesOcultarCargando();
+            //try {log.info(".timeoutAppletUtils() Error ejecutando appletUtilsInicializado(), probablemente porque no esta definido el metodo en la pagina - " + err);} catch (jsErr3) {}
+	}//try-catch
+        //funGeneralesOcultarCargando();
+    }//timeOutAppletUtils
+    
+    setTimeout(function() {incrustarAppletUtils();timeoutAppletUtils();}, apUtils_IntervaloTimeOut);
+    
+    function comprobarAppletUtilsOK(){
+        try {
+            var applet = document.appletUtils;
+            if(applet==null || !applet.isAppletAlive()){
+                mensajeErrorApplet='<sle:i18n  key="error.applet.noCargado"/>';
+                return false;
+            }//if(applet==null || !applet.isAppletAlive())
+        } catch(err) {
+            //try {log.warn(".comprobarAppletUtilsOK() Applet no disponible: " + err);} catch (jsErr3) {}
+            mensajeErrorApplet='<sle:i18n  key="error.applet.errorGrave"/>';
+            return false;
+        }//try-catch
+        return true;
+    }//comprobarAppletUtilsOK
+    
+</script>

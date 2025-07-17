@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://altiasir.es/flexia-interno-soap-ws" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://altiasir.es/flexia-interno-soap-ws" targetNamespace="http://altiasir.es/flexia-interno-soap-ws">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://altiasir.es/flexia-interno-soap-ws">
+
+
+    <!-- BEANS -->
+
+
+    <xs:simpleType name="StringList">
+        <xs:list itemType="xs:string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="TipoRespuesta">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="RECHAZO"/>
+            <xs:enumeration value="CONFIRMACION"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="RespuestaAsiento">
+        <xs:sequence>
+            <xs:element name="codIntercambio" type="xs:string">
+            </xs:element>
+            <xs:element name="codEntidadRegistralProcesa" type="xs:string">
+            </xs:element>
+            <xs:element name="codUnidadTramitadoraDestino" type="xs:string">
+            </xs:element>
+            <xs:element name="descripcionUnidadTramitadoraDestino" type="xs:string">
+            </xs:element>
+            <xs:element name="codEntidadRegistralDestino" type="xs:string">
+            </xs:element>
+            <xs:element name="descripcionEntidadRegistralDestino" type="xs:string">
+            </xs:element>
+            <xs:element name="motivo" type="xs:string"/>
+            <xs:element name="appVersion" type="xs:string"/>
+            <xs:element name="nombreUsuario" type="xs:string">
+            </xs:element>
+            <xs:element name="contactoUsuario" type="xs:string">
+            </xs:element>
+            <xs:element name="tipoRespuesta" type="tns:TipoRespuesta">
+            </xs:element>
+            <xs:element name="feEntradaDestino" type="xs:date">
+            </xs:element>
+            <xs:element name="nuRgEntradaDestino" type="xs:string">
+            </xs:element>
+            <xs:element name="codAsiento" type="xs:int"/>
+
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="Anexo">
+        <xs:sequence>
+            <xs:element name="nombreFichero" type="xs:string">
+            </xs:element>
+            <xs:element name="identificadorFichero" type="xs:string">
+            </xs:element>
+            <xs:element name="validezDocuemento" type="xs:string">
+            </xs:element>
+            <xs:element name="tipoDocumento" type="xs:string">
+            </xs:element>
+            <xs:element name="certificado" type="xs:string"/>
+            <xs:element name="firmaDocumento" type="xs:string">
+            </xs:element>
+            <xs:element name="timeStamp" type="xs:string"/>
+            <xs:element name="validacionOCSPCertificado" type="xs:string">
+            </xs:element>
+            <xs:element name="hash" type="xs:string"/>
+            <xs:element name="tipoMIME" type="xs:string"/>
+            <xs:element name="identificadorDocumentoFirmado" type="xs:string">
+            </xs:element>
+            <xs:element name="observaciones" type="xs:string">
+            </xs:element>
+            <xs:element name="csv" type="xs:string"/>
+            <xs:element name="contenido" type="xs:base64Binary">
+            </xs:element>
+
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:simpleType name="EstadoAsiento">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="PENDIENTE"/>
+            <xs:enumeration value="RECHAZADO"/>
+            <xs:enumeration value="ACEPTADO"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="Domicilio">
+        <xs:sequence>
+            <xs:element name="pais" type="xs:string"/>
+            <xs:element name="provincia" type="xs:string"/>
+            <xs:element name="municipio" type="xs:string"/>
+            <xs:element name="codPostal" type="xs:string"/>
+            <xs:element name="direccion" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="Interesado">
+        <xs:sequence>
+            <xs:element name="tipoDocumentoIdentificacion" type="xs:string">
+            </xs:element>
+            <xs:element name="documentoIdentificacion" type="xs:string"/>
+            <xs:element name="nombreRazonSocial" type="xs:string">
+            </xs:element>
+            <xs:element name="correoElectronico" type="xs:string">
+            </xs:element>
+            <xs:element name="telefono" type="xs:string"/>
+            <xs:element name="direccionElectronicaHabilitada" type="xs:string">
+            </xs:element>
+            <xs:element name="canalPreferenteComunicacion" type="xs:string">
+            </xs:element>
+            <xs:element name="observaciones" type="xs:string">
+            </xs:element>
+            <xs:element name="primerApellido" type="xs:string">
+            </xs:element>
+
+            <xs:element name="segundoApellido" type="xs:string">
+            </xs:element>
+
+            <xs:element name="domicilio" type="tns:Domicilio">
+            </xs:element>
+
+
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Asiento">
+        <xs:sequence>
+            <xs:element name="codEntidadRegistralOrigen" type="xs:string">
+            </xs:element>
+            <xs:element name="descripcionEntidadRegistralOrigen" type="xs:string">
+            </xs:element>
+            <xs:element name="numeroRegistroEntrada" type="xs:string">
+            </xs:element>
+            <xs:element name="timestampEntrada" type="xs:string">
+            </xs:element>
+            <xs:element name="codUnidadTramitadoraOrigen" type="xs:string">
+            </xs:element>
+            <xs:element name="descripcionUnidadTramitadoraOrigen" type="xs:string">
+            </xs:element>
+            <xs:element name="codEntidadRegistralDestino" type="xs:string">
+            </xs:element>
+            <xs:element name="descripcionEntidadRegistralDestino" type="xs:string">
+            </xs:element>
+            <xs:element name="codUnidadTramitadoraDestino" type="xs:string">
+            </xs:element>
+            <xs:element name="descripcionUnidadTramitadoraDestino" type="xs:string">
+            </xs:element>
+            <xs:element name="descripcionAsunto" type="xs:string"/>
+            <xs:element name="codAsunto" type="xs:string"/>
+            <xs:element name="referenciaExterna" type="xs:string">
+            </xs:element>
+            <xs:element name="numExpediente" type="xs:string">
+            </xs:element>
+            <xs:element name="codTipoTransporte" type="xs:string">
+            </xs:element>
+            <xs:element name="numTransporte" type="xs:string">
+            </xs:element>
+            <xs:element name="nombreUsuario" type="xs:string">
+            </xs:element>
+            <xs:element name="contactoUsuario" type="xs:string">
+            </xs:element>
+            <xs:element name="codIntercambio" type="xs:string">
+            </xs:element>
+            <xs:element name="appVersion" type="xs:string"/>
+            <xs:element name="codTipoAnotacion" type="xs:string">
+            </xs:element>
+            <xs:element name="tipoAnotacion" type="xs:string">
+            </xs:element>
+            <xs:element name="codTipoRegistro" type="xs:string">
+            </xs:element>
+            <xs:element name="codDocFisica" type="xs:string">
+            </xs:element>
+            <xs:element name="observaciones" type="xs:string">
+            </xs:element>
+            <xs:element name="codEntidadRegistralInicio" type="xs:string">
+            </xs:element>
+            <xs:element name="descripcionEntidadRegistralInicio" type="xs:string">
+            </xs:element>
+            <xs:element name="expone" type="xs:string"/>
+            <xs:element name="solicita" type="xs:string"/>
+            <xs:element name="estado" type="tns:EstadoAsiento">
+            </xs:element>
+
+
+            <xs:element maxOccurs="unbounded" name="ListInteresado" type="tns:Interesado">
+            </xs:element>
+            <xs:element maxOccurs="unbounded" name="ListAnexo" type="tns:Anexo"/>
+
+            <xs:element name="fechaEntrada" type="xs:date"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Justificante">
+        <xs:sequence>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="numeroRegistro" type="xs:string">
+            </xs:element>
+            <xs:element name="cdIntercambio" type="xs:string">
+            </xs:element>
+            <xs:element name="fechaHoraPresentacion" type="xs:date">
+            </xs:element>
+            <xs:element name="fechaHoraRegistro" type="xs:date">
+            </xs:element>
+            <xs:element name="hash" type="xs:string"/>
+            <xs:element name="cdValidez" type="xs:string"/>
+            <xs:element name="idFichero" type="xs:string"/>
+            <xs:element name="cdTpDoc" type="xs:string"/>
+            <xs:element name="dsCertificado" type="xs:string">
+            </xs:element>
+            <xs:element name="dsFirma" type="xs:string"/>
+            <xs:element name="tsAnexo" type="xs:string"/>
+            <xs:element name="dsValCerficado" type="xs:string">
+            </xs:element>
+            <xs:element name="dsHash" type="xs:string"/>
+            <xs:element name="dsTpMime" type="xs:string"/>
+            <xs:element name="contenido" type="xs:base64Binary">
+            </xs:element>
+            <xs:element name="csv" type="xs:string"/>
+            <xs:element name="isFirmado" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- OPERATIONS -->
+    
+    <xs:element name="reencolarRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cdEnRgProcesa" type="xs:string"/>
+                <xs:element name="codIntercambio" type="tns:StringList"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="reencolarResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="response" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="responderRecibidoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="respuesta" type="tns:RespuestaAsiento"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="responderRecibidoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="anexos" type="tns:Anexo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="consultarAsientoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="codEntidadRegistralProcesa" type="xs:string"/>
+                <xs:element name="codIntercambio" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="consultarAsientoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="asiento" type="tns:Asiento"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="recuperarDocumentoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="codEntidadRegistralProcesa" type="xs:string"/>
+                <xs:element name="codIntercambio" type="xs:string"/>
+                <xs:element name="codCsv" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="recuperarDocumentoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="anexo" type="tns:Anexo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="consultarAsientosRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="codEntidadRegistral" type="xs:string"/>
+                <xs:element name="maxResults" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="consultarAsientosResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="asiento" type="tns:Asiento"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="registrarEnviarRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="asiento" type="tns:Asiento"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="registrarEnviarResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="justificante" type="tns:Justificante"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="reencolarRequest">
+    <wsdl:part element="tns:reencolarRequest" name="reencolarRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="reencolarResponse">
+    <wsdl:part element="tns:reencolarResponse" name="reencolarResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="responderRecibidoResponse">
+    <wsdl:part element="tns:responderRecibidoResponse" name="responderRecibidoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultarAsientoResponse">
+    <wsdl:part element="tns:consultarAsientoResponse" name="consultarAsientoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registrarEnviarRequest">
+    <wsdl:part element="tns:registrarEnviarRequest" name="registrarEnviarRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="responderRecibidoRequest">
+    <wsdl:part element="tns:responderRecibidoRequest" name="responderRecibidoRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="recuperarDocumentoRequest">
+    <wsdl:part element="tns:recuperarDocumentoRequest" name="recuperarDocumentoRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultarAsientosResponse">
+    <wsdl:part element="tns:consultarAsientosResponse" name="consultarAsientosResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultarAsientosRequest">
+    <wsdl:part element="tns:consultarAsientosRequest" name="consultarAsientosRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="recuperarDocumentoResponse">
+    <wsdl:part element="tns:recuperarDocumentoResponse" name="recuperarDocumentoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registrarEnviarResponse">
+    <wsdl:part element="tns:registrarEnviarResponse" name="registrarEnviarResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultarAsientoRequest">
+    <wsdl:part element="tns:consultarAsientoRequest" name="consultarAsientoRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="FlexiaInternoServicePort">
+    <wsdl:operation name="reencolar">
+      <wsdl:input message="tns:reencolarRequest" name="reencolarRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:reencolarResponse" name="reencolarResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="responderRecibido">
+      <wsdl:input message="tns:responderRecibidoRequest" name="responderRecibidoRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:responderRecibidoResponse" name="responderRecibidoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultarAsiento">
+      <wsdl:input message="tns:consultarAsientoRequest" name="consultarAsientoRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:consultarAsientoResponse" name="consultarAsientoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registrarEnviar">
+      <wsdl:input message="tns:registrarEnviarRequest" name="registrarEnviarRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:registrarEnviarResponse" name="registrarEnviarResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="recuperarDocumento">
+      <wsdl:input message="tns:recuperarDocumentoRequest" name="recuperarDocumentoRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:recuperarDocumentoResponse" name="recuperarDocumentoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultarAsientos">
+      <wsdl:input message="tns:consultarAsientosRequest" name="consultarAsientosRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:consultarAsientosResponse" name="consultarAsientosResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FlexiaInternoServicePortSoap11" type="tns:FlexiaInternoServicePort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="reencolar">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="reencolarRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="reencolarResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="responderRecibido">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="responderRecibidoRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="responderRecibidoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultarAsiento">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="consultarAsientoRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="consultarAsientoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registrarEnviar">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="registrarEnviarRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="registrarEnviarResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="recuperarDocumento">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="recuperarDocumentoRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="recuperarDocumentoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultarAsientos">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="consultarAsientosRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="consultarAsientosResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FlexiaInternoServicePortService">
+    <wsdl:port binding="tns:FlexiaInternoServicePortSoap11" name="FlexiaInternoServicePortSoap11">
+      <soap:address location="http://10.56.11.205:8080/FlexiaInternoWS/soapWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

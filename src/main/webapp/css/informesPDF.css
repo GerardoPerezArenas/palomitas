@@ -1,0 +1,143 @@
+.encabezado
+{
+	background-color: #666699;
+	color: White;
+	font-size: 8pt;
+	font-weight:bold;
+	font-family:Helvetica;
+}
+
+.titulo1
+{
+	color: Black;
+	font-size: 8pt;
+	font-weight:bold;
+	text-transform:uppercase;
+	font-family:Helvetica;	
+}
+
+.tituloImpar
+{
+	background-color: White;
+	color: Navy;
+	font-size: 8pt;
+	font-weight:bold;
+	text-transform:uppercase;
+	font-family:Helvetica;
+}
+
+
+.tituloPar
+{
+	background-color: White;
+	color: Black;
+	font-size: 8pt;
+	font-weight:bold;	
+	text-transform:uppercase;
+	font-family:Helvetica;
+}
+
+.tituloU
+{
+	background-color: White;
+	color: Navy;
+	font-size: 8pt;
+	font-weight:normal;
+	text-transform:uppercase;
+	font-family:Helvetica;
+}
+
+.agrupacionA
+{
+	background-color: Black;
+	color: White;
+	font-size: 8pt;
+	font-weight:bold;
+	font-family:Helvetica;
+}
+
+.agrupacion1
+{
+	background-color: #CCCCFF;
+	color: Black;
+	font-size: 8pt;
+	font-weight:bold;	
+	font-family:Helvetica;
+}
+
+.agrupacionImpar
+{
+	background-color: White;
+	color: Navy;
+	font-size: 8pt;
+	font-weight:bold;
+	font-family:Helvetica;
+}
+
+.agrupacionPar
+{
+	background-color: White;
+	color: Black;
+	font-size: 8pt;
+	font-weight:bold;	
+	font-family:Helvetica;
+}
+
+.agrupacionU
+{
+	background-color: White;
+	color: Navy;
+	font-size: 8pt;
+	font-weight:normal;	
+	font-family:Helvetica;
+}
+
+.detalleA
+{
+	background-color: Black;
+	color: White;
+	font-size: 8pt;
+	font-weight:bold;
+	font-family:Helvetica;
+}
+
+.detalle1
+{
+	background-color: #CCCCFF;
+	color: Black;
+	font-size: 8pt;
+	font-weight:bold;	
+	font-family:Helvetica;
+}
+
+.detalleU
+{
+	background-color: White;
+	color: Navy;
+	font-size: 8pt;
+	font-weight:normal;	
+	font-family:Helvetica;
+}
+
+.detallePar
+{
+	background-color: Gray;
+	color: White;
+	font-size: 8pt;
+	font-weight:bold;	
+	font-family:Helvetica;
+}
+
+.detalleImpar
+{
+	background-color: White;
+	color: Navy;
+	font-size: 8pt;
+	font-weight:bold;	
+	font-family:Helvetica;
+}
+
+.pagina{
+	font-size: 8pt;	
+	font-family:Helvetica;
+}

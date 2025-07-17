@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project name="WSExpediente" default="init" basedir=".">
+
+    <!-- Para ejecutar desde proyecto\sge\sge\src\java\es\altia\agora\webservice\tramitacion\servicios\tvg -->
+
+    <!-- ======================   Propiedades comunes   ========================== -->
+    <!-- Tomcat -->
+    <property name="tomcat.home" value="C:\Archivos de programa\Apache Software Foundation\apache-tomcat-5.5.20"/>
+    <property name="tomcat.webapps" value="${tomcat.home}/webapps"/>
+    <property name="tomcat.work" value="${tomcat.home}/work/Catalina/localhost"/>
+    <property name="tomcat.libs" value="${tomcat.home}/common/lib"/>
+
+    <!-- Opciones del entorno de desarrollo  -->
+    <property name="build.compiler" value="modern"/>
+
+    <property name="javac.debug" value="on"/>
+    <property name="javac.optimize" value="off"/>
+    <property name="javac.deprecation" value="on"/>
+    <property name="javac.nowarn" value="on"/>
+    <patternset id="ignored.files">
+        <exclude name="**/SVN/**"/>
+        <exclude name="**/*.bak"/>
+    </patternset>
+
+    <!-- ============================  Properties ============================== -->
+
+    <property name="deploy" value="${tomcat.webapps}\flexia"/>
+    <property name="ext.libs" value="${deploy}\WEB-INF\lib"/>
+    <property name="clases" value="${deploy}/WEB-INF/classes"/>
+
+    <property name="fuentes" value="E:\Proyectos\Proyectos Flexia\LCE_10.04\src\java\es\altia\agora\webservice\tramitacion\servicios\tvg\servicios\tramitacion"/>
+
+    <property name="contexto" value="WSExpediente"/>
+    <property name="baseCliente" value="${tomcat.webapps}\portal_formularios"/>
+    <property name="fuentesCliente" value="E:\Proyectos\portal de Formularios\head\src\java\org"/>
+    <property name="clasesCliente" value="${tomcat.webapps}\portal_formularios\WEB-INF\classes\org"/>
+    <property name="jarCliente" value="E:\Proyectos\LIBRERIAS\Portal_Formularios_Head\swexpediente.jar"/>
+    <property name="libs.catalogo" value="${tomcat.webapps}\portal_formularios\WEB-INF\lib"/>
+
+    <property name="wsdl" value="E:\Proyectos\Proyectos Flexia\LCE_10.04\src\java\es\altia\agora\webservice\tramitacion\servicios\tvg\servicios\expediente\WSExpedienteImpl.wsdl"/>
+    <property name="wsdd" value="E:\Proyectos\Proyectos Flexia\LCE_10.04\src\java\es\altia\agora\webservice\tramitacion\servicios\tvg\servicios\expediente\deploy.wsdd"/>
+
+    <!-- == Classpath ==================================================== -->
+    <path id="classpath">
+        <fileset dir="${ext.libs}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${tomcat.libs}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <!-- ========================== "axis" target =========================== -->
+    <taskdef name="java2wsdl" classname="org.apache.axis.tools.ant.wsdl.Java2WsdlAntTask" classpathref="classpath"/>
+    <taskdef name="wsdl2java" classname="org.apache.axis.tools.ant.wsdl.Wsdl2javaAntTask" classpathref="classpath"/>
+    <taskdef name="wsadmin"   classname="org.apache.axis.tools.ant.axis.AdminClientTask" classpathref="classpath"/>
+
+    <!-- == objetivo "init" ==================================================== -->
+    <target name="init">
+        <echo>
+            --------------------------------------------------------------------------------
+            "Servicio Web Tramitacion" build ...
+            --------------------------------------------------------------------------------
+        </echo>
+    </target>
+
+    <!-- ========= generar el descriptor del servicio web =============== -->
+    <target name="java2wsdl" >
+        <java2wsdl
+            bindingname="WSExpedienteImplSoapBinding"
+            classname="es.altia.agora.webservice.tramitacion.servicios.tvg.servicios.expediente.WSExpedienteImpl"
+            location="http://localhost:8080/flexia/services/WSExpedienteImpl"
+            namespace="http://servicios.tvg"
+            output="${wsdl}"
+            stopclasses="java.*,javax.*,org.apache.axis.AxisFault"
+            style="rpc" typemappingversion="1.1" use="encoded"
+            useinheritedmethods="false" soapaction="DEFAULT">
+            <mapping namespace="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"
+                     package="es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos" />
+            <classpath>
+                <pathelement path="C:\Archivos de programa\Apache Software Foundation\apache-tomcat-5.5.23\webapps\flexia\WEB-INF\classes"/>
+            </classpath>
+        </java2wsdl>
+    </target>
+
+
+    <!-- ==  ========== -->
+    <target name="deployws">
+        <wsadmin  url="http://localhost:8080/flexia/services/AdminService"
+                  xmlfile="${wsdd}"/>
+    </target>
+
+    <!-- ==  ========== -->
+    <target name="cleanCliente" depends="init">
+        <delete dir="${baseCliente}"/>
+    </target>
+
+    <!-- regenerar interfaces -->
+    <target name="wsdl2java">
+        <wsdl2java all="true" debug="false" helperGen="false"
+                   noimports="false"
+                   output="E:\Proyectos\Proyectos Flexia\LCE_10.04\src\java"
+                   serverside="true" testcase="true"
+                   typeMappingVersion="1.1"
+                   url="${wsdl}"
+                   verbose="true" noWrapped="true">
+            <mapping namespace="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"
+                     package="es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos" />
+            <mapping namespace="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es-impl"
+                     package="es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos" />
+            <mapping namespace="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es-intf"
+                     package="es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos" />
+            <mapping namespace="http://servicios.tvg"
+                     package="es.altia.agora.webservice.tramitacion.servicios.tvg.servicios.expediente" />
+        </wsdl2java>
+    </target>
+
+    <!-- == generar los fuentes del cliente para comunicarse con el servicio web ========== -->
+    <target name="wsdl2javaCliente">
+        <mkdir dir="${fuentesCliente}"/>
+        <wsdl2java all="true" debug="false" helperGen="false"
+                   noimports="false"
+                   output="${fuentesCliente}"
+                   serverside="false" testcase="false"
+                   typeMappingVersion="1.1"
+                   url="http://localhost:8080/flexia/services/WSExpedienteImpl?wsdl"
+                   verbose="true" noWrapped="true">
+            <mapping namespace="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"
+                     package="org.sw.expediente.datos" />
+            <mapping namespace="http://datos.bd.tercero.ws.altia.es"
+                     package="org.sw.expediente.datos" />
+            <mapping namespace="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es-impl"
+                     package="org.sw.expediente.datos" />
+            <mapping namespace="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es-intf"
+                     package="org.sw.expediente.datos" />
+            <mapping namespace="http://servicios.tvg"
+                     package="org.sw.expediente.servicios" />
+        </wsdl2java>
+    </target>
+
+    <!-- == objetivo "compileCliente" ============================================ -->
+    <target name="compileCliente" depends="init">
+        <mkdir dir="${clasesCliente}"/>
+        <javac srcdir="${fuentesCliente}"
+               destdir="${clasesCliente}"
+               classpathref="classpath"
+               debug="${javac.debug}"
+               target="1.5"
+               optimize="${javac.optimize}"
+               deprecation="${javac.deprecation}"
+               nowarn="${javac.nowarn}"/>
+    </target>
+
+    <!-- == objetivo "compile" ============================================ -->
+    <target name="compile" depends="init">
+        <mkdir dir="${clases}"/>
+        <javac srcdir="${fuentes}"
+               destdir="${clases}"
+               classpathref="classpath"
+               debug="${javac.debug}"
+               target="1.5"
+               optimize="${javac.optimize}"
+               deprecation="${javac.deprecation}"
+               nowarn="${javac.nowarn}"/>
+    </target>
+
+
+    <!-- == objetivo "jarCliente"============================================ -->
+    <target name="jarCliente" depends="init, compileCliente">
+        <jar destfile="${jarCliente}"
+             basedir="${clasesCliente}"/>
+    </target>
+
+</project>

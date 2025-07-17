@@ -1,0 +1,7 @@
+/* Deshacer el estilo por defecto de bootstrap */
+label {
+	display: inline;
+	max-width: none;
+	margin-bottom: 0;
+	font-weight: normal;
+}

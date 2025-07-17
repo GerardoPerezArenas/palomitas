@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+ <globalConfiguration>
+  <parameter name="sendMultiRefs" value="true"/>
+  <parameter name="disablePrettyXML" value="true"/>
+  <parameter name="adminPassword" value="admin"/>
+  <parameter name="dotNetSoapEncFix" value="true"/>
+  <parameter name="enableNamespacePrefixOptimization" value="true"/>
+  <parameter name="sendXMLDeclaration" value="true"/>
+  <parameter name="sendXsiTypes" value="true"/>
+  <parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <requestFlow>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="session"/>
+   </handler>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="request"/>
+    <parameter name="extension" value=".jwr"/>
+   </handler>
+  </requestFlow>
+ </globalConfiguration>
+ <handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <service name="AdminService" provider="java:MSG">
+  <parameter name="allowedMethods" value="AdminService"/>
+  <parameter name="enableRemoteAdmin" value="false"/>
+  <parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <namespace>http://xml.apache.org/axis/wsdd/</namespace>
+ </service>
+ <service name="Version" provider="java:RPC">
+  <parameter name="allowedMethods" value="getVersion"/>
+  <parameter name="className" value="org.apache.axis.Version"/>
+ </service>
+ <service name="WSTramiteImpl" provider="java:RPC">
+  <operation name="setTramite" qname="ns1:setTramite" returnQName="setTramiteReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://servicios.tvg" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <parameter name="in0" type="ns2:TramiteVO" xmlns:ns2="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"/>
+   <parameter name="in1" type="xsd:string"/>
+  </operation>
+  <operation name="getTramiteExpediente" qname="ns3:getTramiteExpediente" returnQName="getTramiteExpedienteReturn" returnType="ns3:ArrayOf_tns1_CROTramiteVO" soapAction="" xmlns:ns3="http://servicios.tvg">
+   <parameter name="in0" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in1" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="finalizarTramiteResolucion" qname="ns5:finalizarTramiteResolucion" returnQName="finalizarTramiteResolucionReturn" returnType="ns4:SalidaBoolean" soapAction="" xmlns:ns4="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es" xmlns:ns5="http://servicios.tvg">
+   <parameter name="in0" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in1" type="xsd:boolean" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in2" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in3" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in4" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in5" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in6" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in7" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in8" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <operation name="grabarCamposTramite" qname="ns7:grabarCamposTramite" returnQName="grabarCamposTramiteReturn" returnType="ns6:SalidaBoolean" soapAction="" xmlns:ns6="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es" xmlns:ns7="http://servicios.tvg">
+   <parameter name="in0" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in1" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in2" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in3" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in4" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in5" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in6" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in7" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+      <operation name="grabarCampoGenerico" qname="operNS:grabarCampoGenerico" xmlns:operNS="http://servicios.tvg" returnQName="grabarCampoGenericoReturn" returnType="rtns:SalidaBoolean" xmlns:rtns="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es" soapAction="" >
+        <parameter qname="in0" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in2" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in3" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in4" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in5" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in6" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in7" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in8" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      
+  <operation name="finalizarConTramites" qname="ns9:finalizarConTramites" returnQName="finalizarConTramitesReturn" returnType="ns8:SalidaBoolean" soapAction="" xmlns:ns8="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es" xmlns:ns9="http://servicios.tvg">
+   <parameter name="in0" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in1" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in2" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in3" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in4" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in5" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in6" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in7" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <parameter name="allowedMethods" value="getTramiteExpediente finalizarTramiteResolucion grabarCamposTramite finalizarConTramites grabarCampoGenerico setTramite"/>
+  <parameter name="typeMappingVersion" value="1.1"/>
+  <parameter name="wsdlPortType" value="WSTramiteImpl"/>
+  <parameter name="className" value="es.altia.agora.webservice.tramitacion.servicios.tvg.servicios.tramitacion.WSTramitacionImplSoapBindingImpl"/>
+  <parameter name="wsdlServicePort" value="WSTramiteImpl"/>
+  <parameter name="wsdlTargetNamespace" value="http://servicios.tvg"/>
+  <parameter name="wsdlServiceElement" value="WSTramiteImplService"/>
+  <parameter name="schemaUnqualified" value="http://servicios.tvg,http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns10:SalidaBoolean" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos.SalidaBoolean" xmlns:ns10="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns11:CROTramiteVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos.CROTramiteVO" xmlns:ns11="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns12:TramiteVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos.TramiteVO" xmlns:ns12="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"/>
+  <arrayMapping innerType="xsd:string" languageSpecificType="java:java.lang.String[]" qname="ns13:ArrayOf_xsd_string" xmlns:ns13="http://servicios.tvg" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <arrayMapping innerType="ns15:CROTramiteVO" languageSpecificType="java:es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos.CROTramiteVO[]" qname="ns14:ArrayOf_tns1_CROTramiteVO" xmlns:ns14="http://servicios.tvg" xmlns:ns15="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"/>
+ </service>
+ <service name="WSExpedienteImpl" provider="java:RPC">
+  <operation name="setExpediente" qname="ns17:setExpediente" returnQName="setExpedienteReturn" returnType="ns16:SalidaBooleanExpediente" soapAction="" xmlns:ns16="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es" xmlns:ns17="http://servicios.tvg">
+   <parameter name="in0" type="ns16:ExpedienteVO"/>
+   <parameter name="in1" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </operation>
+  <parameter name="allowedMethods" value="setExpediente"/>
+  <parameter name="typeMappingVersion" value="1.1"/>
+  <parameter name="wsdlPortType" value="WSExpedienteImpl"/>
+  <parameter name="className" value="es.altia.agora.webservice.tramitacion.servicios.tvg.servicios.expediente.WSExpedienteImplSoapBindingImpl"/>
+  <parameter name="wsdlServicePort" value="WSExpedienteImpl"/>
+  <parameter name="wsdlTargetNamespace" value="http://servicios.tvg"/>
+  <parameter name="wsdlServiceElement" value="WSExpedienteImplService"/>
+  <parameter name="schemaUnqualified" value="http://servicios.tvg,http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns18:SalidaBooleanExpediente" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos.SalidaBooleanExpediente" xmlns:ns18="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns19:InteresadoVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos.InteresadoVO" xmlns:ns19="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns20:DomicilioVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos.DomicilioVO" xmlns:ns20="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns21:ExpedienteVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos.ExpedienteVO" xmlns:ns21="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns22:TramiteVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:es.altia.agora.webservice.tramitacion.servicios.tvg.bd.datos.TramiteVO" xmlns:ns22="http://datos.bd.tvg.servicios.tramitacion.webservice.agora.altia.es"/>
+  <arrayMapping innerType="xsd:string" languageSpecificType="java:java.lang.String[]" qname="ns23:ArrayOf_xsd_string" xmlns:ns23="http://servicios.tvg" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+ </service>
+ <service name="WSTramitacionFlexiaImpl" provider="java:RPC">
+  <operation name="finalizarTramiteOperacion" qname="ns25:finalizarTramiteOperacion" returnQName="finalizarTramiteOperacionReturn" returnType="ns24:SalidaBoolean" soapAction="" xmlns:ns24="http://datos.bd.tramitacion.flexiaWS.altia.es" xmlns:ns2="http://servicios.flexia">
+   <parameter name="in0" type="ns24:ExpedienteVO"/>
+   <parameter name="in1" type="ns24:TramiteVO"/>
+   <parameter name="in2" type="ns24:CondicionFinalizacionVO"/>
+   <parameter name="in3" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <parameter name="in4" type="ns24:InfoConexionVO"/>
+  </operation>
+  <operation name="iniciarExpedienteOperacion" qname="ns27:iniciarExpedienteOperacion" returnQName="iniciarExpedienteOperacionReturn" returnType="ns26:RespuestasTramitacionVO" soapAction="" xmlns:ns26="http://datos.bd.tramitacion.flexiaWS.altia.es" xmlns:ns27="http://servicios.flexia">
+   <parameter name="in0" type="ns26:ExpedienteVO"/>
+   <parameter name="in1" type="ns26:InfoConexionVO"/>
+  </operation>
+  <parameter name="allowedMethods" value="iniciarExpedienteOperacion finalizarTramiteOperacion"/>
+  <parameter name="typeMappingVersion" value="1.1"/>
+  <parameter name="wsdlPortType" value="WSTramitacionFlexiaImpl"/>
+  <parameter name="className" value="es.altia.flexiaWS.tramitacion.WSTramitacionFlexiaImplSoapBindingImpl"/>
+  <parameter name="wsdlServicePort" value="WSTramitacionFlexiaImpl"/>
+  <parameter name="wsdlTargetNamespace" value="http://servicios.flexia"/>
+  <parameter name="wsdlServiceElement" value="WSTramitacionFlexiaImplService"/>
+  <parameter name="schemaUnqualified" value="http://datos.bd.tramitacion.flexiaWS.altia.es,http://servicios.flexia"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns28:ExpedienteVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:es.altia.flexiaWS.tramitacion.bd.datos.ExpedienteVO" xmlns:ns28="http://datos.bd.tramitacion.flexiaWS.altia.es"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns29:CondicionFinalizacionVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:es.altia.flexiaWS.tramitacion.bd.datos.CondicionFinalizacionVO" xmlns:ns29="http://datos.bd.tramitacion.flexiaWS.altia.es"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns30:RespuestasTramitacionVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:es.altia.flexiaWS.tramitacion.bd.datos.RespuestasTramitacionVO" xmlns:ns30="http://datos.bd.tramitacion.flexiaWS.altia.es"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns31:InteresadoVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:es.altia.flexiaWS.tramitacion.bd.datos.InteresadoVO" xmlns:ns31="http://datos.bd.tramitacion.flexiaWS.altia.es"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns32:InfoConexionVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:es.altia.flexiaWS.tramitacion.bd.datos.InfoConexionVO" xmlns:ns32="http://datos.bd.tramitacion.flexiaWS.altia.es"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns33:SalidaBoolean" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:es.altia.flexiaWS.tramitacion.bd.datos.SalidaBoolean" xmlns:ns33="http://datos.bd.tramitacion.flexiaWS.altia.es"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns34:DomicilioVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:es.altia.flexiaWS.tramitacion.bd.datos.DomicilioVO" xmlns:ns34="http://datos.bd.tramitacion.flexiaWS.altia.es"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns35:FlujoFinalizacionVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:es.altia.flexiaWS.tramitacion.bd.datos.FlujoFinalizacionVO" xmlns:ns35="http://datos.bd.tramitacion.flexiaWS.altia.es"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" qname="ns36:TramiteVO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:es.altia.flexiaWS.tramitacion.bd.datos.TramiteVO" xmlns:ns36="http://datos.bd.tramitacion.flexiaWS.altia.es"/>
+  <arrayMapping innerType="ns38:InteresadoVO" languageSpecificType="java:es.altia.flexiaWS.tramitacion.bd.datos.InteresadoVO[]" qname="ns37:ArrayOf_tns1_InteresadoVO" xmlns:ns37="http://servicios.flexia" xmlns:ns38="http://datos.bd.tramitacion.flexiaWS.altia.es"/>
+  <arrayMapping innerType="ns40:TramiteVO" languageSpecificType="java:es.altia.flexiaWS.tramitacion.bd.datos.TramiteVO[]" qname="ns39:ArrayOf_tns1_TramiteVO" xmlns:ns39="http://servicios.flexia" xmlns:ns40="http://datos.bd.tramitacion.flexiaWS.altia.es"/>
+ </service>
+ <service name="WSDocumentosFlexiaImpl" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="http://servicios.flexia"/>
+      <parameter name="wsdlServiceElement" value="WSDocumentosFlexiaImplService"/>
+      <parameter name="schemaUnqualified" value="http://datos.bd.documentos.flexiaWS.altia.es"/>
+      <parameter name="wsdlServicePort" value="WSDocumentosFlexiaImpl"/>
+      <parameter name="className" value="es.altia.flexiaWS.documentos.WSDocumentosFlexiaImplSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="WSDocumentosFlexiaImpl"/>
+      <parameter name="typeMappingVersion" value="1.1"/>
+      <operation name="getDocumentoByCSV" qname="operNS:getDocumentoByCSV" xmlns:operNS="http://servicios.flexia" returnQName="getDocumentoByCSVReturn" returnType="rtns:SalidaFicheroDocumento" xmlns:rtns="http://datos.bd.documentos.flexiaWS.altia.es" soapAction="" >
+        <parameter qname="in0" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in1" type="tns:InfoConexionVO" xmlns:tns="http://datos.bd.documentos.flexiaWS.altia.es"/>
+      </operation>
+      <operation name="setDocumentoRegistro" qname="operNS:setDocumentoRegistro" xmlns:operNS="http://servicios.flexia" returnQName="setDocumentoRegistroReturn" returnType="rtns:EstadoOperacionVO" xmlns:rtns="http://datos.bd.documentos.flexiaWS.altia.es" soapAction="" >
+        <parameter qname="in0" type="tns:DocumentoRegistroVO" xmlns:tns="http://datos.bd.documentos.flexiaWS.altia.es"/>
+        <parameter qname="in1" type="tns:InfoConexionVO" xmlns:tns="http://datos.bd.documentos.flexiaWS.altia.es"/>
+      </operation>
+      <operation name="getJustificanteRegistro" qname="operNS:getJustificanteRegistro" xmlns:operNS="http://servicios.flexia" returnQName="getJustificanteRegistroReturn" returnType="rtns:SalidaJustificante" xmlns:rtns="http://datos.bd.documentos.flexiaWS.altia.es" soapAction="" >
+        <parameter qname="in0" type="tns:AnotacionVO" xmlns:tns="http://datos.bd.documentos.flexiaWS.altia.es"/>
+        <parameter qname="in1" type="tns:InfoConexionVO" xmlns:tns="http://datos.bd.documentos.flexiaWS.altia.es"/>
+      </operation>
+      <operation name="getCodigoCSV" qname="operNS:getCodigoCSV" xmlns:operNS="http://servicios.flexia" returnQName="getCodigoCSVReturn" returnType="rtns:SalidaCodigoCSV" xmlns:rtns="http://datos.bd.documentos.flexiaWS.altia.es" soapAction="" >
+        <parameter qname="in0" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="in1" type="tns:InfoConexionVO" xmlns:tns="http://datos.bd.documentos.flexiaWS.altia.es"/>
+      </operation>
+      <parameter name="allowedMethods" value="getDocumentoByCSV getCodigoCSV getJustificanteRegistro setDocumentoRegistro"/>
+
+      <typeMapping
+        xmlns:ns="http://datos.bd.documentos.flexiaWS.altia.es"
+        qname="ns:SalidaCodigoCSV"
+        type="java:es.altia.flexiaWS.documentos.bd.datos.SalidaCodigoCSV"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.documentos.flexiaWS.altia.es"
+        qname="ns:InfoConexionVO"
+        type="java:es.altia.flexiaWS.documentos.bd.datos.InfoConexionVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.documentos.flexiaWS.altia.es"
+        qname="ns:DocumentoRegistroVO"
+        type="java:es.altia.flexiaWS.documentos.bd.datos.DocumentoRegistroVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.documentos.flexiaWS.altia.es"
+        qname="ns:FicheroDocumentoVO"
+        type="java:es.altia.flexiaWS.documentos.bd.datos.FicheroDocumentoVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.documentos.flexiaWS.altia.es"
+        qname="ns:SalidaFicheroDocumento"
+        type="java:es.altia.flexiaWS.documentos.bd.datos.SalidaFicheroDocumento"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.documentos.flexiaWS.altia.es"
+        qname="ns:EstadoOperacionVO"
+        type="java:es.altia.flexiaWS.documentos.bd.datos.EstadoOperacionVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.documentos.flexiaWS.altia.es"
+        qname="ns:SalidaJustificante"
+        type="java:es.altia.flexiaWS.documentos.bd.datos.SalidaJustificante"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <typeMapping
+        xmlns:ns="http://datos.bd.documentos.flexiaWS.altia.es"
+        qname="ns:AnotacionVO"
+        type="java:es.altia.flexiaWS.documentos.bd.datos.AnotacionVO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+  </service>
+ <transport name="http">
+  <requestFlow>
+   <handler type="URLMapper"/>
+   <handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </requestFlow>
+  <parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </transport>
+ <transport name="local">
+  <responseFlow>
+   <handler type="LocalResponder"/>
+  </responseFlow>
+ </transport>
+</deployment>

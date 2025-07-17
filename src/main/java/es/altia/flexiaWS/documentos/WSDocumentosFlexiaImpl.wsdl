@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://servicios.flexia" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://servicios.flexia" xmlns:intf="http://servicios.flexia" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://datos.bd.documentos.flexiaWS.altia.es" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema targetNamespace="http://datos.bd.documentos.flexiaWS.altia.es" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="InfoConexionVO">
+    <sequence>
+     <element name="aplicacion" nillable="true" type="xsd:string"/>
+     <element name="organizacion" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="FicheroDocumentoVO">
+    <sequence>
+     <element name="nombreDoc" nillable="true" type="xsd:string"/>
+     <element name="tipomime" nillable="true" type="xsd:string"/>
+     <element name="bytes" nillable="true" type="xsd:base64Binary"/>
+    </sequence>
+   </complexType>
+   <complexType name="SalidaFicheroDocumento">
+    <sequence>
+     <element name="codigoError" nillable="true" type="xsd:int"/>
+     <element name="incidencias" nillable="true" type="xsd:string"/>
+     <element name="resultado" nillable="true" type="tns1:FicheroDocumentoVO"/>
+    </sequence>
+   </complexType>
+   <complexType name="DocumentoRegistroVO">
+    <sequence>
+     <element name="codDepartamento" nillable="true" type="xsd:string"/>
+     <element name="codUor" nillable="true" type="xsd:string"/>
+     <element name="ejercicio" nillable="true" type="xsd:string"/>
+     <element name="fechaDocumento" nillable="true" type="xsd:dateTime"/>
+     <element name="fichero" nillable="true" type="xsd:string"/>
+     <element name="nombreDocumento" nillable="true" type="xsd:string"/>
+     <element name="numeroAnotacion" nillable="true" type="xsd:string"/>
+     <element name="tipoEntrada" nillable="true" type="xsd:string"/>
+     <element name="tipoMime" nillable="true" type="xsd:string"/>
+     <element name="extension" nillable="true" type="xsd:string"/>
+     <element name="codigoSeguroVerificacion" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="EstadoOperacionVO">
+    <sequence>
+     <element name="codigoError" nillable="true" type="xsd:int"/>
+     <element name="incidencias" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="AnotacionVO">
+    <sequence>
+     <element name="departamento" nillable="true" type="xsd:int"/>
+     <element name="ejercicio" nillable="true" type="xsd:int"/>
+     <element name="numero" nillable="true" type="xsd:long"/>
+     <element name="tipo" nillable="true" type="xsd:string"/>
+     <element name="unidadRegistro" nillable="true" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="SalidaJustificante">
+    <sequence>
+     <element name="codigoError" nillable="true" type="xsd:int"/>
+     <element name="fichero" nillable="true" type="xsd:base64Binary"/>
+     <element name="incidencias" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="SalidaCodigoCSV">
+    <sequence>
+     <element name="estado" nillable="true" type="tns1:EstadoOperacionVO"/>
+     <element name="csv" nillable="true" type="xsd:string"/>
+     <element name="token" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="setDocumentoRegistroResponse">
+
+      <wsdl:part name="setDocumentoRegistroReturn" type="tns1:EstadoOperacionVO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="setDocumentoRegistroRequest">
+
+      <wsdl:part name="in0" type="tns1:DocumentoRegistroVO"/>
+
+      <wsdl:part name="in1" type="tns1:InfoConexionVO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getJustificanteRegistroRequest">
+
+      <wsdl:part name="in0" type="tns1:AnotacionVO"/>
+
+      <wsdl:part name="in1" type="tns1:InfoConexionVO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getJustificanteRegistroResponse">
+
+      <wsdl:part name="getJustificanteRegistroReturn" type="tns1:SalidaJustificante"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCodigoCSVResponse">
+
+      <wsdl:part name="getCodigoCSVReturn" type="tns1:SalidaCodigoCSV"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDocumentoByCSVResponse">
+
+      <wsdl:part name="getDocumentoByCSVReturn" type="tns1:SalidaFicheroDocumento"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCodigoCSVRequest">
+
+      <wsdl:part name="in0" type="xsd:string"/>
+
+      <wsdl:part name="in1" type="tns1:InfoConexionVO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDocumentoByCSVRequest">
+
+      <wsdl:part name="in0" type="xsd:string"/>
+
+      <wsdl:part name="in1" type="tns1:InfoConexionVO"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="WSDocumentosFlexiaImpl">
+
+      <wsdl:operation name="getDocumentoByCSV" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:getDocumentoByCSVRequest" name="getDocumentoByCSVRequest"/>
+
+         <wsdl:output message="impl:getDocumentoByCSVResponse" name="getDocumentoByCSVResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setDocumentoRegistro" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:setDocumentoRegistroRequest" name="setDocumentoRegistroRequest"/>
+
+         <wsdl:output message="impl:setDocumentoRegistroResponse" name="setDocumentoRegistroResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getJustificanteRegistro" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:getJustificanteRegistroRequest" name="getJustificanteRegistroRequest"/>
+
+         <wsdl:output message="impl:getJustificanteRegistroResponse" name="getJustificanteRegistroResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCodigoCSV" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:getCodigoCSVRequest" name="getCodigoCSVRequest"/>
+
+         <wsdl:output message="impl:getCodigoCSVResponse" name="getCodigoCSVResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="WSDocumentosFlexiaImplSoapBinding" type="impl:WSDocumentosFlexiaImpl">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getDocumentoByCSV">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getDocumentoByCSVRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.flexia" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getDocumentoByCSVResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.flexia" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setDocumentoRegistro">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="setDocumentoRegistroRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.flexia" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setDocumentoRegistroResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.flexia" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getJustificanteRegistro">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getJustificanteRegistroRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.flexia" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getJustificanteRegistroResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.flexia" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCodigoCSV">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCodigoCSVRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.flexia" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCodigoCSVResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://servicios.flexia" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="WSDocumentosFlexiaImplService">
+
+      <wsdl:port binding="impl:WSDocumentosFlexiaImplSoapBinding" name="WSDocumentosFlexiaImpl">
+
+         <wsdlsoap:address location="http://localhost:8090/Flexia18.03_Lanbide/services/WSDocumentosFlexiaImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

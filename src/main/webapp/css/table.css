@@ -1,0 +1,189 @@
+.JSTTable {
+    color: white;
+    font-size: 10pt;
+    padding: 0px 0px 0px 0px;
+    spacing: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+.JSTHeader {
+    text-align: center;
+    background-color: #4B95D3;
+    font-weight: normal;
+    color: white;
+    font-size: 11px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.JSTFooter {
+    text-align: center;
+    color: white;
+    background-color: #4B95D3;
+    font-weight: normal;
+    font-size: 8pt;
+}
+.JSTColumnHeader, .JSTColumnHeader a {
+    background-color: #6FA6D3;
+    color: white;
+    font-weight: normal;
+    text-decoration: none;
+}
+.JSTColumnHeader {
+    color: white; 
+}
+.JSTColumnHeader a:hover {
+    color: white; 
+    font-size: 11px;
+}
+.JSTColumnHeader, .JSTColumnHeader a:active {
+    color: white !important;
+}
+.JSTColumnHeader, .JSTColumnHeader a:visited {
+    color: white !important; 
+}
+.JSTSelectionControl {
+}
+.JSTEditControl {
+    border: 1px solid #929292;
+    color: black;
+    background-color: transparent;
+}
+.JSTEditControlRadioCheckbox {
+    border: none;
+}
+.JSTInvalidEditControl {
+    border: 1px solid #929292;
+    color: red;
+    background-color: transparent;
+}
+.JSTOddRow {
+    background-color: white;
+    color: black;
+    font-size : 9px;
+    font-weight : normal;
+}
+.JSTEvenRow {
+    background-color: white;
+    color: black;
+    font-size : 9px;
+    font-weight : normal;
+}
+
+.JSTObsRow {
+    color: black;
+    background-color: #FFFFCC;    
+    font-size : 9px;
+    font-weight : normal;
+}
+
+.JSTHighlited {
+    background-color: #D669D1;
+    color: #70046B;
+    font-size : 9px;    
+}
+.JSTHeader TD {
+    text-align: center;
+    background-color: #DCDCCC;
+    font-weight: bold;
+    color: white;
+    font-size: 11pt;
+    border-bottom: 1px solid #CCCCCC;
+    border-right:#CCCCCC 1px solid;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.JSTOddRow TD {
+    background-color: white;
+    border-bottom: #CCCCCC 1px solid;
+    border-right: #CCCCCC 1px solid;
+    font-family : Verdana, Arial, Helvetica, sans-serif;
+    font-size : 9px;
+    font-weight : normal;
+}
+.JSTEvenRow TD{
+    background-color: white;
+    border-bottom:#CCCCCC 1px solid;
+    border-right:#CCCCCC 1px solid;
+    font-size : 9px;
+    font-weight : normal;
+}
+.JSTObsRow TD {
+    background-color: #FFFFCC;
+    border-bottom:#CCCCCC 1px solid;
+    border-right:#CCCCCC 1px solid;
+    font-size : 9px;
+    font-weight : normal;
+}
+
+.JSTHighlited TD {
+    background-color: #E6E6E6;
+    border-bottom:#CCCCCC 1px solid;
+    border-right:#CCCCCC 1px solid;
+    font-size : 9px;
+    font-weight : normal;
+}
+.JSTNavigation {
+    text-align: center;
+    color: black;
+    background-color: #DCDCCC;    
+    font-size: 9px;
+    font-weight: normal;
+}
+.JSTLink  {
+    color: black;
+    text-decoration: none;
+}
+.JSTLink:hover {
+    color: gold;
+}
+
+.JSTLink:visited {
+    color: black;
+}
+
+/* Estilos para expedientes pendientes */
+   .pendienteOtraUnidad td {
+    background-color: white;
+    color: #1766A7;
+    font-size : 9px;
+    font-weight : normal;
+    border-left: #CCCCCC 1px solid;
+    border-bottom: #CCCCCC 1px solid;
+    border-right: #CCCCCC 1px solid;
+}
+.fueraDePlazo td {
+    color:#9d151f;
+    background-color: white;
+    font-size : 9px;
+    font-weight : normal;
+    border-left: #CCCCCC 1px solid;
+    border-bottom: #CCCCCC 1px solid;
+    border-right: #CCCCCC 1px solid;
+}
+.plazoCercaDeFin td {
+    color:#FF9C13;
+    font-size : 9px;
+    font-weight : normal;
+    border-left: #CCCCCC 1px solid;
+    border-bottom: #CCCCCC 1px solid;
+    border-right: #CCCCCC 1px solid;
+}
+.pendienteEstaUnidad td {
+    font-size : 9px;
+    background-color: white;
+    color: #000000;
+    border-left: #CCCCCC 1px solid;
+    border-bottom: #CCCCCC 1px solid;
+    border-right: #CCCCCC 1px solid;
+}
+.pendienteOtraUnidad td+td {
+    border-left: 0;
+}    
+.fueraDePlazo td+td {
+    border-left: 0;
+}
+.plazoCercaDeFin td+td {
+    border-left: 0;
+}
+.pendienteEstaUnidad td+td {
+    border-left: 0;
+}

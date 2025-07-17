@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+
+<project name="Generar-Clientes-SW-Registro" default="generarClientePist" basedir="./..">
+
+
+    <property name="sge.sources" value="C:\PROYECTOS\DESARROLLO-JORGE\sge\sge\src\java"/>
+    <property name="axis.lib" value="C:\LIBRERIAS\axis 1.4\axis-1_4\lib\"/>
+    <property name="sw.pist.url" value="http://localhost:82/WSPist/services/WSPistImpl?wsdl"/>
+    <property name="sw.pisa.url" value="http://net.sicalwin.com:9080/services/Pisa?wsdl"/>
+
+    <path id="axis.classpath">
+        <fileset dir="${axis.lib}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+
+    <!-- ========================== "axis" target =========================== -->
+    <taskdef resource="axis-tasks.properties" classpathref="axis.classpath"/>
+
+    <target name="generarClientePist">
+        <axis-wsdl2java  all="false" debug="false" helperGen="false"
+                   noimports="false"
+                   output="${sge.sources}"
+                   serverside="false" testcase="false"
+                   typeMappingVersion="1.1"
+                   url="${sw.pist.url}"
+                   verbose="true" noWrapped="true">
+            <mapping namespace="http://service.pist.ws.altia.es"
+                     package="es.altia.agora.webservice.registro.pist.cliente.servicio"/>
+            <mapping namespace="http://data.pist.ws.altia.es"
+                     package="es.altia.agora.webservice.registro.pist.cliente.datos"/>
+        </axis-wsdl2java>
+    </target>
+
+    <!-- ========================== "axis" target =========================== -->
+    <target name="generarClientePisa">
+        <axis-wsdl2java  all="false" debug="false" helperGen="false"
+                   noimports="false"
+                   output="${sge.sources}"
+                   serverside="false" testcase="false"
+                   typeMappingVersion="1.1"
+                   url="${sw.pisa.url}"
+                   verbose="true" noWrapped="true">
+            <mapping namespace="http://negocio.util.aytos"
+                     package="es.altia.agora.webservice.registro.pisa.cliente.datos"/>
+            <mapping namespace="http://registro.sw.aytos"
+                     package="es.altia.agora.webservice.registro.pisa.cliente.datos"/>
+            <mapping namespace="http://81.47.195.58:9080/services/Pisa"
+                     package="es.altia.agora.webservice.registro.pisa.cliente.servicio"/>            
+        </axis-wsdl2java>
+    </target>
+
+
+
+</project>

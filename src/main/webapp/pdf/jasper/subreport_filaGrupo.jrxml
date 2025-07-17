@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subreport_filaGrupo" pageWidth="700" pageHeight="802" columnWidth="700" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\MilaNP\\proyectos\\LCE_13_01_alarmas_Nuevo\\src\\web\\pdf\\jasper\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="descElemento" class="java.lang.String"/>
+	<field name="listaUsuarios" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<field name="numFilaGrupo" class="java.lang.Number"/>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement mode="Opaque" x="0" y="3" width="290" height="25" isPrintWhenDetailOverflows="true" backcolor="#E2FCFC"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{descElemento}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement mode="Opaque" x="290" y="3" width="410" height="25" backcolor="#E2FCFC"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$F{listaUsuarios}]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "subreport_filaUsuario.jasper"]]></subreportExpression>
+			</subreport>
+			<rectangle>
+				<reportElement x="0" y="0" width="700" height="2" backcolor="#000000"/>
+			</rectangle>
+		</band>
+	</detail>
+</jasperReport>

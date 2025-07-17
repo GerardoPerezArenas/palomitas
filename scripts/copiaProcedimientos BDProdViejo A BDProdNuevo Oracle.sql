@@ -1,0 +1,42 @@
+imp sge_pruebas/sge_pruebas@SGE ignore=y file=sge_pru_udc.dmp tables=(a_plt)
+imp sge_pruebas/sge_pruebas@SGE ignore=y file=sge_pru_udc.dmp tables=(e_des)
+imp sge_pruebas/sge_pruebas@SGE ignore=y file=sge_pru_udc.dmp tables=(e_des_val)
+imp sge_pruebas/sge_pruebas@SGE ignore=y file=sge_pru_udc.dmp tables=(e_dop)
+imp sge_pruebas/sge_pruebas@SGE ignore=y file=sge_pru_udc.dmp tables=(e_dot)
+imp sge_pruebas/sge_pruebas@SGE ignore=y file=sge_pru_udc.dmp tables=(e_dpml)
+imp sge_pruebas/sge_pruebas@SGE ignore=y file=sge_pru_udc.dmp tables=(e_enp)
+imp sge_pruebas/sge_pruebas@SGE ignore=y file=sge_pru_udc.dmp tables=(e_ent)
+imp sge_pruebas/sge_pruebas@SGE ignore=y file=sge_pru_udc.dmp tables=(e_fls)
+imp sge_pruebas/sge_pruebas@SGE ignore=y file=sge_pru_udc.dmp tables=(e_pca)
+imp sge_pruebas/sge_pruebas@SGE ignore=y file=sge_pru_udc.dmp tables=(e_pro)
+imp sge_pruebas/sge_pruebas@SGE ignore=y file=sge_pru_udc.dmp tables=(e_pml)
+imp sge_pruebas/sge_pruebas@SGE ignore=y file=sge_pru_udc.dmp tables=(e_pui)
+imp sge_pruebas/sge_pruebas@SGE ignore=y file=sge_pru_udc.dmp tables=(e_rol)
+imp sge_pruebas/sge_pruebas@SGE ignore=y file=sge_pru_udc.dmp tables=(e_sal)
+imp sge_pruebas/sge_pruebas@SGE ignore=y file=sge_pru_udc.dmp tables=(e_sml)
+imp sge_pruebas/sge_pruebas@SGE ignore=y file=sge_pru_udc.dmp tables=(e_tca)
+imp sge_pruebas/sge_pruebas@SGE ignore=y file=sge_pru_udc.dmp tables=(e_ten)
+imp sge_pruebas/sge_pruebas@SGE ignore=y file=sge_pru_udc.dmp tables=(e_tml)
+imp sge_pruebas/sge_pruebas@SGE ignore=y file=sge_pru_udc.dmp tables=(e_tra)
+
+
+-- Borrar el procedimiento OTRI1:
+
+delete from e_tra where tra_pro='OTRI1';
+delete from e_tml where tml_pro='OTRI1';
+delete from e_ten where ten_pro='OTRI1';
+delete from e_tca where tca_pro='OTRI1';
+delete from e_sml where sml_pro='OTRI1';
+delete from e_sal where sal_pro='OTRI1';
+delete from e_rol where rol_pro='OTRI1';
+delete from e_pui where pui_pro='OTRI1';
+delete from e_pml where pml_cod='OTRI1';
+delete from e_pro where pro_cod='OTRI1';
+delete from e_pca where pca_pro='OTRI1';
+delete from e_fls where fls_pro='OTRI1';
+delete from e_ent where ent_pro='OTRI1';
+delete from e_enp where enp_pro='OTRI1';
+delete from e_dpml where dpml_pro='OTRI1';
+delete from e_dot where dot_pro='OTRI1';
+delete from e_dop where dop_pro='OTRI1';
+delete from a_plt where plt_pro='OTRI1';

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/C:/Proyectos/SVN/Flexia18_01_Lanbide/src/conf/flexiaInterno_SIR.wsdl" uri="wsdl/flexiaInterno_SIR.wsdl"/>
+</catalog>

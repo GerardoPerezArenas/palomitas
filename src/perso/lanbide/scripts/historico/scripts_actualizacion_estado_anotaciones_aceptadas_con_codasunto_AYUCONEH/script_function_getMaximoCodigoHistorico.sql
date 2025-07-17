@@ -1,0 +1,11 @@
+create or replace
+FUNCTION getMaximoCodigoHistorico
+    RETURN INT
+  IS
+    SALIDA INT;
+  BEGIN
+
+	SELECT SEQ_R_HISTORICO.NEXTVAL INTO SALIDA FROM DUAL;
+	RETURN SALIDA;
+
+  END;

@@ -1,0 +1,88 @@
+[33m0b0ec84[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m)[m Ignoro los .war en target/
+[33m15fdb48[m Elimino el .war del repo (no se puede subir por LFS)
+[33m9c2f707[m Subo carpeta src (código fuente)
+[33m7a85e4b[m Subo archivo .war con Git LFS
+[33m90cd0a4[m[33m ([m[1;31morigin/develop[m[33m)[m Merge branch 'feature/840586_comprobacion_expediente_interesado' into develop
+[33m76af46a[m[33m ([m[1;31morigin/feature/840586_comprobacion_expediente_interesado[m[33m)[m issueId #840586
+[33mc7fc1d4[m IssueID #767024: Migración Flexia BATERA - [34511] - Planes de pruebas -- Se actualizan librerías
+[33m217b3b6[m IssueID #791173: CAS - REGEXLAN - [36172] - Contador con número de días que faltan para que caduque la contraseña - Cambios para mostrar sólo enlace a cambio de contraseña si faltan más de 15 días. - Quitamos el estilo  "text-transform:capitalize" de estilo.css , aparece en un par de clases, y de las jsp en la que el estilo forma parte del atributl style de alguno elementos.
+[33ma498576[m IssueID #814539: Adaptadores2.2.0 - [#37196] - Configuracion a BBDD - Adaptacion nueva version en Llamadas desde Regexlan - Core WS y plugins - Se modifica el pom.xml con las nuevas librerías necesarias.
+[33md1040cd[m IssueID #754283: Lanbide - [33715] - Acceso a interfaz de registro desde aplicación externa a Flexia - Se modifica la inclusión del script general.js en las jsp para forzar al navegador a cargar el recurso al acceder a la página y no obtener el cacheado
+[33me79712e[m IssueID #755916: Registro - [33821] - Mantenimiento asuntos - Ajustes baja asuntos - Se elimina la inserción de un movimiento en el histórico de movimientos de cada registro en que aparece el asunto que se da de baja. - Insertar este movimiento tenía sentido cuando se elimina el asunto porque también se eliminaba en el registro pero desde que no se elimina y sólo se da de baja en el registro no cambia nada. Ha dejado de tener sentido y relentiza mucho el cambio.
+[33m7e1d261[m Merge branch 'feature/754283' into develop
+[33me954403[m Merge branch 'feature/814539' into develop
+[33mc1b8a5b[m IssueID #814539: Adaptadores2.2.0 - [#37196] - Configuracion a BBDD - Adaptacion nueva version en Llamadas desde Regexlan - Core WS y plugins - Se suben al Nexus de Altia dos librerías que se habían instalado en local (MELANBIDE_DOKUSI-1.6.0 y adaptadoresPlateaLan6-2.2.0) y se actualizan las dependencias en el pom.xml para que así todo el equipo pueda construir el proyecto sin problemas.
+[33m77ee59a[m IssueID #754283: Lanbide - [33715] - Acceso a interfaz de registro desde aplicación externa a Flexia - Se modifican las referenicas as servlet equivocado que hay en comentarios para referenciar al servlet  correcto
+[33m5b47a8e[m IssueID #754283: Lanbide - [33715] - Acceso a interfaz de registro desde aplicación externa a Flexia - Se hace una modificación en uno de los archivos subidos.
+[33m50f0e46[m IssueID #754283: Lanbide - [33715] - Acceso a interfaz de registro desde aplicación externa a Flexia - Estaban falseados unos atributos para que validase el usuario en CAS en el entorno local en el que no hay CAS activado. - En DESA, PRE y PRO sí hay CAS por lo que se quitan los atributos falseados, para obtener los correctos al autenticarse en CAS.
+[33md62a766[m IssueID #754283: Lanbide - [33715] - Acceso a interfaz de registro desde aplicación externa a Flexia - Subimos el nuevo servlet y las jsp de resultado, tanto de éxito como de error, la activación del servlet en el web.xml y otras modificaciones necesarias
+[33m925aba0[m IssueID #819754: Terceros - Flexia - [37460] - Nuevo campo de tercero número de soporte - Se añade el script de creación de la vista solicitada en la nota 7 al fichero que recopila todos los scripts necesarios.
+[33m9cdacc4[m IssueID #814539 Adaptadores2.2.0 - [#37196] - Configuracion a BBDD - Adaptacion nueva version en Llamadas desde Regexlan :  Modificaciones core flexia18: Properties incluye correccion en rama de longitud nombre al enviar al SIR.
+[33madb262c[m Merge branch 'develop' into feature/814539
+[33mf3e0010[m IssueID #831403: CAS - REGEXLAN - [38069] - Evitar acceso de usuarios dados de baja - Se añaden sobrecargas a los métodos buscaUsuario(), de UsuarioManager, y loadUsuario(), de UsuarioDAO, de forma  que según un parámetro boolean se añada al where de la query la condición de que el usuario no esté dado de baja. - Luego se añade a la llamada a estos métodos en CasLogonAction y AccesoExternoTramitacionServlet el valor true en el nuevo parámetro de forma que se comprueba si el usuario está dado de baja para considerarlo válido al logarse en CAS. Al añadir la sobrecarga el resto de métodos que llamen a estos métodos deberían funcionar igual.
+[33me41252f[m IssueID #825578: RGI  - [37779] - Llamada a retroceso RGI retroceder() - Añadir parámetro de usuario tramitador - Se añade la posiblidad de poder configurar un parámetro de una operación de integración con otro valor que no sea ni un valor constante ni un valor tomado de un campo del expediente: en principio se necesita que este valor sea el login del usuario conectado con lo que se adapta el código para identificar que hay un parámetro que necesita este dato y poder recuperar su valor cuando se ejecute la operación WS de integración para la que se define dicho parámetro.
+[33m377a12b[m IssueID #814539 Adaptadores2.2.0 - [#37196] - Configuracion a BBDD - Adaptacion nueva version en Llamadas desde Regexlan :  Modificaciones core flexia18
+[33m0f35056[m IssueID #820719: [MRG] [develop] Regexlan - [37206] - Activación de CAS en DESA - Tras el anterior commit en develop el código quedó con errores porque se quedaron cambios necesarios sin trasladar a la rama. - Lo corrijo.
+[33m016e362[m IssueID #820719: [MRG] [develop] Regexlan - [37206] - Activación de CAS en DESA - Se sube a develop el código para activar CAS y correcciones al respecto posteriores que hay en master.
+[33m31fd3c9[m IssueID #817576: REGEXLAN - [37345] - Nueva vista V_REGISTRO_INFO - Se añade el script de creación de la vista al fichero indicado.
+[33m1b62614[m Merge branch 'feature/816428' into develop
+[33mb142805[m Merge branch 'feature/807202' into develop
+[33md3fd5de[m IssueID #816428 actualización repo con PRO
+[33m5be10b8[m IssueID ##807202: WSTramitacion - [36907] - finalizaTramiteConOperacion - Grabar en registro de operaciones del expediente - Devolver error si no hay avance - Quitamos en cada sobrecarga de getListaCondicionesEntrada() el bloque dónde se añade como condición de entrada del trámite que cualquier otra ocurrencia del mismo inciada debe estar finalizada.
+[33me275f2c[m Merge branch 'feature/807202' into develop
+[33m6d76e4f[m IssueID #807202: WSTramitacion - [36907] - finalizaTramiteConOperacion - Grabar en registro de operaciones del expediente - Devolver error si no hay avance - Estaba fallando la impresión CEPAP porque no se estaba comprobando nulidad de una propiedad que en caso era nula. Se añade dicha comprobación.
+[33m1c16d70[m IssueID #770127: DPR - [34654] - Implantación procedimiento - Se añade la comprobación de nulidad de la lista de notificaciones electrónicas de los interesados (si admiten o no) antes de acceder a sus elementos para evitar el NullPointer que provocaba que el expediente se crease pero no se asociase al que lo inició.
+[33m2af1cdb[m IssueID #565075: Flexia Lanbide - [22249] - Uso de Maven y Nexus - Cambios en el pom.xml para corregir los problemas al construir y desplegar del equipo de Vitoria. - Cambio el nombre del jndi de esquema genérico en web.xml para coindir con el equipo de Vitoria.
+[33m53f8716[m Merge branch 'feature/807202' into develop
+[33m76a17b6[m IssueID #807202: WSTramitacion - [36907] - finalizaTramiteConOperacion - Grabar en registro de operaciones del expediente - Devolver error si no hay avance - Si no se cumplen condiciones de entrada de algún trámite al avanzar, pero se están iniciando otros, no se inserta el movimiento de inicialización de estos trámites. Se corrige.
+[33m45f15f0[m IssueID #778874: Notificación - [35299] - REGEXLAN - Ocultar campo "Caducidad notificación" - Se oculta la fila correspondiente a la caducidad de la contraseña en la jsp de detalle de la notificación.
+[33m345ad58[m IssueID #778166: [MRG] [develop] Registro - [33821] - Mantenimiento asuntos - Ajustes baja asuntos - Se cambia la etiqueta del botón [Alta] por [Nuevo] y se da más ancho a la columna de 'Estado'
+[33m34eb266[m Merge branch 'feature/720076' into develop
+[33ma19a974[m Merge branch 'feature/719114' into develop
+[33me1dcdd7[m IssueID #791877: Registro - [36217] - Quitar obligatoriedad campos marco "Origen" para entradas tipo 2 - Se cambian los elementos del marco origen de usar la clase css 'inputTextoObligatorio' a usar 'inputTexto'. - Se quitan estos elementos del array de elementos a tener en cuenta cuando se pulsa [Alta] y se ejecuta la función 'noObligatorioToObligatorioConsulta()', para que no marque estos campos como obligatorios. - Se elimina la comprobación de que estos campos no puedan estar vacíos al grabar una anotación.
+[33me31ba47[m IssueID #807202: WSTramitacion - [36907] - finalizaTramiteConOperacion - Grabar en registro de operaciones del expediente - Devolver error si no hay avance - Se corrige para que no indique "Finalización correcta" y sin embargo no ha avanzado por no tener el usuario permisos sobre el trámite. - Por otro lado, se añaden las inserciones de las operaciones de finalización e inicialización de trámite  (esta última si procede) en el histórico de operaciones del expediente.
+[33m6f7b3c7[m Merge branch 'feature/674685' into develop
+[33ma4fd70c[m IssueID #793875: Lanbide - [28991] - Acceso a ficha de expediente desde aplicación externa a Flexia - Fase I - Problemas al compara el usuario de CAS con nuestra base de datos por mayúsculas/minúsculas. Se comprueba de las dos formas.
+[33md2ad1fc[m IssueID #793875: Lanbide - [28991] - Acceso a ficha de expediente desde aplicación externa a Flexia - Fase I - Se añaden/modifican trazas de log
+[33m36f928b[m IssueID #565075: Flexia Lanbide - [22249] - Uso de Maven y Nexus - Eliminamos la dependencia wseeclient-10.3 duplicada con distintos groupId.
+[33m3cf5007[m IssueID #565075: Flexia Lanbide - [22249] - Uso de Maven y Nexus - Cambios en el pom.xml para que el proyecto construya en los perfiles DESA  y PREPRO
+[33mfc2257e[m IssueID #800263: Registro - [36458] - Ocultar botón "Duplicar" - Incluimos el atributo style con el valor display:none en el botón [Duplicar] para registros de entrada y de salida.
+[33mb28f599[m Merge branch 'feature/692194' into develop
+[33mea8e950[m IssueID #793875: Lanbide - [28991] - Acceso a ficha de expediente desde aplicación externa a Flexia - Fase I - Probando esta tarea vemos activo el botón CSV que en Lanbide no tiene sentido, lo desactivamos
+[33mbd67a93[m Merge branch 'feature/674685' into develop
+[33mdd0e5c6[m IssueID #793875: Lanbide - [28991] - Acceso a ficha de expediente desde aplicación externa a Flexia - Fase I - La propiedad de aplicación permitida no es necesaria por lo que se elimina del properties
+[33m7602a47[m IssueID #793875: Lanbide - [28991] - Acceso a ficha de expediente desde aplicación externa a Flexia - Fase I - Se suben las modificaciones necesarias para subsanar la fase I del desarrollo
+[33m59dac00[m IssueID #794710 Registro - [36353] - SIR - Envios Salidas - Error al enviar salida al SIR: Correccion para que no corte el nombre del documentos antes de la consulta del OID.
+[33m77f4a8b[m IssueID #720076: Se muestra el reloj de espera cuando se da de baja un usuario
+[33m576a8ac[m IssueID #720076: Se corrige el error cuando se borra un usuario fisicamente
+[33m9e996d7[m IssueID #720076: Se refresca la pantalla al dar de baja usuario
+[33m879a03d[m IssueID #720076: Se optimiza para mostrar usuarios dados de baja
+[33md7d71de[m IssueID #720076: Listo para probar en DESA
+[33m356ce3b[m IssueID #674685: Lanbide - [28991] - Acceso a ficha de expediente desde aplicación externa a Flexia - Commit inicial
+[33ma484c7f[m IssueID #720076: Parte de usuarios de Administrador local y general casi lista: Sólo falta afinar las traducciones
+[33m7af24e8[m IssueID #720076: Parte de usuarios de Administrador local lista
+[33m071364b[m IssueID #562282 Gestión de expedientes - REGEXLAN - [22059] - Liberar entrada asociada a un expediente que se finaliza / anula de forma no convencional
+[33mb60e7f8[m Merge branch 'feature/718430' into develop
+[33m0d4517a[m IssueID #718430: Plantillas REGEXLAN - [31619] - Añadir filtro de plantillas activas - Se sube la modificación al jsp personalizado de Lanbide
+[33meba3468[m Merge branch 'feature/754288' into develop
+[33m76ef557[m IssueID #754288: Lanbide - [33720] - Acceso a interfaz de catalogación de documentos de registro - Al quitar el parámetro de aplicación de la request y para evitar fallos en las pruebas en local se indicó a fuego en el código la url de login de CAS como url de redirección. - Recuperamos el cambio anterior en este punto: se recupera de una propiedad según el entorno.
+[33m5164a76[m issueId #718430 Plantillas REGEXLAN - [31619] - Añadir filtro de plantillas activas: Se corrige el error que no permitía modificar ficheros de plantillas
+[33m9ab8e91[m IssueID #754288: Lanbide - [33720] - Acceso a interfaz de catalogación de documentos de registro - Quitamos el parámetro 'aplicacion' de la request
+[33m5b5b807[m Merge branch 'feature/754656' into develop
+[33mc39898c[m IssueID ##755916: Registro - [33821] - Mantenimiento asuntos - Ajustes baja asuntos - Se suben archivos eliminados por error en un commit anterior.
+[33m6bc38f2[m Actualizado mantenimientoAsuntos.jsp
+[33mfa603a7[m Registro 33821 - Mantenimiento asuntos - Ajustes baja asuntos
+[33ma83892b[m IssueID #623829: [LANBIDE] - Uso de Jenkins - Quitamos del repo de flexiaLanbide los cambios de la revisión r14214 correspondientes a la tarea 357825: [Sanse] No se pueden dar de alta unidades de tramitación en la definición de un trámite
+[33mfdd083a[m IssueID #754288: Lanbide - [33720] - Acceso a interfaz de catalogación de documentos de registro - Añadimos trazas de log
+[33mb86435e[m IssueID #754288: Lanbide - [33720] - Acceso a interfaz de catalogación de documentos de registro - Indicamos la url de login de cas a la que redirigir por properties. - Indicamos el título correcto en la jsp de catalogación externa. - Cambios en el servlet y en la jsp de redirección para enviar en la url de login un parámetro de url de callback haciendo que la redirección sea correcta.
+[33m7b3ea21[m IssueID #754288: Lanbide - [33720] - Acceso a interfaz de catalogación de documentos de registro - Corrección de NullPointer si n o hay documentos.
+[33ma070371[m IssueID #754288: Lanbide - [33720] - Acceso a interfaz de catalogación de documentos de registro - Cambios importantes para activar el servlet en el web.xml que se quedaron sin subir en el commit anterior. -  Otros ajustes necesarios: redirección a la página de login de CAS si no hay sesión iniciada en el mismo.
+[33mcbee8fe[m IssueID #754288: Lanbide - [33720] - Acceso a interfaz de catalogación de documentos de registro - Se añade el servlet, la jsp de error y la jsp de éxito y se hacen cambios necesarios en otros ficheros.
+[33mcec9c1b[m Merge branch 'feature/681353' into develop
+[33mf209be3[m Merge branch 'feature/754656' into develop
+[33m9042762[m IssueID #754656: Registro - [33737] - Bandeja entradas rechazadas y Pendientes finalizar - Ajustes - Corrección de un error detectado al desplegar en PRO
+[33mc88651c[m IssueID #718241 Tarea: #681353 Registro - REGEXLAN - [29543] - Intercambio registral - Correccion Posicion campos tipo remitente, tipo  y numero de transporte.
+[33m95bc34d[m IssueID #718241 Tarea: #681353 Registro - REGEXLAN - [29543] - Intercambio registral - Correccion Tipo Registro en justificante, Recuperar contenido de dokusi si llaman desde WS
+[33mc51abae[m IssueID #754656: Registro - [33737] - Bandeja entradas rechazadas y Pendientes finalizar - Cambio de encoding
+[33m66a4c5d[m Merge branch 'feature/754656' into develop
+[33m6218457[m IssueID #754656: Registro - [33737] - Bandeja entradas rechazadas y Pendientes finalizar - Se incluye el cambio dinámico del título de la capa mostrada según el option seleccionado (entradas pendientes fin/entradas rechazadas)
