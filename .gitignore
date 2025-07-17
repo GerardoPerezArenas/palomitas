@@ -1,4 +1,24 @@
+# Build
 /target/
-/nb-configuration.xml
+
+# IDEs
 /.idea/
-/src/main/java/es/altia/flexiaWS/documentos/cliente/
+*.iml
+*.ipr
+*.iws
+
+# NetBeans
+/nb-configuration.xml
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Logs y archivos temporales
+*.log
+*.tmp
+
+# Repositorio Maven local
+.m2/
+
+
