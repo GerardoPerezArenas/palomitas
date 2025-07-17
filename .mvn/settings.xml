@@ -1,28 +1,33 @@
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
-                              https://maven.apache.org/xsd/settings-1.0.0.xsd">
+          https://maven.apache.org/xsd/settings-1.0.0.xsd">
 
   <mirrors>
     <mirror>
-      <id>um-central</id>
-      <name>Universidad de Murcia Maven Central Mirror</name>
-      <url>https://maven.rediris.es/maven/</url>
+      <id>uk.maven.org</id>
+      <name>UK Maven Mirror</name>
+      <url>https://uk.maven.org/maven2</url>
       <mirrorOf>central</mirrorOf>
     </mirror>
   </mirrors>
 
   <profiles>
     <profile>
-      <id>legacy-java6</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <properties>
-        <maven.compiler.source>1.6</maven.compiler.source>
-        <maven.compiler.target>1.6</maven.compiler.target>
-      </properties>
+      <id>default</id>
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>https://uk.maven.org/maven2</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+      </repositories>
     </profile>
   </profiles>
 
+  <activeProfiles>
+    <activeProfile>default</activeProfile>
+  </activeProfiles>
 </settings>
+
