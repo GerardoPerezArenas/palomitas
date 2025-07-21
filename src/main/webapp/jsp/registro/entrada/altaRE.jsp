@@ -174,7 +174,7 @@ String statusBar = m_Config.getString("JSP.StatusBar");
 Calendar calendar = Calendar.getInstance();
 String ejercicioActual = java.lang.Integer.toString(calendar.get(Calendar.YEAR));
 
-// Se comprueba si hay bloqueo de fecha y hora en caso de hacer una respuesta  para una anotación de salida
+// Se comprueba si hay bloqueo de fecha y hora en caso de hacer una respuesta  para una anotaciÃ³n de salida
 String bloqueo = mantARForm.getBloquearFechaHoraPresentacion();
 
 Integer oficinasPermiso = (Integer) session.getAttribute("numPermisosOficinaRegistro");
@@ -293,7 +293,7 @@ for (int j = 0; j < listaUORDTOs.size(); j++) {
 %>
 // array con los objetos tipo uor mapeados por el array de arriba
     uors[<%=j%>] = new Uor<%=dto.toJavascriptArgs()%>;
-    // array con los códigos visibles
+    // array con los cÃ³digos visibles
     uorcods[<%=j%>] = '<%=dto.getUor_cod_vis()%>';
     uorcodsinternos[<%=j%>] = '<%=dto.getUor_cod()%>';
     uordescs[<%=j%>] = "<str:escape><%=dto.getUor_nom()%></str:escape>";
@@ -584,7 +584,7 @@ function mostrarDestino() {
         document.forms[0].desc_uniRegDestinoORD
     ];
 
-    <%-- 1 · Sólo aplica a ENTRADAS (E / Relacion_E) --%>
+    <%-- 1 Â· SÃ³lo aplica a ENTRADAS (E / Relacion_E) --%>
     <% if ("E".equals(tipoAnotacion) || "Relacion_E".equals(tipoAnotacion)) { %>
     var tipoEntrada = document.forms[0].cbTipoEntrada.value;
     if (document.getElementById("anoEjercicio")) {
@@ -597,13 +597,13 @@ function mostrarDestino() {
             // Solo establecer por defecto cuando el usuario no ha introducido
             // un ejercicio explicito.
             campoAno.value = ejercicioActual;
-            console.log('[mostrarDestino] DESPUÉS. ano=', document.forms[0].ano.value,
+            console.log('[mostrarDestino] DESPUÃ‰S. ano=', document.forms[0].ano.value,
                 ' numero=', document.forms[0].numero.value);
         }
     }
     /* ---------------------------------------------------------------- */
 
-    /* ====== 2 · Dispatcher principal según tipoEntrada =============== */
+    /* ====== 2 Â· Dispatcher principal segÃºn tipoEntrada =============== */
     if (tipoEntrada === '') {                /* --- SIN tipo entrada --- */
         console.log("[mostrarDestino] Caso: SIN tipo entrada");
         borrarDestinoOrdinaria();
@@ -642,13 +642,13 @@ function mostrarDestino() {
         console.log("[mostrarDestino] Caso: DESTINO OTRO REGISTRO");
 
         /* ????????????????????????????????????????????????????????????????
-           1· Guardamos la selección actual para que no se pierda
+           1Â· Guardamos la selecciÃ³n actual para que no se pierda
         ????????????????????????????????????????????????????????????????? */
         const _anoSel    = document.forms[0].ano    ? document.forms[0].ano.value    : "";
         const _numSel    = document.forms[0].numero ? document.forms[0].numero.value : "";
 
         /* ????????????????????????????????????????????????????????????????
-           2· Rutinas que limpian campos (mantengo la condición original)
+           2Â· Rutinas que limpian campos (mantengo la condiciÃ³n original)
         ????????????????????????????????????????????????????????????????? */
         if (!borrarCampos || borrarCampos !== "0") {
             borrarDestinoOrdinaria();
@@ -657,7 +657,7 @@ function mostrarDestino() {
         }
 
         /* ????????????????????????????????????????????????????????????????
-           3· Restauramos ano / numero si se han vaciado durante el borrado
+           3Â· Restauramos ano / numero si se han vaciado durante el borrado
         ????????????????????????????????????????????????????????????????? */
         if (document.forms[0].ano    && document.forms[0].ano.value    === "") {
             document.forms[0].ano.value = _anoSel;
@@ -667,7 +667,7 @@ function mostrarDestino() {
         }
 
         /* ????????????????????????????????????????????????????????????????
-           4· La lógica original continúa sin cambios
+           4Â· La lÃ³gica original continÃºa sin cambios
         ????????????????????????????????????????????????????????????????? */
         if ($("#TEOtroReg").length) $("#TEOtroReg").show();
 
@@ -728,7 +728,8 @@ function mostrarDestino() {
     <%-- fin bloque ENTRADAS --%>
 
     <% } else { %>
-    /* ====== 3 · Caso para anotaciones de SALIDA ====== */
+    mostrarFiltrosProcOtraAdmin();
+    /* ====== 3 Â· Caso para anotaciones de SALIDA ====== */
     console.log("[mostrarDestino] Caso: ELSE (no E ni Relacion_E)");
     if ($("#capaOrigen").length) $("#capaOrigen").hide();
     if (top.menu.modificando == 'S') normalAobligatorio(elementos);
@@ -1072,7 +1073,7 @@ function recuperaDatos(datos,datosTercero,listaTemas,lista_CODtiposDocumentos, l
             document.forms[0].desc_procedimiento.value=datos[59];
             document.forms[0].mun_procedimiento.value=datos[64];
 
-            if(datos[68]=="true"){ /**  Si el asunto de la anotación está dado de baja **/
+            if(datos[68]=="true"){ /**  Si el asunto de la anotaciÃ³n estÃ¡ dado de baja **/
                 habilitarDivMsgAsuntoBaja(true);
                         var mensaje = '<%=descriptor.getDescripcion("etiqErrorAsuntoRegBaja1")%>' + " " + datos[65] + " " + '<%=descriptor.getDescripcion("etiqErrorAsuntoRegBaja2")%>' + " " + datos[69];		
                         document.getElementById("divAsuntoBaja").innerHTML= mensaje;
@@ -1103,7 +1104,7 @@ function recuperaDatos(datos,datosTercero,listaTemas,lista_CODtiposDocumentos, l
             if (top.menu.modificando == 'N') deshabilitarTipoDocYRemitente();
             deshabilitarTipoDocTerceroYDoc(); 
             
-            // #270948: Se abre el componente de digitalización si así se indica
+            // #270948: Se abre el componente de digitalizaciÃ³n si asÃ­ se indica
             var altaConDigitalizacion = document.getElementById("digitalizarConAltaPrevia").value;
             if(altaConDigitalizacion != null && altaConDigitalizacion != undefined && altaConDigitalizacion != ""){
                 document.getElementById("digitalizarConAltaPrevia").value = "";
@@ -1232,7 +1233,7 @@ function pulsarModificar(idPestana) {
         changeNotifs = false;
         mod=0;
         activarFormulario();        
-        //NO SE PUEDE MODIFICAR LA FECHA DE GRABACIÓN
+        //NO SE PUEDE MODIFICAR LA FECHA DE GRABACIÃ“N
          var vectorFecDoc = [document.forms[0].fechaDocumento];
          deshabilitarGeneral(vectorFecDoc);
          
@@ -1333,7 +1334,7 @@ function confirmarModificacion() {
         document.forms[0].opcion.value="grabarModificacionesConfirmada";
         // TEMAS
         var l = new Array();
-        for (i=0; i < lista.length; i++) l[i]=lista[i][0]+'§¥'; // Solo códigos
+        for (i=0; i < lista.length; i++) l[i]=lista[i][0]+'Â§Â¥'; // Solo cÃ³digos
         document.forms[0].listaTemas.value=l;
         document.forms[0].target="oculto";
         document.forms[0].action="<html:rewrite page='/MantAnotacionRegistro.do'/>";
@@ -1349,7 +1350,7 @@ function confirmarModificacion2() {
         document.forms[0].opcion.value="grabarModificacionesConfirmada2";
         // TEMAS
         var l = new Array();
-        for (i=0; i < lista.length; i++) l[i]=lista[i][0]+'§¥'; // Solo códigos
+        for (i=0; i < lista.length; i++) l[i]=lista[i][0]+'Â§Â¥'; // Solo cÃ³digos
         document.forms[0].listaTemas.value=l;
         document.forms[0].target="oculto";
         document.forms[0].action="<html:rewrite page='/MantAnotacionRegistro.do'/>";
@@ -1367,7 +1368,7 @@ function confirmarModificacionFechaAnteriorPosterior(mnsj) {
         document.forms[0].opcion.value="grabarModificacionesConfirmada";
         // TEMAS
         var l = new Array();
-        for (i=0; i < lista.length; i++) l[i]=lista[i][0]+'§¥'; // Solo códigos
+        for (i=0; i < lista.length; i++) l[i]=lista[i][0]+'Â§Â¥'; // Solo cÃ³digos
         document.forms[0].listaTemas.value=l;
         document.forms[0].target="oculto";
         document.forms[0].action="<html:rewrite page='/MantAnotacionRegistro.do'/>";
@@ -1439,13 +1440,13 @@ function anotacionRecuperada(mnsj) {
                 if ((comprobarFecha(document.forms[0].fechaAnotacion,mensajeFechaNoValida)) && (comprobarFecha(document.forms[0].fechaDocumento,mensajeFechaNoValida))) {
                     if (comparaFecha()) {
                         var l = new Array();
-                        for (i=0; i < lista.length; i++) l[i]=lista[i][0]+'§¥'; // Solo códigos
+                        for (i=0; i < lista.length; i++) l[i]=lista[i][0]+'Â§Â¥'; // Solo cÃ³digos
                         document.forms[0].listaTemas.value=l;
                         document.forms[0].opcion.value="grabarModificaciones";
                         document.forms[0].target="oculto";
                         document.forms[0].action="<html:rewrite page='/MantAnotacionRegistro.do'/>";
                         // Hay que habilitar los campos tipo doc y tipo remitente
-                        // aunque esten vacíos o no se copian al form.
+                        // aunque esten vacÃ­os o no se copian al form.
                         habilitarTipoDocYRemitente();
                         // Datos SIR
                         if($('[name="codigoUnidadDestinoSIRHidden"]') != undefined){
@@ -1493,7 +1494,7 @@ function anotacionRecuperada(mnsj) {
                 if ((comprobarFecha(document.forms[0].fechaAnotacion,mensajeFechaNoValida)) && 
                     (comprobarFecha(document.forms[0].fechaDocumento,mensajeFechaNoValida))){
                     var l = new Array();
-                    for (i=0; i < lista.length; i++) l[i]=lista[i][0]+'§¥'; // Solo códigos
+                    for (i=0; i < lista.length; i++) l[i]=lista[i][0]+'Â§Â¥'; // Solo cÃ³digos
                     <c:choose>
                         <c:when test="${requestScope.mostrarCuneus == 'true'}">
                             pulsarImprimirCuneus('si');
@@ -1524,7 +1525,7 @@ function duplicar(){
     document.forms[0].action="<html:rewrite page='/MantAnotacionRegistro.do'/>";
     
     // Hay que habilitar los campos tipo doc y tipo remitente
-    // aunque esten vacíos o no se copian al form.
+    // aunque esten vacÃ­os o no se copian al form.
     habilitarTipoDocYRemitente();
     document.forms[0].submit();
     desactivarFormulario();
@@ -1619,7 +1620,7 @@ function pulsarRegistrarDuplicar() {
         if ((comprobarFecha(document.forms[0].fechaAnotacion,mensajeFechaNoValida)) && (comprobarFecha(document.forms[0].fechaDocumento,mensajeFechaNoValida))) {
             if (comparaFecha()) {
                 var l = new Array();
-                for (i=0; i < lista.length; i++) l[i]=lista[i][0]+'§¥'; // Solo códigos
+                for (i=0; i < lista.length; i++) l[i]=lista[i][0]+'Â§Â¥'; // Solo cÃ³digos
                 modificando('N');
                 mostrarDestino();
                 document.forms[0].listaTemas.value=l;
@@ -1899,9 +1900,9 @@ function cargarSoloListas() {
 
 
 
-// Función para inicializar el combo de estados SIR
+// FunciÃ³n para inicializar el combo de estados SIR
 function inicializarEstadosSIR() {
-    // Mapa código ? descripción (todas las descripciones vienen de descriptor.getDescripcion)
+    // Mapa cÃ³digo ? descripciÃ³n (todas las descripciones vienen de descriptor.getDescripcion)
     const ESTADOS_SIR = {
         '':  '',
         '0': '<%=descriptor.getDescripcion("etiq_sir_pendienteEnvio")%>',
@@ -1922,11 +1923,11 @@ function inicializarEstadosSIR() {
         '15':'<%=descriptor.getDescripcion("etiq_sir_reintentarValidacion")%>'
 };
 
-// Extraemos arrays de códigos y descripciones
+// Extraemos arrays de cÃ³digos y descripciones
 const codigos       = Object.keys(ESTADOS_SIR);
 const descripciones = codigos.map(c => ESTADOS_SIR[c]);
 
-// Pinta el combo (suponiendo que comboEstadoSIR está definido y tiene addItems)
+// Pinta el combo (suponiendo que comboEstadoSIR estÃ¡ definido y tiene addItems)
 if (typeof comboEstadoSIR !== 'undefined' && comboEstadoSIR.addItems) {
     comboEstadoSIR.addItems(codigos, descripciones);
 }
@@ -2203,7 +2204,7 @@ function pulsarRegistrarAlta() {
                     // TEMAS
                     var l = new Array();
                     for (i=0; i < lista.length; i++)
-                        l[i]=lista[i][0]+'§¥'; // Solo códigos
+                        l[i]=lista[i][0]+'Â§Â¥'; // Solo cÃ³digos
                     document.forms[0].listaTemas.value=l;
                     document.forms[0].target="oculto";
                     if (document.forms[0].opcionAltaDesdeConsulta.value=="SI")
@@ -2445,7 +2446,7 @@ function tratarTerceroDevuelto(tercero){
              }
 
         
-         /* Fin Pestaña formularios */
+         /* Fin PestaÃ±a formularios */
 
 function recuperaBusquedaTerceros(Terceros) {
     this.pulsarBuscarTerceros = pulsarBuscarTercerosImpl;
@@ -2602,21 +2603,21 @@ function cambiaFoco() {
               document.forms[0].fechaDoc.value=''; // Fecha documento (3.10)
               document.forms[0].cod_actuacion.value=''; // Actuacion.
               document.forms[0].txtNomeActuacion.value='';
-              // Pestaña 2.
+              // PestaÃ±a 2.
               document.forms[0].cbTipoDoc.value=''; // Tipo documento.
               document.forms[0].descTipoDoc.value='';
               document.forms[0].txtDNI.value=''; // Documento.
               document.forms[0].txtInteresado.value=''; // Razon Social.
               document.forms[0].txtApell1.value=''; // Apellidos.
               document.forms[0].txtApell2.value='';
-              document.forms[0].txtPart.value=''; // Partículas.
+              document.forms[0].txtPart.value=''; // PartÃ­culas.
               document.forms[0].txtPart2.value='';
               document.forms[0].txtTelefono.value=''; // Telefono.
               document.forms[0].txtCorreo.value=''; // Email.
               document.forms[0].txtPais.value=''; // Pais.
               document.forms[0].txtProv.value=''; // Provincia.
               document.forms[0].txtMuni.value=''; // Municipio.
-              document.forms[0].txtDomicilio.value=''; // Nombre vía.
+              document.forms[0].txtDomicilio.value=''; // Nombre vÃ­a.
               document.forms[0].txtPoblacion.value='';
               document.forms[0].txtCP.value=''; // Codigo.
               document.forms[0].codRolTercero.value='';
@@ -2634,7 +2635,7 @@ function cambiaFoco() {
                   document.forms[0].cod_estadoAnotacion.value='';
                   document.forms[0].desc_estadoAnotacion.value='';
               }
-              //Pestaña 5
+              //PestaÃ±a 5
               document.forms[0].observaciones.value = '';
           }
 
@@ -2726,7 +2727,7 @@ function cambiaFoco() {
               fechaHoy=fecha;
 
               document.forms[0].fechaAnotacion.value=fechaServidor;
-            //fechad e grabación la da el servidor no puede ser modificada
+            //fechad e grabaciÃ³n la da el servidor no puede ser modificada
               document.forms[0].fechaDocumento.value=fechaServidor;
               var vectorFecDoc = [document.forms[0].fechaDocumento];
               deshabilitarGeneral(vectorFecDoc);
@@ -2751,7 +2752,7 @@ function cambiaFoco() {
            //Marcamos en el caso de que sea obligatorio el campo de asunto
            var obligatorioAsunto = <%=mantARForm.getObligatorioAsuntoCodificado()%>;           
            if(obligatorioAsunto) cambiarEstadoComboAsuntoCodificado(true);
-           // Se vacía el código del expediente y su descripción relacionado si tuviesen algún valor           
+           // Se vacÃ­a el cÃ³digo del expediente y su descripciÃ³n relacionado si tuviesen algÃºn valor           
            document.getElementById("codListaExpedientesRelacionados").value="";
            document.getElementById("descListaExpedientesRelacionados").value="";
        }
@@ -2887,9 +2888,9 @@ function alertarFechaPosterior() {
                      ){
                      var condiciones = new Array();
 
-                     //condiciones[0]='UOR_DEP'+'§¥';
+                     //condiciones[0]='UOR_DEP'+'Â§Â¥';
                      //condiciones[1]= document.forms[0].cod_dptoDestino.value ;
-                     condiciones[0]='UOREX_ORG'+'§¥';
+                     condiciones[0]='UOREX_ORG'+'Â§Â¥';
                      condiciones[1]=document.forms[0].cod_orgDestino.value ;
                      muestraListaTabla('UOREX_COD','UOREX_NOM',EsquemaGenerico + 'A_UOREX A_UOREX',condiciones,'cod_uniRegDestino','desc_uniRegDestino','botonUnidadeRexistro','100');
                  } else document.forms[0].cod_uniRegDestino.value=''; // Si viene del onchange permaneceria
@@ -2902,7 +2903,7 @@ function alertarFechaPosterior() {
 
                  if ( (Trim(document.forms[0].cod_orgOrigen.value) != '')){
                      var condiciones = new Array();
-                     condiciones[0]='UOREX_ORG'+'§¥';
+                     condiciones[0]='UOREX_ORG'+'Â§Â¥';
                      condiciones[1]=document.forms[0].cod_orgOrigen.value ;
                      muestraListaTabla('UOREX_COD','UOREX_NOM',EsquemaGenerico + 'A_UOREX A_UOREX',condiciones,'cod_unidadeRexistroOrixe','desc_unidadeRexistroOrixe','botonUnidadeRexistroOrigen','100');
                  } else document.forms[0].cod_unidadeRexistroOrixe.value=''; // Si viene del onchange permaneceria
@@ -2974,7 +2975,7 @@ function anotacionModificada() {
 <% }%>
 }
 
- function pulsarConsulta(){    // ¡¡¡Recargando!!!
+ function pulsarConsulta(){    // Â¡Â¡Â¡Recargando!!!
      <% if ("E".equals(tipoAnotacion)) {%>
      document.forms[0].opcion.value="Relacion_E";
      <% } else {%>
@@ -3111,7 +3112,7 @@ function pulsarConsultar() {
              var l = new Array();
              for (i=0; i < lista.length; i++)
                  {
-                     l[i]=lista[i][0]+'§¥'; // Solo códigos
+                     l[i]=lista[i][0]+'Â§Â¥'; // Solo cÃ³digos
                  }
                  pleaseWait('on');
                  document.forms[0].listaTemas.value=l;
@@ -3253,7 +3254,7 @@ function pulsarImprimirCuneus(grabarDuplicar){
             var source = "<%=request.getContextPath()%>/jsp/verPdf.jsp?opcion=null&nombre="+nombre+"&tipoFichero="+tipoFichero;
 
             if (tipoFichero == 'html') {
-                // Es imprescindible abrir en una ventana nueva sin frames para poder imprimir bien el cuño en la Epson TM-295
+                // Es imprescindible abrir en una ventana nueva sin frames para poder imprimir bien el cuÃ±o en la Epson TM-295
                 ventanaInforme = window.open(source,'ventana','width=280px,height=170px,status='+ '<%=statusBar%>' + ',toolbar=no, location=no,resizable=yes');
                 } else {
                 ventanaInforme = window.open("<%=request.getContextPath()%>/jsp/mainVentana.jsp;jsessionid=<%=idSesion%>?source="+source,'ventana','width=800px,height=550px,status='+ '<%=statusBar%>' + ',toolbar=no, location=no,resizable=yes');
@@ -3430,7 +3431,7 @@ function pulsarActuaciones() {
     codActAntiguo = document.forms[0].cod_actuacion.value;
 
     var l = new Array();
-    for (i=0; i < lista.length; i++) l[i]=lista[i][0]+'§¥'; // Solo códigos
+    for (i=0; i < lista.length; i++) l[i]=lista[i][0]+'Â§Â¥'; // Solo cÃ³digos
 
     var source = "<html:rewrite page='/MantAnotacionRegistro.do'/>" + "?opcion=cargarTemas&busqueda=" + busqueda + "&modificando=" +
             top.menu.modificando + "&fechaAnotacion=" + document.forms[0].fechaAnotacion.value +
@@ -3646,7 +3647,7 @@ function pulsarCotejarDoc() {
                         source = '<html:rewrite page='/registro/DocumentoRegistro.do?opcion=consultarDocumentoCotejado'/>';
                         source += '&tituloDoc=' + tituloDoc;
                         abrirXanelaAuxiliar('<%=request.getContextPath()%>/jsp/sge/mainVentana.jsp?source='+source,'ventana1', 'width=500,height=520,status='+ '<%=statusBar%>', function(){});
-                    } else if (top.menu.modificando === 'N') { // Si no se está modificando el registro no se debe permitir el cotejo.
+                    } else if (top.menu.modificando === 'N') { // Si no se estÃ¡ modificando el registro no se debe permitir el cotejo.
                         jsp_alerta('A', '<%=descriptor.getDescripcion("msjNoHayFicheroCotejado")%>');
                     } else if (jsp_alerta('', '<%=descriptor.getDescripcion("msjPreguntarRealizarCotejo")%>')) {
                         source = '<html:rewrite page='/registro/DocumentoRegistro.do?opcion=documentoCotejar'/>';
@@ -3846,7 +3847,7 @@ function pulsarRegistrarAltaDesdeTramite() {
            if (comparaFecha() ) {
                var l = new Array();
                for (i=0; i < lista.length; i++) {
-                       l[i]=lista[i][0]+'§¥'; // Solo códigos
+                       l[i]=lista[i][0]+'Â§Â¥'; // Solo cÃ³digos
                } 
                documentosModificados=false;
                <% if(altaDesdeTramitar) { %> document.forms[0].txtExp1.value = numExpedienteAux; <% } %>            
@@ -3886,7 +3887,7 @@ function validarNif(campo) {
     var LONGITUD = 9;
    // var navigator=navigator.userAgent.toLowerCase().indexOf('chrome') > -1
     // Si se trata de un NIF
-    // Primero comprobamos si el NIF esta vacio, en ese caso no permitirá seguir completando el formulario
+    // Primero comprobamos si el NIF esta vacio, en ese caso no permitirÃ¡ seguir completando el formulario
     //En Chrome no lanza mensaje de alerta ya que sino entra en bucle con el evento onblur
     if(documento==''){
         campo.value="";
@@ -3975,7 +3976,7 @@ function pulsarCancelarAlta() {
         if (document.getElementById("capaTiposEstadoAnotacion"))
                 document.getElementById("capaTiposEstadoAnotacion").style.visibility='visible';
 
-        // hay que recargar el combo de asunto ya que se cargarán con todos los asuntos de registro existentes, incluidos
+        // hay que recargar el combo de asunto ya que se cargarÃ¡n con todos los asuntos de registro existentes, incluidos
         // los que han sido dados de baja
         document.forms[0].target="oculto";
         document.forms[0].action = "<%=request.getContextPath()%>/MantAnotacionRegistro.do?opcion=recargarComboAsuntos";
@@ -4117,7 +4118,7 @@ function pulsarAltaAnterior(){
                 tabDoc.lineas=listaDocs;
                 refrescaDoc();
                 
-            } else jsp_alerta("A","Ha ocurrido un error al recuperar los datos que necesita el complemento de digitalización para ejecutarse.")
+            } else jsp_alerta("A","Ha ocurrido un error al recuperar los datos que necesita el complemento de digitalizaciÃ³n para ejecutarse.")
         });
        
 }     
@@ -4153,7 +4154,7 @@ function pulsarAltaAnterior(){
            int posAnotacion = 1; %> 
            registroAregistro(<%=numRelacionAnotaciones%>, <%=posAnotacion%>);
         <% } %>
-    }">
+    mostrarFiltrosProcOtraAdmin();}">
 
         <jsp:include page="/jsp/hidepage.jsp" flush="true">
             <jsp:param name='cargaDatos' value='<%=descriptor.getDescripcion("msjCargDatos")%>'/>
@@ -4161,7 +4162,7 @@ function pulsarAltaAnterior(){
 
     <html:form action="/MantAnotacionRegistro.do" target="_self">
 
-        <!-- código de la UOR -->
+        <!-- cÃ³digo de la UOR -->
         <html:hidden  property="opcion" value=""/>
         <html:hidden  property="codigoDocumento" value=""/> <!-- Utilizado para eliminar el documento -->
          <html:hidden property="codigoDocAnterior" value=""/> <!-- Utilizado para eliminar el documento anterior aportado -->
@@ -4364,7 +4365,7 @@ function pulsarAltaAnterior(){
                     <div id="capaAnotacionContestada" style="position:relative; visibility: hidden; width:100%;"></div>
                     <% }%>
                 </TD>
-                <TD style="height:20px;vertical-align:top"><!-- Cuño -->
+                <TD style="height:20px;vertical-align:top"><!-- CuÃ±o -->
                     <div id="capaCunho" name="capaCunho" STYLE="position:relative;width:100%; visibility:hidden;height:0px;cursor:pointer">
                         <a class="botonjustificante" title='<%=descriptor.getDescripcion("altHistorico")%>' alt='<%=descriptor.getDescripcion("altHistorico")%>' href="" onClick="javascript:{pulsarHistoricoAnotacion();return false;}"><%=descriptor.getDescripcion("etiqHistorico")%></a>
                         
@@ -4571,7 +4572,7 @@ function pulsarAltaAnterior(){
                                                 <%String txtEventOnbluCbTipoEntrada=(("S"==tipoAnotacion || "Relacion_S"==tipoAnotacion)?"javascript:{mostrarDestino();getSetUnidadOrigenDIR3SalidaSIR();}":"javascript:{mostrarDestino();getSetCodigoAsuntoEntradaSIR()}");%>
                                                 <html:text styleId="obligatorio" styleClass="inputTextoObligatorio" property="cbTipoEntrada"  style="width:18%" maxlength="1" onkeyup="return SoloDigitosNumericos(this);"
                                                            onfocus="javascript:this.select();mostrarDestino();"
-                                                           onchange="javascript:{divSegundoPlano=true;inicializarValores('cbTipoEntrada','txtNomeTipoEntrada',cod_tipoEntrada,desc_tipoEntrada);mostrarDestino();}"
+                                                           onchange="javascript:{divSegundoPlano=true;inicializarValores('cbTipoEntrada','txtNomeTipoEntrada',cod_tipoEntrada,desc_tipoEntrada);mostrarDestino();mostrarFiltrosProcOtraAdmin();}"
                                                            onblur="<%=txtEventOnbluCbTipoEntrada%>"/>
                                                 <%if(userAgent.indexOf("MSIE")!=-1) {%> <!--IE9, IE11 no contiene MSIE, se identifica como Mozilla-->
                                                 <html:text styleClass="inputTextoObligatorio" styleId="obligatorio"  property="txtNomeTipoEntrada" style="width:71%" readonly="true"
@@ -4611,6 +4612,7 @@ function pulsarAltaAnterior(){
                                 </table>
                             </TD>
                         </TR>
+                        <jsp:include page="/jsp/registro/entrada/filtrosProcOtraAdmin.jsp" flush="true"/>
                         <TR>
                             <TD style="width: 10%" class="etiqueta"><%=descriptor.getDescripcion("res_asunto")%>:</TD>
                             <TD style="width:90%;">
@@ -4727,11 +4729,11 @@ function pulsarAltaAnterior(){
                                             <%=descriptor.getDescripcion("etiqEnviarNotif")%>
                                         </html:checkbox>
                                     </span>
-                                    <!-- Botón NOTIFICAR A -->
+                                    <!-- BotÃ³n NOTIFICAR A -->
                                     <input type="button" class="botonLargo" title="<%=descriptor.getDescripcion("altNotificar")%>" alt="<%=descriptor.getDescripcion("altNotificar")%>" 
                                            value="<%=descriptor.getDescripcion("gbNotificar")%>" style="float:right;margin-right: 2%;"
                                            name="cmdNotificar"  onClick="pulsarNotificar();return false;"/>
-                                            <!-- Fin Botón NOTIFICAR A -->
+                                            <!-- Fin BotÃ³n NOTIFICAR A -->
                                 </div>
 
 
@@ -4819,7 +4821,7 @@ function pulsarAltaAnterior(){
                                         <%}else{%>
                                             <html:text styleClass="inputTexto"  property="cod_procedimiento" style="width:16%" onkeyup="return xAMayusculas(this);" onchange="javascript:{onchangeCod_procedimiento();divSegundoPlano=true}"  onfocus="javascript:{this.select();onFocus_CodProcedimiento();}"/>
                                         <%}%>
-                                        <!-- #231150: se añade onBlur para que cargue siempre los documentos del procedimiento-->
+                                        <!-- #231150: se aÃ±ade onBlur para que cargue siempre los documentos del procedimiento-->
                                         <html:text styleClass="inputTexto" property="desc_procedimiento" style="width:50%" readonly="true" onclick="javascript:{onClickDesc_procedimiento();}" onblur="javascript:{onFocus_CodProcedimiento();}"/>
                                         <A style="text-decoration:none;" id="anclaD" name="anchorProcedimiento" onclick="javascript:window.focus();" onfocus="javascript:{cambiaFoco();}">
                                             <span class="fa fa-chevron-circle-down" aria-hidden="true" id="desp" name="botonProcedimiento" onclick="javascript:{onClickDesc_procedimiento();divSegundoPlano=false}" alt= "<%=descriptor.getDescripcion("altDesplegable")%>" title= "<%=descriptor.getDescripcion("altDesplegable")%>" style="cursor:hand;"></span>
@@ -5000,7 +5002,7 @@ function pulsarAltaAnterior(){
                                     </TABLE>
                                 </DIV>
                                 <!-- FIN Tipo de entrada procedente de otro registro -->
-                               <!-- Botón RELACIONES -->
+                               <!-- BotÃ³n RELACIONES -->
                                 <TABLE width="100%">
                                     <TR>
                                         <TD class="sub3titulo"><%=descriptor.getDescripcion("gEtiqOtrasOpciones")%></TD>
@@ -5011,13 +5013,13 @@ function pulsarAltaAnterior(){
                                                    class="botonGeneral" value="<%=descriptor.getDescripcion("tit_Rel")%>"
                                                    alt="<%=descriptor.getDescripcion("altRelaciones")%>" title="<%=descriptor.getDescripcion("altRelaciones")%>"
                                                    id="cmdRelaciones" name="cmdRelaciones" onClick="pulsarRelaciones();"/>
-                                            <input type="button" title="Incluir los temas y actuaciones relativos a la anotación"
+                                            <input type="button" title="Incluir los temas y actuaciones relativos a la anotaciÃ³n"
                                                    class="botonGeneral" value="Temas" style="float:right"
                                                    id="cmdActuaciones" name="cmdActuaciones" onClick="pulsarActuaciones();"/>
                                         </td>
                                     </tr>
                                     </table>
-                                <!-- Fin Botón RELACIONES -->
+                                <!-- Fin BotÃ³n RELACIONES -->
                                  <!-- bloque Datos SGA -->	
                                 <% if(datosSga){%>	
                                       <% if (("E".equals(tipoAnotacion)) || ("Relacion_E".equals(tipoAnotacion))) {%>  <table style="width:100%" id="bloqueSga"> 
@@ -5099,7 +5101,7 @@ function pulsarAltaAnterior(){
         </TABLE>
     </DIV>
     <DIV style="width:100%" id="capaNavegacionConsulta" name="capaNavegacionConsulta" class="dataTables_wrapper"></DIV>
-<!-- Definimos varias capas para los botones según lo que se permite hacer. -->
+<!-- Definimos varias capas para los botones segÃºn lo que se permite hacer. -->
 
 
 <% if (permisoMantenimiento) {%>
@@ -5108,15 +5110,15 @@ function pulsarAltaAnterior(){
         2. Cancelar alta.
     -->
         <DIV id="capaBotones2" name="capaBotones2" style="display:none" class="botoneraPrincipal">
-            <!-- BOTÓN DE GRABAR -->
+            <!-- BOTÃ“N DE GRABAR -->
               <% if (mostrarDigitalizar && "reservas".equals(respOpcion)) { %>
                 <input type="button" title='<%=descriptor.getDescripcion("toolTip_bGrabar")%>' alt='<%=descriptor.getDescripcion("toolTip_bGrabar")%>' class="botonGeneral" value='<%=descriptor.getDescripcion("gbGrabar")%>' name="cmdRegistrarAlta" onClick="comprobarCodProcedimientoValido('Mod');return false;"/>
              <%} else {%>
              <input type="button" title='<%=descriptor.getDescripcion("toolTip_bGrabar")%>' alt='<%=descriptor.getDescripcion("toolTip_bGrabar")%>' class="botonGeneral" value='<%=descriptor.getDescripcion("gbGrabar")%>' name="cmdRegistrarAlta" onClick="comprobarCodProcedimientoValido('Alta');return false;">
               <% } %>
-              <!--FIN  BOTÓN DE GRABAR -->
+              <!--FIN  BOTÃ“N DE GRABAR -->
                 
-            <!-- Botón FINALIZAR digit --> 
+            <!-- BotÃ³n FINALIZAR digit --> 
              <% if (mostrarDigitalizar && !"reservas".equals(respOpcion)) { %>
                 <input type= "button" class="botonGeneral" style="margin-top:5px" value="<%=descriptor.getDescripcion("gbFinalizar")%>" alt="<%=descriptor.getDescripcion("altFinalizar")%>" title="<%=descriptor.getDescripcion("altFinalizar")%>" name="cmdFinDigitalizarAlta" onclick="pulsarFinalizar('AltaFinDigitalizar');">
               <%}%>
@@ -5124,17 +5126,17 @@ function pulsarAltaAnterior(){
             <% if (mostrarDigitalizar && "reservas".equals(respOpcion)) { %>
                 <input type= "button" class="botonGeneral" style="margin-top:5px" value="<%=descriptor.getDescripcion("gbFinalizar")%>" alt="<%=descriptor.getDescripcion("altFinalizar")%>" title="<%=descriptor.getDescripcion("altFinalizar")%>" name="cmdFinDigitalizarAlta" onclick="pulsarFinalizar('ModFinDigitalizar');">
               <%}%>
-            <!-- Fin botón FINALIZAR -->
+            <!-- Fin botÃ³n FINALIZAR -->
 
-             <!-- BOTÓN DE CANCELAR -->
+             <!-- BOTÃ“N DE CANCELAR -->
              <% if (mostrarDigitalizar && "reservas".equals(respOpcion)) { %>
             <input type="button" title='<%=descriptor.getDescripcion("toolTip_bVolver")%>' alt='<%=descriptor.getDescripcion("toolTip_bVolver")%>' class="botonGeneral" value='<%=descriptor.getDescripcion("gbCancelar")%>' name="cmdCancelarAlta" onClick="pulsarSalirConsultar();return false;"/>
             <%} else {%>
             <input type="button" title='<%=descriptor.getDescripcion("toolTip_bVolver")%>' alt='<%=descriptor.getDescripcion("toolTip_bVolver")%>' class="botonGeneral" value='<%=descriptor.getDescripcion("gbCancelar")%>' name="cmdCancelarAlta" onClick="pulsarCancelarAlta();return false;"/>
             <% } %>
-            <!--FIN BOTÓN DE CANCELAR -->
+            <!--FIN BOTÃ“N DE CANCELAR -->
             
-            <!-- #270948: Botón Digitalizar -->
+            <!-- #270948: BotÃ³n Digitalizar -->
             <% if (mostrarDigitalizar && !"reservas".equals(respOpcion)) { %>
                     <input type= "button" class="botonGeneral" value="Digitalizar" alt="Digitalizar documentos" 
                            title="Digitalizar documentos" name="cmdDigitalizarDesdeAlta" id="cmdDigitalizarDesdeAlta" onclick="pulsarDigitalizarConAltaPrevia();return false;">
@@ -5148,7 +5150,7 @@ function pulsarAltaAnterior(){
         <!-- Fin botones ALTA. -->
 <% }%>
 
-<!-- Botones PÁGINA BUSCADA:
+<!-- Botones PÃGINA BUSCADA:
              1. Alta (desde consulta)
              2. Modificar.
              3. Anular.
@@ -5163,89 +5165,89 @@ function pulsarAltaAnterior(){
 
     <% if (permisoMantenimiento) {%>
         <input type="button" title='<%=descriptor.getDescripcion("toolTip_bAlta")%>' alt='<%=descriptor.getDescripcion("toolTip_bAlta")%>' class="botonGeneral" value='<%=descriptor.getDescripcion("gbAlta")%>' name="cmdAltaDesdeConsulta" onClick="pulsarAltaDesdeConsulta();return false;" accesskey='A'/>
-    <!-- Fin botón Alta Desde Consulta. -->
+    <!-- Fin botÃ³n Alta Desde Consulta. -->
 
-    <!-- Botón MODIFICAR. -->
+    <!-- BotÃ³n MODIFICAR. -->
         <input type="button" title='<%=descriptor.getDescripcion("toolTip_bModificarAnot")%>' alt='<%=descriptor.getDescripcion("toolTip_bModificarAnot")%>' class="botonGeneral" value='<%=descriptor.getDescripcion("gbModificar")%>' name="cmdModificar" id="cmdModificar" onClick="divSegundoPlano=true; pulsarModificar();return false;"/>
-    <!-- Fin botón MODIFICAR. -->
-    <!-- Botón ANULAR. -->
+    <!-- Fin botÃ³n MODIFICAR. -->
+    <!-- BotÃ³n ANULAR. -->
         <input type="button" class="botonGeneral" title='<%=descriptor.getDescripcion("toolTip_bAnular")%>' alt='<%=descriptor.getDescripcion("toolTip_bAnular")%>' title='<%=descriptor.getDescripcion("toolTip_bAnular")%>' value='<%=descriptor.getDescripcion("gbAnular")%>' name="cmdAnular" id="cmdAnular" onClick="pulsarAnular();return false;"/>
-    <!-- Botón DUPLICAR. -->
+    <!-- BotÃ³n DUPLICAR. -->
         <input type="button" title='<%=descriptor.getDescripcion("toolTip_bDuplicar")%>' alt='<%=descriptor.getDescripcion("toolTip_bDuplicar")%>'
                class="botonGeneral" value='<%=descriptor.getDescripcion("gbDuplicar")%>'
                name="cmdDuplicar" id="cmdDuplicar" onClick="pulsarDuplicar();return false;" style="display: none"/>
-    <!-- Fin botón DUPLICAR. -->
-    <!-- Botón CONTESTAR. -->
+    <!-- Fin botÃ³n DUPLICAR. -->
+    <!-- BotÃ³n CONTESTAR. -->
      <% if (permiso_contestar) {%>
         <input type= "button" title='<%=descriptor.getDescripcion("toolTip_bContestar")%>' alt='<%=descriptor.getDescripcion("toolTip_bContestar")%>'
                class="botonGeneral" value='<%=descriptor.getDescripcion("gbContestar")%>'
                name="cmdContestar" id="cmdContestar" onClick="pulsarContestar();return false;"/>
-    <!-- Fin botón CONTESTAR. -->
+    <!-- Fin botÃ³n CONTESTAR. -->
     <% }%>
-    <!-- Botón RELACIONAR. -->
+    <!-- BotÃ³n RELACIONAR. -->
     <input type= "button" title='<%=descriptor.getDescripcion("toolTip_bRelacionar")%>' alt='<%=descriptor.getDescripcion("toolTip_bRelacionar")%>'
                class="botonGeneral" value='<%=descriptor.getDescripcion("gbRelacionar")%>'
                name="cmdRelacionar" onClick="pulsarRelacionar();return false;"/>
-    <!-- Fin botón RELACIONAR -->
+    <!-- Fin botÃ³n RELACIONAR -->
 <% }%>
-    <!-- Botón SALIR CONSULTAR. -->
+    <!-- BotÃ³n SALIR CONSULTAR. -->
     <input type="button" title='<%=descriptor.getDescripcion("toolTip_bVolver")%>' alt='<%=descriptor.getDescripcion("toolTip_bVolver")%>'
             class="botonGeneral" value='<%=descriptor.getDescripcion("gbCancelar")%>'
             name="cmdCancelarBuscada" onClick="pulsarSalirConsultar();return false;"/>
-    <!-- Fin botón SALIR CONSULTAR. -->
+    <!-- Fin botÃ³n SALIR CONSULTAR. -->
 <% } else { // no es "E" ni "Relacion_E"%>
 <% if (permisoMantenimiento) {%>
-    <!-- Botón Alta Desde Consulta. -->
+    <!-- BotÃ³n Alta Desde Consulta. -->
         <input type="button" title='<%=descriptor.getDescripcion("toolTip_bAlta")%>' alt='<%=descriptor.getDescripcion("toolTip_bAlta")%>'
                class="botonGeneral" value='<%=descriptor.getDescripcion("gbAlta")%>'
                name="cmdAltaDesdeConsulta" onClick="pulsarAltaDesdeConsulta();return false;" accesskey='A'/>
-    <!-- Fin botón Alta Desde Consulta. -->
-    <!-- Botón MODIFICAR. -->
+    <!-- Fin botÃ³n Alta Desde Consulta. -->
+    <!-- BotÃ³n MODIFICAR. -->
         <input type="button" title='<%=descriptor.getDescripcion("toolTip_bModificarAnot")%>' alt='<%=descriptor.getDescripcion("toolTip_bModificar")%>'
                class="botonGeneral" value='<%=descriptor.getDescripcion("gbModificar")%>'
                name="cmdModificar" id="cmdModificar" onClick="pulsarModificar();return false;"/>
-    <!-- Fin botón MODIFICAR. -->
-    <!-- Botón ANULAR. -->
+    <!-- Fin botÃ³n MODIFICAR. -->
+    <!-- BotÃ³n ANULAR. -->
     <input type="button" title='<%=descriptor.getDescripcion("toolTip_bAnular")%>' alt='<%=descriptor.getDescripcion("toolTip_bAnular")%>'
            class="botonGeneral" value='<%=descriptor.getDescripcion("gbAnular")%>'
            name="cmdAnular" id="cmdAnular" onClick="pulsarAnular();return false;"/>
-    <!-- Fin botón ANULAR. -->
-    <!-- Botón DUPLICAR. -->
+    <!-- Fin botÃ³n ANULAR. -->
+    <!-- BotÃ³n DUPLICAR. -->
         <input type="button" title='<%=descriptor.getDescripcion("toolTip_bDuplicar")%>' alt='<%=descriptor.getDescripcion("toolTip_bDuplicar")%>'
                class="botonGeneral" value='<%=descriptor.getDescripcion("gbDuplicar")%>'
                name='cmdDuplicar' id='cmdDuplicar' onClick="pulsarDuplicar();return false;" style="display:none"/>
-    <!-- Fin botón DUPLICAR. -->
+    <!-- Fin botÃ³n DUPLICAR. -->
     <% if (permiso_contestar) {%>
-   <!-- Botón RESPUESTA. -->
+   <!-- BotÃ³n RESPUESTA. -->
     <input type= "button" title='<%=descriptor.getDescripcion("toolTip_bRespuesta")%>' alt='<%=descriptor.getDescripcion("toolTip_bRespuesta")%>'
            class="botonGeneral" value='<%=descriptor.getDescripcion("gbRespuesta")%>'
            name="cmdResponder" id="cmdResponder" onClick="pulsarResponder();return false;"/>
-    <!-- Fin botón RESPUESTA -->
+    <!-- Fin botÃ³n RESPUESTA -->
     <% }%>
-    <!-- Botón RELACIONAR. -->
+    <!-- BotÃ³n RELACIONAR. -->
     <input type= "button" title='<%=descriptor.getDescripcion("toolTip_bRelacionar")%>' alt='<%=descriptor.getDescripcion("toolTip_bRelacionar")%>'
                 class="botonGeneral" value='<%=descriptor.getDescripcion("gbRelacionar")%>'
                 name="cmdRelacionar" id="cmdRelacionar" onClick="pulsarRelacionar();return false;"/>
-    <!-- Fin botón RELACIONAR -->
+    <!-- Fin botÃ³n RELACIONAR -->
 <% }%>
-    <!-- Botón VOLVER AL LISTADO. -->
+    <!-- BotÃ³n VOLVER AL LISTADO. -->
     <input type="button" title='<%=descriptor.getDescripcion("toolTip_bVolver")%>' alt='<%=descriptor.getDescripcion("toolTip_bVolver")%>'
            class="botonGeneral" value='<%=descriptor.getDescripcion("gbCancelar")%>'
            name="cmdCancelarBuscada" id="cmdCancelarBuscada" onClick="pulsarSalirConsultar();return false;"/>
-    <!-- Fin botón SALIR CONSULTAR. -->
+    <!-- Fin botÃ³n SALIR CONSULTAR. -->
     <% }%>
-    <!-- Botón NUEVA CONSULTA. -->
+    <!-- BotÃ³n NUEVA CONSULTA. -->
     <input type="button" title='<%=descriptor.getDescripcion("toolTip_bListado")%>' alt='<%=descriptor.getDescripcion("toolTip_bListado")%>'
             class="botonGeneral" value= '<%=descriptor.getDescripcion("gbListado")%>'
             name="cmdListado"  id="cmdListado" onClick="pulsarListado();return false;"/>
-	<!-- Fin botón NUEVA CONSULTA. -->
-    <!-- Botón ENVIAR REGISTRO A TRAVÉS DEL CIR. -->
+	<!-- Fin botÃ³n NUEVA CONSULTA. -->
+    <!-- BotÃ³n ENVIAR REGISTRO A TRAVÃ‰S DEL CIR. -->
     <% Config registroConf = ConfigServiceHelper.getConfig("Registro");
        if (registroConf.getString("INTEGRACION_SIR").equals("SI")){%>
     <input type="button" title='<%=descriptor.getDescripcion("gbEnviarAsiento")%>a' alt='<%=descriptor.getDescripcion("gbEnviarAsiento")%>'
 		   class="botonGeneral" value= '<%=descriptor.getDescripcion("gbEnviarAsiento")%>'
 	   name="cmdEnviar" id="cmdEnviar" onClick="javascript:pulsarEnviar('<%=request.getContextPath()%>');"/>
-    <!-- Fin botón Botón ENVIAR REGISTRO A TRAVÉS DEL CIR. -->
+    <!-- Fin botÃ³n BotÃ³n ENVIAR REGISTRO A TRAVÃ‰S DEL CIR. -->
     <% }%>
     <!-- Campos para retramitar al modificar procedimiento o desde el modal para Usuario ADMIN  -->
     <input type="hidden" name="regRetramitarDocTipoAnotacion" value="<%=((String) session.getAttribute("tipoAnotacion")!=null ? (String) session.getAttribute("tipoAnotacion") : tipoAnotacion )%>" id="regRetramitarDocTipoAnotacion"/>
@@ -5289,51 +5291,51 @@ function pulsarAltaAnterior(){
          2. Cancelar alta desde tramitar.
 -->
 <DIV id="capaBotonesAltaDesdeTramite" name="capaBotonesAltaDesdeTramite" style="display:none" class="botoneraPrincipal">
-    <!-- Botón REGISTRAR ALTA DESDE TRAMITAR -->
+    <!-- BotÃ³n REGISTRAR ALTA DESDE TRAMITAR -->
         <input type="button" title='<%=descriptor.getDescripcion("toolTip_bAlta")%>' alt='<%=descriptor.getDescripcion("toolTip_bAlta")%>'
                class="botonGeneral" value='<%=descriptor.getDescripcion("gbGrabar")%>'
                name="cmdRegistrarAltaTramitar" onClick="pulsarRegistrarAltaDesdeTramite();return false;"/>
-    <!-- Fin botón REGISTRAR ALTA DESDE TRAMITAR -->
-    <!-- Botón CANCELAR ALTA DESDE TRAMITAR -->
+    <!-- Fin botÃ³n REGISTRAR ALTA DESDE TRAMITAR -->
+    <!-- BotÃ³n CANCELAR ALTA DESDE TRAMITAR -->
         <input type="button" title='<%=descriptor.getDescripcion("toolTip_bVolver")%>' alt='<%=descriptor.getDescripcion("toolTip_bVolver")%>'
                class="botonGeneral" value='<%=descriptor.getDescripcion("gbCancelar")%>'
                name="cmdCancelarAltaTramitar" onClick="pulsarCancelarAltaDesdeTramite();return false;"/>
-    <!-- Fin botón CANCELAR ALTA DESDE TRAMITAR -->
+    <!-- Fin botÃ³n CANCELAR ALTA DESDE TRAMITAR -->
 </DIV>
 <!-- Fin botones ALTA DESDE TRAMITAR -->
 
 <% if (permisoMantenimiento) {%>
 
-         <!-- Botones MODIFICACIÓN:
+         <!-- Botones MODIFICACIÃ“N:
              1. DUBPLICAR Y GRABAR (Eliminado)
              2. Registrar cambios.
              3. Cancelar cambios. -->
 <DIV id="capaBotones4" name="capaBotones4" style="display:none" class="botoneraPrincipal">
-    <!-- Botón REGISTRAR duplicar-guardar. -->
+    <!-- BotÃ³n REGISTRAR duplicar-guardar. -->
     <% if ("buscar".equals(request.getParameter("opcion"))) {%>
         <input type="button" title='<%=descriptor.getDescripcion("toolTip_bGrabarDuplicar")%>' alt='<%=descriptor.getDescripcion("toolTip_bGrabarDuplicar")%>'
                class="botonLargo" value='<%=descriptor.getDescripcion("gbGrabarDuplicar")%>'
                name="cmdRegistrarAlta" onClick="pulsarRegistrarModificar2();return false;">
     <% }%>
-    <!-- Botón REGISTRAR CAMBIOS. -->
+    <!-- BotÃ³n REGISTRAR CAMBIOS. -->
         <input type="button" title='<%=descriptor.getDescripcion("toolTip_bModificar")%>' alt='<%=descriptor.getDescripcion("toolTip_bModificar")%>'
                class="botonGeneral" value='<%=descriptor.getDescripcion("gbGrabar")%>'
                name="cmdRexistrarModificacion" onClick="comprobarCodProcedimientoValido('Mod');return false;"/>
-    <!-- Fin botón REGISTRAR CAMBIOS. -->
-    <!-- Botón FINALIZAR digit --> 
+    <!-- Fin botÃ³n REGISTRAR CAMBIOS. -->
+    <!-- BotÃ³n FINALIZAR digit --> 
       <% if (mostrarDigitalizar) { %>
         <input type= "button" class="botonGeneral" style="margin-top:5px" value="<%=descriptor.getDescripcion("gbFinalizar")%>" alt="<%=descriptor.getDescripcion("altFinalizar")%>" title="<%=descriptor.getDescripcion("altFinalizar")%>" name="cmdFinDigitalizarMod" onclick="pulsarFinalizar('ModFinDigitalizar');">
       <% } %>
-      <!-- Fin botón FINALIZAR -->
+      <!-- Fin botÃ³n FINALIZAR -->
     
-    <!-- Botón CANCELAR CAMBIOS. -->
+    <!-- BotÃ³n CANCELAR CAMBIOS. -->
         <input type="button" title='<%=descriptor.getDescripcion("toolTip_bVolver")%>' alt='<%=descriptor.getDescripcion("toolTip_bVolver")%>'
                class="botonGeneral" value='<%=descriptor.getDescripcion("gbCancelar")%>'
                name="cmdCancelarModificar" onClick="pulsarSalirConsultar();return false;"/>
-    <!-- Fin botón CANCELAR CAMBIOS. -->
+    <!-- Fin botÃ³n CANCELAR CAMBIOS. -->
     
-    <!-- En #270948: Se añade el Botón Digitalizar a la capaBotones3-->
-    <!-- En #326290: Este botón se elimina de la capaBotones3 y se añade a la capaBotones4-->
+    <!-- En #270948: Se aÃ±ade el BotÃ³n Digitalizar a la capaBotones3-->
+    <!-- En #326290: Este botÃ³n se elimina de la capaBotones3 y se aÃ±ade a la capaBotones4-->
     <% if (mostrarDigitalizar) { %>
             <input type= "button" class="botonGeneral" value="Digitalizar" alt="Digitalizar documentos" 
                    title="Digitalizar documentos" name="cmdDigitalizarDesdeConsulta" id="cmdDigitalizarDesdeConsulta" onclick="pulsarDigitalizarDocs('consulta');">
@@ -5344,11 +5346,11 @@ function pulsarAltaAnterior(){
     <input type="button" title='<%=descriptor.getDescripcion("toolTip_bAlta")%>' alt='<%=descriptor.getDescripcion("toolTip_bAlta")%>'
            class="botonGeneral" value='<%=descriptor.getDescripcion("gbGrabar")%>'
            name="cmdRegistrarDuplicar" onClick="comprobarCodProcedimientoValido('Dup');return false;"/>
-    <!-- Botón FINALIZAR digit --> 
+    <!-- BotÃ³n FINALIZAR digit --> 
              <% if (mostrarDigitalizar) { %>
                 <input type= "button" class="botonGeneral" style="margin-top:5px" value="<%=descriptor.getDescripcion("gbFinalizar")%>" alt="<%=descriptor.getDescripcion("altFinalizar")%>" title="<%=descriptor.getDescripcion("altFinalizar")%>" name="cmdFinDigitalizarAlta" onclick="pulsarFinalizar('DupFinDigitalizar');">
               <%}%>
-    <!-- Fin botón FINALIZAR -->
+    <!-- Fin botÃ³n FINALIZAR -->
     
     <% if (contestacion) {%>
         <input type="button" title='<%=descriptor.getDescripcion("toolTip_bVolver")%>' alt='<%=descriptor.getDescripcion("toolTip_bVolver")%>'
@@ -5360,12 +5362,12 @@ function pulsarAltaAnterior(){
                name="cmdCancelarDuplicar" onClick="pulsarCancelarDuplicar();return false;"/>
     <% } %>
     
-    <!-- Botón DIGITALIZAR -->
+    <!-- BotÃ³n DIGITALIZAR -->
     <% if (mostrarDigitalizar) { %>
         <input type= "button" class="botonGeneral" value="Digitalizar" alt="Digitalizar documentos" 
                title="Digitalizar documentos" name="cmdDigitalizarDesdeAlta" id="cmdDigitalizarDesdeAlta" onclick="pulsarDigitalizarConAltaPrevia('Dup');return false;">
     <% } %>
-    <!-- Fin Botón DIGITALIZAR -->
+    <!-- Fin BotÃ³n DIGITALIZAR -->
 </DIV>
 <!-- Fin botones DUPLICADO. -->
 
@@ -5461,7 +5463,7 @@ tabFormularios.colorLinea=function(rowID) {
     if(listaFormulariosOriginal[rowID][0]!="0") return 'gris';
 }
 
-// JAVASCRIPT DE LA PESTAÑA DOCUMENTOS
+// JAVASCRIPT DE LA PESTAÃ‘A DOCUMENTOS
 
 var tabDoc = new Tabla(true,'<%=descriptor.getDescripcion("buscar")%>','<%=descriptor.getDescripcion("anterior")%>','<%=descriptor.getDescripcion("siguiente")%>','<%=descriptor.getDescripcion("mosFilasPag")%>','<%=descriptor.getDescripcion("msgNoResultBusq")%>','<%=descriptor.getDescripcion("mosPagDePags")%>', '<%=descriptor.getDescripcion("noRegDisp")%>','<%=descriptor.getDescripcion("filtrDeTotal")%>','<%=descriptor.getDescripcion("primero")%>','<%=descriptor.getDescripcion("ultimo")%>',document.getElementById('tablaDoc'));
 
@@ -5493,7 +5495,7 @@ var tabAnt = new Tabla(true,'<%=descriptor.getDescripcion("buscar")%>','<%=descr
 
 tabAnt.addColumna('80','center','Tipo de Documento');
 tabAnt.addColumna('500','left','Nombre de Documento');
-tabAnt.addColumna('100','center','Órgano');
+tabAnt.addColumna('100','center','Ã“rgano');
 tabAnt.addColumna('100','center','<%= descriptor.getDescripcion("gEtiqFecha")%>');
 tabAnt.addColumna('0','center','');
 tabAnt.displayCabecera=true;
