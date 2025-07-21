@@ -104,8 +104,8 @@ function mostrarCapasBotones(nombreCapa) {
     else
         document.getElementById(nombreCapa).style.display='';
   
-//En el antiguo diseño los radio buttons estaban en la misma capa que los botones de consulta, pero
-  //con el nuevo diseño hay que separarlos; por este motivo, mostramos la capa de los radio buttons siempre
+//En el antiguo diseÃ±o los radio buttons estaban en la misma capa que los botones de consulta, pero
+  //con el nuevo diseÃ±o hay que separarlos; por este motivo, mostramos la capa de los radio buttons siempre
   //que se muestra la capa de botones de consulta.
   if (nombreCapa == 'capaBotones3') document.getElementById('capaCunho').style.visibility='visible';
 
@@ -307,14 +307,14 @@ function borrarInteresado(){
 		document.forms[0].txtInteresado.value=''; // Razon Social.
 		document.forms[0].txtApell1.value=''; // Apellidos.
 		document.forms[0].txtApell2.value='';
-		document.forms[0].txtPart.value=''; // Partículas.
+		document.forms[0].txtPart.value=''; // PartÃ­culas.
 		document.forms[0].txtPart2.value='';
 		document.forms[0].txtTelefono.value=''; // Telefono.
 		document.forms[0].txtCorreo.value=''; // Email.
 		document.forms[0].txtPais.value=''; // Pais.
 		document.forms[0].txtProv.value=''; // Provincia.
 		document.forms[0].txtMuni.value=''; // Municipio.
-		document.forms[0].txtDomicilio.value=''; // Nombre vía.
+		document.forms[0].txtDomicilio.value=''; // Nombre vÃ­a.
 		document.forms[0].txtPoblacion.value='';
 		document.forms[0].txtCP.value=''; // Codigo.
 	}
@@ -331,14 +331,14 @@ function borrarInteresado1(){
 		document.forms[0].txtInteresado.value=''; // Razon Social.
 		document.forms[0].txtApell1.value=''; // Apellidos.
 		document.forms[0].txtApell2.value='';
-		document.forms[0].txtPart.value=''; // Partículas.
+		document.forms[0].txtPart.value=''; // PartÃ­culas.
 		document.forms[0].txtPart2.value='';
 		document.forms[0].txtTelefono.value=''; // Telefono.
 		document.forms[0].txtCorreo.value=''; // Email.
 		document.forms[0].txtPais.value=''; // Pais.
 		document.forms[0].txtProv.value=''; // Provincia.
 		document.forms[0].txtMuni.value=''; // Municipio.
-		document.forms[0].txtDomicilio.value=''; // Nombre vía.
+		document.forms[0].txtDomicilio.value=''; // Nombre vÃ­a.
 		document.forms[0].txtPoblacion.value='';
 		document.forms[0].txtCP.value=''; // Codigo.
 		if (consultando) {
@@ -445,8 +445,8 @@ function mostrarListaOrganizacionOrigen(){
 function mostrarListaEntidadOrigen(){
 	if ( Trim(document.forms[0].cod_orgOrigen.value) != ''){
 		  var condiciones = new Array();
-		  condiciones[0]='ENT_ORG'+'§¥';
-		  condiciones[1]= document.forms[0].cod_orgOrigen.value+'§¥';
+		  condiciones[0]='ENT_ORG'+'Â§Â¥';
+		  condiciones[1]= document.forms[0].cod_orgOrigen.value+'Â§Â¥';
 		  muestraListaTabla('ENT_COD','ENT_NOM','A_ENT',condiciones,'cod_entidadOrigen','desc_entidadOrigen','botonEntidadOrigen','100');
 	}
 }
@@ -458,9 +458,9 @@ function mostrarListaDepartamentoOrigen(){
 function mostrarListaUnidRegOrigen(){
 	if ( (Trim(document.forms[0].cod_orgOrigen.value) != '') ) {
 		var condiciones = new Array();
-		condiciones[0]='UOR_TIP'+'§¥';
-		condiciones[1]='1'+'§¥';
-                                    condiciones[2]='UOR_OCULTA'+'§¥';
+		condiciones[0]='UOR_TIP'+'Â§Â¥';
+		condiciones[1]='1'+'Â§Â¥';
+                                    condiciones[2]='UOR_OCULTA'+'Â§Â¥';
                                     condiciones[3]='N';
 		muestraListaTabla('UOR_COD','UOR_NOM','A_UOR',condiciones,'cod_unidadeRexistroOrixe','desc_uniRegOrigen', 'botonUnidadeRexistroOrigen','100');
 		}
@@ -469,12 +469,12 @@ function mostrarListaUnidRegOrigen(){
 function mostrarListaUnidRegDestinoORD(){
 	var condiciones = new Array();
     if (!consultando){
-    condiciones[0]='UOR_NO_VIS'+'§¥';
+    condiciones[0]='UOR_NO_VIS'+'Â§Â¥';
     condiciones[1]='0';
-        condiciones[2]='UOR_ESTADO'+'§¥';
+        condiciones[2]='UOR_ESTADO'+'Â§Â¥';
         condiciones[3]='A';
     } else {
-        condiciones[0]='UOR_OCULTA'+'§¥';
+        condiciones[0]='UOR_OCULTA'+'Â§Â¥';
         condiciones[1]='N';
     }
     muestraListaTabla('UOR_COD_VIS','UOR_NOM','A_UOR',condiciones,'cod_uor','desc_uniRegDestinoORD', 'botonUnidadeRexistroORD','100');
@@ -485,12 +485,12 @@ function mostrarListaUnidRegDestinoORD(){
 	var condiciones = new Array();
         var condicionCompleja="";
     if (!consultando){
-        condiciones[0]='UOR_NO_VIS'+'§¥';
+        condiciones[0]='UOR_NO_VIS'+'Â§Â¥';
         condiciones[1]='0';
-        condiciones[2]='UOR_ESTADO'+'§¥';
+        condiciones[2]='UOR_ESTADO'+'Â§Â¥';
         condiciones[3]='A';
     } else {
-        condiciones[0]='UOR_OCULTA'+'§¥';
+        condiciones[0]='UOR_OCULTA'+'Â§Â¥';
         condiciones[1]='N';
     }
     condicionCompleja= "uor_cod in (select uou_uor from "+EsquemaGenerico+"A_UOU a_uou where uou_usu="+usuario+" and uou_org="+organizacion+")"    
@@ -704,7 +704,7 @@ function onClickHref_uniRegDestinoORD() {
                     }    
 
                     // si se pulsa xa ver el arbol con algo en el campo codigo, y damos a cancelar en la ventana modal
-                    // puede q tengamos algo en código y nada en la descripción
+                    // puede q tengamos algo en cÃ³digo y nada en la descripciÃ³n
                     if((document.forms[0].cod_uor.value != '') && (document.forms[0].desc_uniRegDestinoORD.value == '')) {        
                         document.forms[0].cod_uniRegDestinoORD.value = '';
                         document.forms[0].cod_uor.value = '';
@@ -734,7 +734,7 @@ function onClickHref_uniRegDestinoORDFiltroUsu() {
                     document.forms[0].cod_uor.value = datos[0];
                 }    
                 // si se pulsa xa ver el arbol con algo en el campo codigo, y damos a cancelar en la ventana modal
-                // puede q tengamos algo en código y nada en la descripción
+                // puede q tengamos algo en cÃ³digo y nada en la descripciÃ³n
                 if((document.forms[0].cod_uor.value != '') && (document.forms[0].desc_uniRegDestinoORD.value == '')) {        
                     document.forms[0].cod_uniRegDestinoORD.value = '';
                     document.forms[0].cod_uor.value = '';
@@ -1086,7 +1086,7 @@ function pulsarLimpiar() {
      inicializar();
 }
 
-// Navegación de anotaciones
+// NavegaciÃ³n de anotaciones
 var anotacionActual = 1;
 
 function calcularLimites(anotacionSelec) {
@@ -1128,7 +1128,7 @@ function onblurOrganizacionOtroReg(cod, des){
     }
     
 
-// Pestañas
+// PestaÃ±as
 function antesDeCambiarPestana() {
     ocultarCalendario();
     ocultarLista();
@@ -1287,7 +1287,7 @@ function buildRequestInsercionDirectaTercero(datos) {
 
         var codigoCampo = elemento[1];
         var valorCampo = elemento[4]; 
-        valoresCamposSuplementarios = valoresCamposSuplementarios + codigoCampo + ";" + valorCampo + '§¥';																				
+        valoresCamposSuplementarios = valoresCamposSuplementarios + codigoCampo + ";" + valorCampo + 'Â§Â¥';																				
     }    
 
     var request = 'txtIdTercero=' + tercAInsertar[0] + '&codTipoDoc=' + tercAInsertar[2] + '&txtDNI=' + tercAInsertar[3] +
@@ -1505,15 +1505,15 @@ function crearListasRelacionesTxt() {
    var listaNumeros = '';
    
    for(i=0; i<relaciones.length; i++) {
-       listaTipos += relaciones[i][0] + '§¥';
-       listaEjercicios += relaciones[i][1] + '§¥';
-       listaNumeros += relaciones[i][2] + '§¥';
+       listaTipos += relaciones[i][0] + 'Â§Â¥';
+       listaEjercicios += relaciones[i][1] + 'Â§Â¥';
+       listaNumeros += relaciones[i][2] + 'Â§Â¥';
    }
    
    document.forms[0].txtTiposRelaciones.value = listaTipos;
    document.forms[0].txtEjerciciosRelaciones.value = listaEjercicios;
    document.forms[0].txtNumerosRelaciones.value = listaNumeros;
-   // Remarcar pestaña
+   // Remarcar pestaÃ±a
    compruebaModificadoRegistro();     
 }
 
@@ -1565,7 +1565,7 @@ function activaNotificaciones() {
     deshabilitarGeneral(vector);              
 }
 
-/* Activa o desactiva el boton 'Notificar a' según este marcado el checkbox o no */
+/* Activa o desactiva el boton 'Notificar a' segÃºn este marcado el checkbox o no */
 function onChangeNotificar() {
    if(!document.forms[0].enviarCorreo.readOnly){
     var vector = new Array(document.forms[0].cmdNotificar);
@@ -1604,7 +1604,7 @@ function cargarDatosProcedimiento(codRolDefecto, descRolDefecto,
     tabDoc.lineas=listaDocs;
     refrescaDoc();
     
-    //se comprueba si el procedimiento admite digitalización
+    //se comprueba si el procedimiento admite digitalizaciÃ³n
     var codPro = document.forms[0].cod_procedimiento.value;
     for(i=0; i<cod_procedimientos.length;i++){
         if(codPro==cod_procedimientos[i]){
@@ -1653,10 +1653,10 @@ function cargarDatosAsunto(unidadTram, procedimiento, descProcedimiento, digitPr
             }
         }
 
-        // El javascript se pierde en algun sitio si no estamos en la pestaña con el
-        // combo de procedimiento al cambiarlo, asi que vamos a esa pestaña.
+        // El javascript se pierde en algun sitio si no estamos en la pestaÃ±a con el
+        // combo de procedimiento al cambiarlo, asi que vamos a esa pestaÃ±a.
         // Se asigna el mismo valor a cod_procedimiento_anterior pq ya se cargan los roles 
-        // con el asunto, si no se volverían a cargar a través de onFocus_CodProcedimiento.
+        // con el asunto, si no se volverÃ­an a cargar a travÃ©s de onFocus_CodProcedimiento.
 
         tp1.setSelectedIndex(0);
         if(estaPluginExpRelacionadosFlexiaCargado=="SI"){
@@ -1752,11 +1752,11 @@ function desBloquearUnidadDestino(){
  
  function desBloquearUnidadProcedimiento() {
      
-     // ponemos a readOnly = false el campo del código del procedimiento
+     // ponemos a readOnly = false el campo del cÃ³digo del procedimiento
         document.getElementsByName('cod_procedimiento')[0].readOnly = false;
-        // habilitamos la función de al clickar en el campo de la descripción del procedimiento
+        // habilitamos la funciÃ³n de al clickar en el campo de la descripciÃ³n del procedimiento
         document.getElementsByName('desc_procedimiento')[0].setAttribute("onclick", "javascript:{onClickDesc_procedimiento();}");      
-        // deshabilitamos el botón selector
+        // deshabilitamos el botÃ³n selector
         var vectorBoton1 = new Array(document.getElementsByName('anchorProcedimiento')[0]);
         deshabilitarIconos(vectorBoton1, false);
         if ($("span[name='botonProcedimiento']").hasClass("faDeshabilitado")) {
@@ -1927,7 +1927,7 @@ function actualizarBotonesTercero() {
         document.getElementById('ordenTercero').firstChild.data =
             (terceroActual + 1) + ' de ' + terceros.length;
 
-        // Flechas de navegación
+        // Flechas de navegaciÃ³n
         if (terceroActual < 1) {
             deshabilitarImagen([document.getElementById('flechaAnterior')], true);
         } else {
@@ -2040,11 +2040,11 @@ function actualizarBotonesTercero() {
          var listaRol = "";
          var listaDescRol = "";
          for (i=0; i < terceros.length; i++) {
-             listaCodTercero     += terceros[i][0] + '§¥';
-             listaVersionTercero += terceros[i][1] + '§¥';
-             listaRol            += terceros[i][7] + '§¥';
-             listaCodDomicilios  += terceros[i][4] + '§¥';
-             listaDescRol        += terceros[i][3] + '§¥';
+             listaCodTercero     += terceros[i][0] + 'Â§Â¥';
+             listaVersionTercero += terceros[i][1] + 'Â§Â¥';
+             listaRol            += terceros[i][7] + 'Â§Â¥';
+             listaCodDomicilios  += terceros[i][4] + 'Â§Â¥';
+             listaDescRol        += terceros[i][3] + 'Â§Â¥';
          }
          document.forms[0].listaCodTercero.value = listaCodTercero;
          document.forms[0].listaVersionTercero.value = listaVersionTercero;
@@ -2262,16 +2262,16 @@ function tratarDocumentosPresentadosAlta()
 		
 		if("SI"==listaDoc[i][0])
 		{
-			txtListaDocEntregados=txtListaDocEntregados+'S'+'§¥';
+			txtListaDocEntregados=txtListaDocEntregados+'S'+'Â§Â¥';
 			
 		}
 		else if("NO"==listaDoc[i][0])
 		{
-			txtListaDocEntregados=txtListaDocEntregados+'N'+'§¥';
+			txtListaDocEntregados=txtListaDocEntregados+'N'+'Â§Â¥';
 		}
 		else 
 		{
-			txtListaDocEntregados=txtListaDocEntregados+listaDocEntregados[i]+'§¥';
+			txtListaDocEntregados=txtListaDocEntregados+listaDocEntregados[i]+'Â§Â¥';
 			
 		}
 		
@@ -2505,7 +2505,7 @@ function iniciarDuplicar(datos,datosTercero,listaTemas,lista_CODtiposDocumentos,
      function mostrarArbolClasifAsuntos() {
      
       var codigo="";
-      //Recogemos el codAsunto que está seleccionado en la jsp, (si es que hay alguno seleccionado)
+      //Recogemos el codAsunto que estÃ¡ seleccionado en la jsp, (si es que hay alguno seleccionado)
       if (document.forms[0].codAsunto!=null){
          codigo=document.forms[0].codAsunto.value;
       }
@@ -2602,7 +2602,7 @@ function iniciarDuplicar(datos,datosTercero,listaTemas,lista_CODtiposDocumentos,
                 
         if (i == lista_cod_asuntos.length && (bajaAsunto=="false" || bajaAsunto=="")){            
             // No encontrado
-            if (asunto != '' && asunto != null) jsp_alerta('A','Código de asunto no encontrado: ' + asunto);            
+            if (asunto != '' && asunto != null) jsp_alerta('A','CÃ³digo de asunto no encontrado: ' + asunto);            
             comboAsuntos.selectItem(0);
             indice_asunto_anterior = 0;
         } else { 
@@ -2827,7 +2827,7 @@ function pulsarImprimirModelo(opcion) {
 }
 
 function pulsarJustificanteEntrada(/*opcion*/){
-	// Creemos que el parámetro opcion no se usa, por lo que comentamos todo lo referente a él
+	// Creemos que el parÃ¡metro opcion no se usa, por lo que comentamos todo lo referente a Ã©l
     /*if(opcion){
         recuperarCodigoOfiReg(opcion);
     } else {*/
@@ -2841,7 +2841,7 @@ function pulsarJustificanteEntrada(/*opcion*/){
             //comprobamos que todas las anotaciones seleccionadas se encuentran finalizadas para imprimir el justificante
             var digitalizacionFinalizada = true;
            // var listaAnotaciones = document.forms[0].listaAnotaciones.value;
-            var separador = '§¥';
+            var separador = 'Â§Â¥';
             var listaDatosAnotaciones = new Array();
             var anotacionesSeleccionadas = document.forms[0].listaAnotaciones.value.split(separador);
             for(i=0; i<anotacionesSeleccionadas.length ; i++){
@@ -3017,7 +3017,7 @@ function mostrarDatosTercero() {
              document.forms[0].txtPais.value=""; // Pais.
              document.forms[0].txtProv.value=""; // Provincia.
              document.forms[0].txtMuni.value=""; // Municipio.
-             document.forms[0].txtDomicilio.value=""; // Nombre vía.z
+             document.forms[0].txtDomicilio.value=""; // Nombre vÃ­a.z
              document.forms[0].txtCP.value=""; // Codigo.
              document.forms[0].cbTipoDoc.value=""; // codDNI.
              document.forms[0].txtDNI.value=""; // dni.
@@ -3051,7 +3051,7 @@ function mostrarDatosTercero() {
                  }
              }
 
-             // relleno los campos del formulario de la pestaña interesados
+             // relleno los campos del formulario de la pestaÃ±a interesados
              document.forms[0].codTerc.value      =terceros[porDefecto][0];
              document.forms[0].codDomTerc.value   =terceros[porDefecto][4];
              document.forms[0].numModifTerc.value =1;
@@ -3061,7 +3061,7 @@ function mostrarDatosTercero() {
              document.forms[0].txtPais.value      =terceros[porDefecto][10]; // Pais.
              document.forms[0].txtProv.value      =terceros[porDefecto][11]; // Provincia.
              document.forms[0].txtMuni.value      =terceros[porDefecto][12]; // Municipio.
-             document.forms[0].txtDomicilio.value =terceros[porDefecto][5]; // Nombre vía.z
+             document.forms[0].txtDomicilio.value =terceros[porDefecto][5]; // Nombre vÃ­a.z
              document.forms[0].txtCP.value        =terceros[porDefecto][13]; // Codigo.
              document.forms[0].cbTipoDoc.value    =terceros[porDefecto][14]; // codDNI.
              document.forms[0].txtDNI.value       =terceros[porDefecto][15]; // dni.
@@ -3117,7 +3117,7 @@ function cumpleTipoDocumentoObligatorio(){
     return true;      
 }
 
-// Añadida en #230158; Modificada en #240292
+// AÃ±adida en #230158; Modificada en #240292
 function comprobarCodProcedimientoValido(opcion){
     var codigo = document.forms[0].cod_procedimiento.value;
     var descripcion = document.forms[0].desc_procedimiento.value;
@@ -3146,7 +3146,7 @@ function comprobarCodProcedimientoValido(opcion){
                 });
     
         } else {
-             jsp_alerta('A','Formato inválido. Un interesado con tipo de documento NIF debe de tener al menos el primer apellido');
+             jsp_alerta('A','Formato invÃ¡lido. Un interesado con tipo de documento NIF debe de tener al menos el primer apellido');
         }
     });
 
@@ -3178,7 +3178,7 @@ function comprobarCodProcedimientoValido(opcion){
                 if(desc_procedimientos[i]==descripcion) exito=true;
                 else {
                     pleaseWait('off');
-                    if(i>=cod_procedimientos.length) jsp_alerta('A','Código inexistente');
+                    if(i>=cod_procedimientos.length) jsp_alerta('A','CÃ³digo inexistente');
                     exito = false;
                 }
                 callback(exito);
@@ -3270,15 +3270,15 @@ function bloquearUnidadDestino(bloquearDestino){
 }
 
 
-//bloquea de unidad de procedimiento según el asunto	
+//bloquea de unidad de procedimiento segÃºn el asunto	
 function bloquearUnidadProcedimiento(bloquearProcedimiento){
     if(bloquearProcedimiento=="true" | bloquearProcedimiento){	
-        // ponemos a readOnly el campo del código del procedimiento
+        // ponemos a readOnly el campo del cÃ³digo del procedimiento
         document.getElementsByName('cod_procedimiento')[0].readOnly = true;
-        // eliminamos la función de al clickar en el campo de la descripción del procedimiento
+        // eliminamos la funciÃ³n de al clickar en el campo de la descripciÃ³n del procedimiento
         document.getElementsByName('desc_procedimiento')[0].setAttribute("onclick", "");
          $("input[name='desc_procedimiento']").attr("readonly",true)
-        // deshabilitamos el botón selector
+        // deshabilitamos el botÃ³n selector
         var vectorBoton1 = new Array(document.getElementsByName('anchorProcedimiento')[0]);
         deshabilitarIconos(vectorBoton1, true);
         $("span[name='botonProcedimiento']").addClass("faDeshabilitado");
@@ -3392,7 +3392,7 @@ function gestionarVisibilidadDigitalizacion(opcion,estado){
     } else return;
 }
 
-// Envía el registro a la oficina asignada a través del CIR
+// EnvÃ­a el registro a la oficina asignada a travÃ©s del CIR
 function pulsarEnviar(contexto) {
     var numeroRegistro = $("#numeroRegistro").val();
     var anoEjercicio = $("#anoEjercicio").val();
@@ -3465,7 +3465,7 @@ function actualizarBotoneraGuardarModificar(listadoDigit, procDigitalizacion){
 		finDigitalizar = document.forms[0].finDigitalizacion.value;
 	 }
 	 var pro_anterior_digit='NO';
-	//al realizar una modificación se comprueba si se pasa de un procedimiento digitalizable a no digitalizable
+	//al realizar una modificaciÃ³n se comprueba si se pasa de un procedimiento digitalizable a no digitalizable
 	if(top.menu.modificando=='S'){
 		for(i=0; i<cod_procedimientos.length; i++){
 			if(cod_procedimientos[i]==cod_procedimiento_anterior){
@@ -3490,5 +3490,18 @@ function actualizarBotoneraGuardarModificar(listadoDigit, procDigitalizacion){
 		$("[name='cmdFinDigitalizarMod']").hide();
 		finDigitalizar= 'true'; 
 	}        
+}
+
+
+function mostrarFiltrosProcOtraAdmin() {
+    var tipo = document.forms[0].cbTipoEntrada ? document.forms[0].cbTipoEntrada.value : "";
+    var div = document.getElementById("filtrosProcedentesOtraAdmin");
+    if (div) {
+        if (tipo === "2") {
+            div.style.display = "";
+        } else {
+            div.style.display = "none";
+        }
+    }
 }
 
